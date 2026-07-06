@@ -1,5 +1,23 @@
 {
   "dependencies": {
+    "com.seanzo.postprocess-effects": {
+      "version": "https://github.com/theseanzo/seanzo-unity-packages.git?path=/com.seanzo.postprocess-effects",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.render-pipelines.universal": "17.3.0"
+      },
+      "hash": "08d6d6a909b57622a2a80bc60c770406273aed92"
+    },
+    "com.seanzo.postprocess-player": {
+      "version": "https://github.com/theseanzo/seanzo-unity-packages.git?path=/com.seanzo.postprocess-player",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.render-pipelines.universal": "17.3.0"
+      },
+      "hash": "08d6d6a909b57622a2a80bc60c770406273aed92"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.12",
       "depth": 0,

@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.seanzo.postprocess-effects": "https://github.com/theseanzo/seanzo-unity-packages.git?path=/com.seanzo.postprocess-effects",
+    "com.seanzo.postprocess-player": "https://github.com/theseanzo/seanzo-unity-packages.git?path=/com.seanzo.postprocess-player",
     "com.unity.ai.navigation": "2.0.12",
     "com.unity.collab-proxy": "2.12.4",
     "com.unity.ide.rider": "3.0.39",
