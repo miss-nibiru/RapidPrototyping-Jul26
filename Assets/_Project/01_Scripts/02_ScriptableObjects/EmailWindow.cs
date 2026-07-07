@@ -19,10 +19,5 @@ public class EmailWindow : MonoBehaviour
             //penalize time or something idk.
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

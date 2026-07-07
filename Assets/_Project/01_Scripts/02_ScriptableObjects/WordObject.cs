@@ -19,4 +19,19 @@ public class WordObject : MonoBehaviour
         responceText.color = wordOption.responceColor;
         responceType = wordOption.responceType;
     }
+
+    public void OnDrag(Vector2 position)
+    {
+        responceText.transform.position = position;
+    }
+
+    public void OnDrop()
+    {
+        //dropping logic
+    }
+
+    public void ClearWordObject()
+    {
+        //logic for when you either win or mess up
+    }
 }
