@@ -2,8 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
-
+/// <summary>
+/// this script can receive events - its mostly a helper for animation and sfx functionality
+/// drags windows, minimizes, maximizes
+/// Self contained, this is not needed for anything else
+/// </summary>
+public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
 {
     
     [SerializeField] private RectTransform windowPanel;
@@ -50,6 +54,7 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
 
     private void MinimizeWindow()
     {
+        BringToFront();
         windowPanel.gameObject.SetActive(false);
         if (!taskbarMini) return;
         taskbarMini.SetActive(true);
@@ -57,6 +62,7 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
 
     private void MaximizeWindow()
     {
+        BringToFront();
         if (!_isMaximized)
         {
             _normalSize = windowPanel.sizeDelta;
@@ -85,27 +91,33 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
     
     //the windows need to be able to be dragged like a regular computer windows. Will some of these be in the way?
     
+    private void BringToFront()
+    {
+        windowPanel.SetAsLastSibling();
+    }
+    
     public void OnBeginDrag(PointerEventData eventData)
     {
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            windowPanel,
-            eventData.position,
-            eventData.pressEventCamera,
-            out _dragOffset
-        );
+        BringToFront();
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(windowPanel, eventData.position, eventData.pressEventCamera, out _dragOffset);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (!dragBar) return;
 
+        windowPanel.SetAsLastSibling();
         windowPanel.anchoredPosition += eventData.delta;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-       //right not it doesnt need functionalty but it will host later sfx for this i thin
+       //right now it doesnt need functionalty but it will host later sfx for this i think
     }
-    
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        BringToFront();
+    }
     
 }
