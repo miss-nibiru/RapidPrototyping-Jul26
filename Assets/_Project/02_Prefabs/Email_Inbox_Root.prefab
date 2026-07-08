@@ -674,7 +674,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Window Title Text
+  m_text: Email Inbox
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad7f03d8bc1d04d9eaa9103c1595d384, type: 2}
   m_sharedMaterial: {fileID: 1932920324261739520, guid: ad7f03d8bc1d04d9eaa9103c1595d384, type: 2}
@@ -1555,7 +1555,7 @@ MonoBehaviour:
   closeButton: {fileID: 8492285118183189690}
   taskbarMini: {fileID: 0}
   dragBar: {fileID: 4719396149053072990}
-  maximumWindowSize: 1.25
+  maximumWindowSize: 0.85
 --- !u!114 &6400074487393633049
 MonoBehaviour:
   m_ObjectHideFlags: 0
