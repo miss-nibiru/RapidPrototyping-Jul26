@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EmailWindow : MonoBehaviour
@@ -19,5 +21,19 @@ public class EmailWindow : MonoBehaviour
             //penalize time or something idk.
         }
     }
-    
+
+    private void CheckDrop()
+    {
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(other.name);
+        
+        if (other.GetComponent<WordObject>())
+        {
+            FindAnswerType(other.GetComponent<WordObject>());
+        }
+    }
 }
