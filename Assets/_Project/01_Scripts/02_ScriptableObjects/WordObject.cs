@@ -34,4 +34,6 @@ public class WordObject : MonoBehaviour
     {
         //logic for when you either win or mess up
     }
+
+
 }
