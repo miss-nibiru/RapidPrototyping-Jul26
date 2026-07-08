@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 /// <summary>
 /// this script can receive events - its mostly a helper for animation and sfx functionality
@@ -20,17 +21,21 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
     [SerializeField] private RectTransform dragBar;
     
     [Header("Window Size Settings")]
-    [SerializeField] private float maximumWindowSize = 1.5f;    
+    [SerializeField] private float maximumWindowSize = 1.5f;
+    [SerializeField] private float animationSpeed = 12f;
+    [SerializeField] private float hiddenScale = 0.8f;
     
     private Vector2 _normalSize;
     private Vector2 _normalPosition;
     private bool _isMaximized;
     private Vector2 _dragOffset;
+    private Vector3 _normalScale;
 
     private void Awake()
     {
         _normalSize = windowPanel.sizeDelta;
         _normalPosition = windowPanel.anchoredPosition;
+        _normalScale = windowPanel.localScale;
         
         if (!taskbarMini) return;
         taskbarMini.SetActive(false);
@@ -55,9 +60,12 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
     private void MinimizeWindow()
     {
         BringToFront();
-        windowPanel.gameObject.SetActive(false);
+
         if (!taskbarMini) return;
         taskbarMini.SetActive(true);
+
+        StopAllCoroutines();
+        StartCoroutine(ScaleWindow(_normalScale, new Vector3(hiddenScale, hiddenScale, 1f), true));
     }
 
     private void MaximizeWindow()
@@ -85,14 +93,17 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
     public void OpenWindow()
     {
         windowPanel.gameObject.SetActive(true);
+        windowPanel.localScale = _normalScale;
         BringToFront();
     }
 
     private void CloseWindow()
     {
-        windowPanel.gameObject.SetActive(false);
+        StopAllCoroutines();
+        StartCoroutine(ScaleWindow(_normalScale, new Vector3(hiddenScale, hiddenScale, 1f), true));
+
         if (!taskbarMini) return;
-        taskbarMini.SetActive(false);
+        taskbarMini.SetActive(true);
     }
     
     //the windows need to be able to be dragged like a regular computer windows. Will some of these be in the way?
@@ -124,6 +135,21 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
     public void OnPointerDown(PointerEventData eventData)
     {
         BringToFront();
+    }
+    
+    private IEnumerator ScaleWindow(Vector3 startScale, Vector3 endScale, bool hideAfter)
+    {
+        float progress = 0f;
+
+        while (progress < 1f)
+        {
+            progress += Time.unscaledDeltaTime * animationSpeed;
+            windowPanel.localScale = Vector3.Lerp(startScale, endScale, progress);
+            yield return null;
+        }
+
+        windowPanel.localScale = endScale;
+        if (hideAfter) windowPanel.gameObject.SetActive(false);
     }
     
 }

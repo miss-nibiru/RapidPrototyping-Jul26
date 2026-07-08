@@ -1138,6 +1138,8 @@ MonoBehaviour:
   taskbarMini: {fileID: 0}
   dragBar: {fileID: 4843227951983409385}
   maximumWindowSize: 0.85
+  animationSpeed: 11
+  hiddenScale: 0.4
 --- !u!114 &3354931817690723721
 MonoBehaviour:
   m_ObjectHideFlags: 0
