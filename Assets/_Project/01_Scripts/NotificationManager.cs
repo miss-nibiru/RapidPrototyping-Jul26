@@ -6,7 +6,6 @@ public class NotificationManager : MonoBehaviour
     public static NotificationManager Instance { get; private set; }
 
     [Header("Email Settings")]
-    [SerializeField] private bool enableEmailSystem = true;
     [SerializeField] private float emailSpawnInterval = 5f;
 
     [Header("Email UI")]
@@ -30,7 +29,7 @@ public class NotificationManager : MonoBehaviour
     private void Start()
     {
         // TEMP: spawn all test emails immediately
-        foreach (string sender in testEmailSenders)
+        foreach (string sender in testEmailSenders) 
             CreateEmailItem(sender);
     }
 

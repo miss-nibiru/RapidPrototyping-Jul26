@@ -1,18 +1,16 @@
-using _Project._01_Scripts._00_VisualScripts;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
 
-public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class WordObject : MonoBehaviour, IDragHandler, IDropHandler, IBeginDragHandler
 {
     [SerializeField] private RectTransform rectTransform;
-    [SerializeField] private TextMeshProUGUI responceText;
+    [SerializeField] private TMPro.TextMeshProUGUI responceText;
     [SerializeField] private Canvas canvas;
-
-    public Transform originalSpawnPoint;
-    public responceType responceType;
+    
+    public responceType  responceType;
     public WordOptions wordOption;
-
+    
     private void Awake()
     {
         AssignResponce();
@@ -29,25 +27,24 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         responceText.color = wordOption.responceColor;
         responceType = wordOption.responceType;
     }
-
-    public void OnBeginDrag(PointerEventData eventData)
+    
+    public void ClearWordObject()
     {
-        // Optional: highlight or scale
+        //logic for when you either win or mess up
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        this.rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnDrop(PointerEventData eventData)
     {
-        bool placed = SlotManager.Instance.TryPlaceWord(this);
+        
+    }
 
-        if (!placed)
-        {
-            transform.SetParent(originalSpawnPoint);
-            transform.localPosition = Vector3.zero;
-        }
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        
     }
 }
