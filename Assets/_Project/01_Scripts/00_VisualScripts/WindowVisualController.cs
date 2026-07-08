@@ -81,6 +81,12 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
             _isMaximized = false;
         }
     }
+    
+    public void OpenWindow()
+    {
+        windowPanel.gameObject.SetActive(true);
+        BringToFront();
+    }
 
     private void CloseWindow()
     {

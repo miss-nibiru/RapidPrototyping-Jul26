@@ -390,6 +390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3654365378466164205}
   - component: {fileID: 1040336534615291854}
+  - component: {fileID: 4424525613991970346}
   - component: {fileID: 9036015665558365019}
   m_Layer: 5
   m_Name: Call_Window_Root
@@ -426,6 +427,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2608571211468967662}
   m_CullTransparentMesh: 1
+--- !u!114 &4424525613991970346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2608571211468967662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9821c23564aee4d3585296342ede36b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WindowVisualController
+  windowPanel: {fileID: 3654365378466164205}
+  minimizeButton: {fileID: 3889478708306997696}
+  maximizeButton: {fileID: 6510724821432085207}
+  closeButton: {fileID: 1587139690193695483}
+  taskbarMini: {fileID: 0}
+  dragBar: {fileID: 3654365378466164205}
+  maximumWindowSize: 1.5
 --- !u!114 &9036015665558365019
 MonoBehaviour:
   m_ObjectHideFlags: 0
