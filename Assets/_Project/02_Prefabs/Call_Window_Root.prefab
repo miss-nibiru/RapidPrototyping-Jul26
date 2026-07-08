@@ -445,7 +445,9 @@ MonoBehaviour:
   closeButton: {fileID: 1587139690193695483}
   taskbarMini: {fileID: 0}
   dragBar: {fileID: 3654365378466164205}
-  maximumWindowSize: 1.5
+  maximumWindowSize: 1.3
+  animationSpeed: 10
+  hiddenScale: 0.4
 --- !u!114 &9036015665558365019
 MonoBehaviour:
   m_ObjectHideFlags: 0
