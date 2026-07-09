@@ -5,11 +5,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
+/// <summary>
+/// some more player feel -- the cursor hovers on buttons and sometimes locks the screen so the player cant do nothin
+/// </summary>
 
 public class CursorManager : MonoBehaviour
 {
     public static CursorManager Instance { get; private set; }
-
     public bool IsWaiting => _isWaiting;
 
     [Header("Cursors")]
@@ -51,34 +53,26 @@ public class CursorManager : MonoBehaviour
     private void Start()
     {
         _eventSystem = EventSystem.current;
-
         SetNormalCursor();
-
-        if (useRandomWaiting)
-            _randomWaitingRoutine = StartCoroutine(RandomWaitingLoop());
+        if (useRandomWaiting) _randomWaitingRoutine = StartCoroutine(RandomWaitingLoop());
     }
 
     private void Update()
     {
         if (_isWaiting) return;
-
-        if (IsPointerOverButton())
-            SetHoverCursor();
-        else
-            SetNormalCursor();
+        if (IsPointerOverButton()) SetHoverCursor();
+        else SetNormalCursor();
     }
 
     public void SetNormalCursor()
     {
         if (_isWaiting) return;
-
         Cursor.SetCursor(normalCursor, normalHotspot, CursorMode.Auto);
     }
 
     public void SetHoverCursor()
     {
         if (_isWaiting) return;
-
         Cursor.SetCursor(hoverCursor, hoverHotspot, CursorMode.Auto);
     }
 
@@ -101,17 +95,12 @@ public class CursorManager : MonoBehaviour
     private IEnumerator WaitingRoutine(float seconds)
     {
         _isWaiting = true;
-
-        SetWaitingCursor();
-        SetUIInputBlocked(true);
-
+        SetWaitingCursor(); SetUIInputBlocked(true);
+        
         yield return new WaitForSeconds(seconds);
-
         SetUIInputBlocked(false);
-
-        _isWaiting = false;
-        _waitingRoutine = null;
-
+       
+        _isWaiting = false; _waitingRoutine = null;
         SetNormalCursor();
     }
 
@@ -131,14 +120,12 @@ public class CursorManager : MonoBehaviour
 
     private void SetUIInputBlocked(bool blocked)
     {
-        if (_eventSystem != null)
-            _eventSystem.enabled = !blocked;
+        if (_eventSystem != null) _eventSystem.enabled = !blocked;
     }
 
     private bool IsPointerOverButton()
     {
-        if (_eventSystem == null || Mouse.current == null)
-            return false;
+        if (_eventSystem == null || Mouse.current == null) return false;
 
         _pointerEventData ??= new PointerEventData(_eventSystem);
         _pointerEventData.position = Mouse.current.position.ReadValue();
@@ -149,9 +136,7 @@ public class CursorManager : MonoBehaviour
         foreach (RaycastResult result in _raycastResults)
         {
             Button button = result.gameObject.GetComponentInParent<Button>();
-
-            if (button != null && button.interactable)
-                return true;
+            if (button != null && button.interactable) return true;
         }
 
         return false;
