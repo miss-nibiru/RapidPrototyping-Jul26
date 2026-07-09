@@ -1,96 +1,96 @@
+using _Project._01_Scripts._00_VisualScripts;
 using UnityEngine;
 
-namespace _Project._01_Scripts._00_VisualScripts
+public class TimeManager : MonoBehaviour
 {
-    public class TimeManager : MonoBehaviour
-    {
-        public static TimeManager Instance { get; private set; }
+    public static TimeManager Instance { get; private set; }
 
-        [Header("Game Time")]
-        [SerializeField] private float gameTime = 120f;
-        [SerializeField] private bool countDown = true;
+    [Header("Game Time")]
+    [SerializeField] private float gameTime = 120f;
+    [SerializeField] private bool countDown = true;
     
-        [Header("Phone Timing")]
-        [SerializeField] private float phoneSpawnTime;
+    [Header("Phone Timing")]
+    [SerializeField] private float phoneSpawnTime;
+    [SerializeField] private float phoneRingTime;
+    [SerializeField] private float phoneExpireTime;
     
-        [Header("Email Timing")]
-        [SerializeField] private float emailSpawnTime;
+    [Header("Email Timing")]
+    [SerializeField] private float emailSpawnTime;
+    [SerializeField] private float emailWarningTime;
+    [SerializeField] private float emailExpireTime;
     
-        [Header("Bonus/Penalty Amounts")]
-        [SerializeField] private float smallTimeGainAmount = 3f;
-        [SerializeField] private float smallTimePenaltyAmount = 5f;
-        [SerializeField] private float largeTimeGainAmount = 8f;
-        [SerializeField] private float largeTimePenaltyAmount = 10f;
+    [Header("Bonus/Penalty Amounts")]
+    [SerializeField] private float smallTimeGainAmount = 3f;
+    [SerializeField] private float smallTimePenaltyAmount = 5f;
+    [SerializeField] private float largeTimeGainAmount = 8f;
+    [SerializeField] private float largeTimePenaltyAmount = 10f;
     
-        [SerializeField] private float perfectTime;
+    [SerializeField] private float perfectTime;
    
-        public float CurrentTime { get; private set; }
-        private bool _isRunning;
+    public float CurrentTime { get; private set; }
+    private bool _isRunning;
 
-        private void Awake()
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
         {
-            if (Instance != null && Instance != this)
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
+    private void Update()
+    {
+        if (!_isRunning) return;
+        float delta = Time.deltaTime;
+        if (countDown)
+        {
+            CurrentTime -= delta;
+            if (CurrentTime <= 0f)
             {
-                Destroy(gameObject);
+                CurrentTime = 0f;
+                _isRunning = false;
+                UIManager.Instance.UpdateTimerUI(CurrentTime);
+                GameManager.Instance.OnTimeExpired();
                 return;
             }
-            Instance = this;
         }
-
-        private void Update()
+        else
         {
-            if (!_isRunning) return;
-            float delta = Time.deltaTime;
-            if (countDown)
-            {
-                CurrentTime -= delta;
-                if (CurrentTime <= 0f)
-                {
-                    CurrentTime = 0f;
-                    _isRunning = false;
-                    UIManager.Instance.UpdateTimerUI(CurrentTime);
-                    GameManager.Instance.OnTimeExpired();
-                    return;
-                }
-            }
-            else
-            {
-                CurrentTime += delta;
-            }
-            UIManager.Instance.UpdateTimerUI(CurrentTime);
+            CurrentTime += delta;
         }
-
-        public void StartTimer()
-        {
-            _isRunning = true;
-            CurrentTime = countDown ? gameTime : 0f;
-            UIManager.Instance.UpdateTimerUI(CurrentTime);
-        }
-
-        public void StopTimer()
-        {
-            _isRunning = false;
-        }
-    
-        public void AddTime(float amount)
-        {
-            CurrentTime += amount;
-            UIManager.Instance.UpdateTimerUI(CurrentTime);
-        }
-    
-        public void SubtractTime(float amount)
-        {
-            CurrentTime -= amount;
-            if (CurrentTime < 0f)
-                CurrentTime = 0f;
-            UIManager.Instance.UpdateTimerUI(CurrentTime);
-        }
-    
-        public float GetSmallTimeGainAmount() => smallTimeGainAmount;
-        public float GetSmallTimePenaltyAmount() => smallTimePenaltyAmount;
-        public float GetLargeTimeGainAmount() => largeTimeGainAmount;
-        public float GetLargeTimePenaltyAmount() => largeTimePenaltyAmount;
-        public float GetPhoneSpawnTime() => phoneSpawnTime;
-        public float GetEmailSpawnTime() => emailSpawnTime;
+        UIManager.Instance.UpdateTimerUI(CurrentTime);
     }
+
+    public void StartTimer()
+    {
+        _isRunning = true;
+        CurrentTime = countDown ? gameTime : 0f;
+        UIManager.Instance.UpdateTimerUI(CurrentTime);
+    }
+
+    public void StopTimer()
+    {
+        _isRunning = false;
+    }
+    
+    public void AddTime(float amount)
+    {
+        CurrentTime += amount;
+        UIManager.Instance.UpdateTimerUI(CurrentTime);
+    }
+    
+    public void SubtractTime(float amount)
+    {
+        CurrentTime -= amount;
+        if (CurrentTime < 0f)
+            CurrentTime = 0f;
+        UIManager.Instance.UpdateTimerUI(CurrentTime);
+    }
+    
+    public float GetSmallTimeGainAmount() => smallTimeGainAmount;
+    public float GetSmallTimePenaltyAmount() => smallTimePenaltyAmount;
+    public float GetLargeTimeGainAmount() => largeTimeGainAmount;
+    public float GetLargeTimePenaltyAmount() => largeTimePenaltyAmount;
 }

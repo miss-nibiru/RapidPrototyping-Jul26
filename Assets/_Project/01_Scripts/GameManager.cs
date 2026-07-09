@@ -1,12 +1,11 @@
+using _Project._01_Scripts._00_VisualScripts;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Project._01_Scripts._00_VisualScripts
+public class GameManager : MonoBehaviour
 {
-    public class GameManager : MonoBehaviour
-    {
-        public static GameManager Instance;
+    public static GameManager Instance;
         
         [Header("Buttons")]
         [SerializeField] private Button resumeButton;
@@ -17,16 +16,8 @@ namespace _Project._01_Scripts._00_VisualScripts
         [SerializeField] private TimeManager timerManager;
         [SerializeField] private AudioManager audioManager;
         [SerializeField] private UIManager uiManager;
-        
-        [Header("Audio")]
-        [SerializeField] private AudioClip emailCorrectSound;
-        [SerializeField] private AudioClip emailIncorrectSound;
-        [SerializeField] private AudioClip phoneAnsweredSound;
-        [SerializeField] private AudioClip phoneMissedSound;
-        [SerializeField] private AudioClip emailExpiredSound;
 
         private bool _isPaused;
-  
 
         private void Awake()
         {
@@ -71,38 +62,22 @@ namespace _Project._01_Scripts._00_VisualScripts
         public void OnEmailIncorrect()
         {
             ApplySmallTimePenalty();
-            audioManager.PlaySound(emailIncorrectSound);
         }
     
         public void OnEmailCorrect()
         {
             ApplySmallTimeBonus();
-            audioManager.PlaySound(emailCorrectSound);
         }
     
         public void OnCallAnswered()
         {
             ApplyLargeTimeBonus();
-            audioManager.PlaySound(phoneAnsweredSound);
         }
         
         public void OnCallMissed()
         {
             ApplyLargeTimePenalty();
-            audioManager.PlaySound(phoneMissedSound);
         }
-        
-        public void OnEmailBannerOpened()
-        {
-            // logic to open the email window panel
-        }
-
-        public void OnEmailBannerMissed()
-        {
-            ApplyLargeTimePenalty();
-            audioManager.PlaySound(emailExpiredSound);
-        }
-
     
         public void Pause()
         {
@@ -139,7 +114,7 @@ namespace _Project._01_Scripts._00_VisualScripts
             {
                 timerManager.AddTime(timerManager.GetSmallTimeGainAmount());
                 uiManager?.ShowBonusText("BONUS TIME!", Color.green);
-                audioManager?.PlaySound(null); 
+                audioManager?.PlaySound(null); // TODO: Add bonus SFX
             }
         }
 
@@ -149,7 +124,7 @@ namespace _Project._01_Scripts._00_VisualScripts
             {
                 timerManager.SubtractTime(timerManager.GetSmallTimePenaltyAmount());
                 uiManager?.ShowPenaltyText("TIME PENALTY", Color.red);
-                audioManager?.PlaySound(null); 
+                audioManager?.PlaySound(null); // TODO: Add penalty SFX
             }
         }
         
@@ -159,7 +134,7 @@ namespace _Project._01_Scripts._00_VisualScripts
             {
                 timerManager.AddTime(timerManager.GetLargeTimeGainAmount());
                 uiManager?.ShowBonusText("BONUS TIME!", Color.green);
-                audioManager?.PlaySound(null); 
+                audioManager?.PlaySound(null); // TODO: Add bonus SFX
             }
         }
 
@@ -169,7 +144,7 @@ namespace _Project._01_Scripts._00_VisualScripts
             {
                 timerManager.SubtractTime(timerManager.GetLargeTimePenaltyAmount());
                 uiManager?.ShowPenaltyText("TIME PENALTY", Color.red);
-                audioManager?.PlaySound(null); 
+                audioManager?.PlaySound(null); // TODO: Add penalty SFX
             }
         }
 
@@ -181,4 +156,3 @@ namespace _Project._01_Scripts._00_VisualScripts
             Application.Quit();
         }
     }
-}

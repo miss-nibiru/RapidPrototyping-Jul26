@@ -1,44 +1,37 @@
-using _Project._01_Scripts._00_VisualScripts;
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
-
 public class EmailWindow : MonoBehaviour
 {
     [SerializeField] private GameObject emailPanel;
     [SerializeField] private responceType CorrectEmailResponceType;
-
-    public void OpenWindow()
+    
+    private void FindAnswerType(WordObject wordObject)
     {
-        emailPanel.SetActive(true);
-        WordBank.Instance.SpawnWords();
-    }
-
-    public void CloseWindow()
-    {
-        emailPanel.SetActive(false);
-        WordBank.Instance.ClearWords();
-        SlotManager.Instance.ClearSlots();
-    }
-
-    public void OnSendButtonClicked()
-    {
-        if (!SlotManager.Instance.AreSlotsFilled())
+        if (wordObject.responceType == CorrectEmailResponceType)
         {
-            Debug.Log("EmailWindow: Need two words before sending.");
-            return;
+            GameManager.Instance?.OnEmailCorrect();
+            // TODO: Add any additional correct response logic here (animations, etc)
         }
-
-        WordObject[] words = SlotManager.Instance.GetSelectedWords();
-
-        bool bothCorrect =
-            words[0].responceType == CorrectEmailResponceType &&
-            words[1].responceType == CorrectEmailResponceType;
-
-        if (bothCorrect)
-            GameManager.Instance.OnEmailCorrect();
         else
-            GameManager.Instance.OnEmailIncorrect();
-
-        CloseWindow();
+        {
+            GameManager.Instance?.OnEmailIncorrect();
+            // TODO: Add any additional incorrect response logic here (animations, etc)
+        }
     }
-
+    
+    private void CheckDrop()
+    {
+        
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(other.name);
+        
+        if (other.GetComponent<WordObject>())
+        {
+            FindAnswerType(other.GetComponent<WordObject>());
+        }
+    }
 }

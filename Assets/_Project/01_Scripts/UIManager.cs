@@ -9,13 +9,10 @@ namespace _Project._01_Scripts._00_VisualScripts
             [SerializeField] private TextMeshProUGUI timerText;
             [SerializeField] private GameObject pauseMenu;
             
-            [Header("email Notification")]
             [SerializeField] private GameObject emailNotificationUI;
             [SerializeField] private TextMeshProUGUI emailText;
-            
-            [Header("phoneCall Notification")]
             [SerializeField] private GameObject phoneNotificationUI;
-            [SerializeField] private TextMeshProUGUI callerNameText;
+            [SerializeField] private TextMeshProUGUI phoneText;
             
             [Header("Bonus Notification")]
             [SerializeField] private TextMeshProUGUI bonusText;
@@ -25,12 +22,10 @@ namespace _Project._01_Scripts._00_VisualScripts
             [SerializeField] private TextMeshProUGUI penaltyText;
             [SerializeField] private float penaltyDisplayDuration = 1.5f;
             
-            [SerializeField] private TimeManager timerManager;
             private string _defaultEmailText;
             private string _defaultPhoneText;
             private Coroutine _bonusCoroutine;
             private Coroutine _penaltyCoroutine;
-            private Coroutine _phoneCallCoroutine;
             
             private void Awake()
             {
@@ -51,7 +46,6 @@ namespace _Project._01_Scripts._00_VisualScripts
                     bonusText.gameObject.SetActive(false);
                 if (penaltyText != null)
                     penaltyText.gameObject.SetActive(false);
-                if (timerManager == null) timerManager = FindFirstObjectByType<TimeManager>();
             }
             
             public void UpdateTimerUI(float currentTime)
@@ -78,28 +72,29 @@ namespace _Project._01_Scripts._00_VisualScripts
                 emailText.text = _defaultEmailText;
             }
             
-            public void ShowCall(PhoneObject data)
+            public void ShowCall(string message)
             {
                 phoneNotificationUI.SetActive(true);
-                if (callerNameText != null)
-                    callerNameText.text = data.callerName;
+                phoneText.text = message;
             }
             
             public void HideCall()
             {
                 phoneNotificationUI.SetActive(false);
-                if (callerNameText != null)
-                    callerNameText.text = "";
+                phoneText.text = _defaultPhoneText;
             }
             
             public void ShowBonusText(string text, Color color)
             {
                 if (bonusText == null)
                 {
+                    Debug.LogWarning("[UIManager] Bonus text is not assigned!");
                     return;
                 }
+                
                 if (_bonusCoroutine != null)
                     StopCoroutine(_bonusCoroutine);
+
                 _bonusCoroutine = StartCoroutine(BonusTextRoutine(text, color));
             }
 
@@ -117,10 +112,13 @@ namespace _Project._01_Scripts._00_VisualScripts
             {
                 if (penaltyText == null)
                 {
+                    Debug.LogWarning("[UIManager] Penalty text is not assigned!");
                     return;
                 }
+                
                 if (_penaltyCoroutine != null)
                     StopCoroutine(_penaltyCoroutine);
+
                 _penaltyCoroutine = StartCoroutine(PenaltyTextRoutine(text, color));
             }
 
