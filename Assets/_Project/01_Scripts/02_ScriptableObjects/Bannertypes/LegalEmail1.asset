@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
   m_Name: LegalEmail1
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: Wanda(HR)
-  subject: Need more Syndergy
-  previewText: I have a lunch and learn scheduled...
+  senderName: Brian(Legal)
+  subject: View Policy
+  previewText: I MAKE SO MUCH MONEY....
   bannerDuration: 20
   timeBonus: 8
   timePenalty: 10
