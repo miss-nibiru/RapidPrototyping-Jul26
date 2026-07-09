@@ -3,30 +3,47 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+    public static TimeManager Instance { get; private set; }
+
+    [Header("Game Time")]
     [SerializeField] private float gameTime = 120f;
     [SerializeField] private bool countDown = true;
     
+    [Header("Phone Timing")]
     [SerializeField] private float phoneSpawnTime;
     [SerializeField] private float phoneRingTime;
     [SerializeField] private float phoneExpireTime;
     
+    [Header("Email Timing")]
     [SerializeField] private float emailSpawnTime;
     [SerializeField] private float emailWarningTime;
     [SerializeField] private float emailExpireTime;
     
+    [Header("Bonus/Penalty Amounts")]
+    [SerializeField] private float smallTimeGainAmount = 3f;
+    [SerializeField] private float smallTimePenaltyAmount = 5f;
+    [SerializeField] private float largeTimeGainAmount = 8f;
+    [SerializeField] private float largeTimePenaltyAmount = 10f;
     
-    //time bonus possibly so it can feel more satisfying
     [SerializeField] private float perfectTime;
    
     public float CurrentTime { get; private set; }
     private bool _isRunning;
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
     private void Update()
     {
         if (!_isRunning) return;
-
         float delta = Time.deltaTime;
-
         if (countDown)
         {
             CurrentTime -= delta;
@@ -43,7 +60,6 @@ public class TimeManager : MonoBehaviour
         {
             CurrentTime += delta;
         }
-
         UIManager.Instance.UpdateTimerUI(CurrentTime);
     }
 
@@ -58,4 +74,23 @@ public class TimeManager : MonoBehaviour
     {
         _isRunning = false;
     }
+    
+    public void AddTime(float amount)
+    {
+        CurrentTime += amount;
+        UIManager.Instance.UpdateTimerUI(CurrentTime);
+    }
+    
+    public void SubtractTime(float amount)
+    {
+        CurrentTime -= amount;
+        if (CurrentTime < 0f)
+            CurrentTime = 0f;
+        UIManager.Instance.UpdateTimerUI(CurrentTime);
+    }
+    
+    public float GetSmallTimeGainAmount() => smallTimeGainAmount;
+    public float GetSmallTimePenaltyAmount() => smallTimePenaltyAmount;
+    public float GetLargeTimeGainAmount() => largeTimeGainAmount;
+    public float GetLargeTimePenaltyAmount() => largeTimePenaltyAmount;
 }

@@ -6,9 +6,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-        [Header("Amounts")]
-        [SerializeField] private float timepenaltyAmount;
-        [SerializeField] private float timeGainAmount;
         
         [Header("Buttons")]
         [SerializeField] private Button resumeButton;
@@ -35,12 +32,10 @@ public class GameManager : MonoBehaviour
         private void Start()
         {
             Time.timeScale = 1f;
-
             if (audioManager == null) audioManager = FindFirstObjectByType<AudioManager>();
             if (uiManager == null) uiManager = FindFirstObjectByType<UIManager>();
             if (timerManager == null) timerManager = FindFirstObjectByType<TimeManager>();
             audioManager?.PlayBGMusic();
-
             if (useTimer && timerManager != null)
                 timerManager.StartTimer();
         }
@@ -66,38 +61,34 @@ public class GameManager : MonoBehaviour
     
         public void OnEmailIncorrect()
         {
-            //time penalty logic
+            ApplySmallTimePenalty();
         }
     
         public void OnEmailCorrect()
         {
-            //either time gain or something else
+            ApplySmallTimeBonus();
         }
     
         public void OnCallAnswered()
         {
-            //either time gain or something else
+            ApplyLargeTimeBonus();
         }
         
         public void OnCallMissed()
         {
-            //time penalty logic
+            ApplyLargeTimePenalty();
         }
     
         public void Pause()
         {
             _isPaused = true;
-
             Time.timeScale = 0f;
-
-            // Show mouse for UI interaction
             ScreenManager.Instance.ShowPause();
         }
 
         public void OnResume()
         {
             _isPaused = false;
-
             Time.timeScale = 1f;
             ScreenManager.Instance.ShowGameplay();
         }
@@ -114,6 +105,47 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Timer expired");
             //logic for the rest of the game and a lose screen
+        }
+    
+
+        public void ApplySmallTimeBonus()
+        {
+            if (timerManager != null)
+            {
+                timerManager.AddTime(timerManager.GetSmallTimeGainAmount());
+                uiManager?.ShowBonusText("BONUS TIME!", Color.green);
+                audioManager?.PlaySound(null); // TODO: Add bonus SFX
+            }
+        }
+
+        public void ApplySmallTimePenalty()
+        {
+            if (timerManager != null)
+            {
+                timerManager.SubtractTime(timerManager.GetSmallTimePenaltyAmount());
+                uiManager?.ShowPenaltyText("TIME PENALTY", Color.red);
+                audioManager?.PlaySound(null); // TODO: Add penalty SFX
+            }
+        }
+        
+        public void ApplyLargeTimeBonus()
+        {
+            if (timerManager != null)
+            {
+                timerManager.AddTime(timerManager.GetLargeTimeGainAmount());
+                uiManager?.ShowBonusText("BONUS TIME!", Color.green);
+                audioManager?.PlaySound(null); // TODO: Add bonus SFX
+            }
+        }
+
+        public void ApplyLargeTimePenalty()
+        {
+            if (timerManager != null)
+            {
+                timerManager.SubtractTime(timerManager.GetLargeTimePenaltyAmount());
+                uiManager?.ShowPenaltyText("TIME PENALTY", Color.red);
+                audioManager?.PlaySound(null); // TODO: Add penalty SFX
+            }
         }
 
         private void OnQuit()
