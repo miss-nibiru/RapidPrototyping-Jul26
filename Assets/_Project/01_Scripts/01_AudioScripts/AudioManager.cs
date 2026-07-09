@@ -28,17 +28,16 @@ public class AudioManager : MonoBehaviour
     public void PlayLoopingSound(AudioClip clip)
     {
         if (clip == null) return;
-
-        loopingAudioSource.loop = true;
         loopingAudioSource.clip = clip;
-        loopingAudioSource.Play();
+        loopingAudioSource.loop = true;
+        loopingAudioSource.Play(); 
     }
     
     public void StopLoopingSound()
     {
-        sfxAudioSource.Stop();
-        sfxAudioSource.loop = false;
-        sfxAudioSource.clip = null;
+        loopingAudioSource.Stop(); 
+        loopingAudioSource.loop = false;
+        loopingAudioSource.clip = null;
     }
 
 
