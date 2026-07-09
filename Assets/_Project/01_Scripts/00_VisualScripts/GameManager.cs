@@ -94,7 +94,8 @@ namespace _Project._01_Scripts._00_VisualScripts
         
         public void OnEmailBannerOpened()
         {
-            // logic to open the email window panel
+            // logic to open the email window panel but that everything can be restored if the banner
+            // has not yet been missed and I want to close the email window then open the banner again
         }
 
         public void OnEmailBannerMissed()

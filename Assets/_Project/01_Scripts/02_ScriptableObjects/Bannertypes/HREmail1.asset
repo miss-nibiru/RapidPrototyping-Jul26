@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HREmail1
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
   senderName: Wanda(HR)
-  subject: Need more Syndergy
+  subject: Need more Synergy
   previewText: I have a lunch and learn scheduled...
   bannerDuration: 20
   timeBonus: 8
