@@ -23,16 +23,16 @@ namespace _Project._01_Scripts._00_VisualScripts
             if (_wordInSlotOne == null)
             {
                 _wordInSlotOne = word;
-                word.transform.SetParent(slotOne);
-                word.transform.localPosition = Vector3.zero;
+                word.rectTransform.SetParent(slotOne);
+                word.rectTransform.localPosition = Vector3.zero;
                 return true;
             }
 
             if (_wordInSlotTwo == null)
             {
                 _wordInSlotTwo = word;
-                word.transform.SetParent(slotTwo);
-                word.transform.localPosition = Vector3.zero;
+                word.rectTransform.SetParent(slotTwo);
+                word.rectTransform.localPosition = Vector3.zero;
                 return true;
             }
 

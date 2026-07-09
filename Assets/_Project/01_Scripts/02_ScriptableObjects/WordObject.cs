@@ -6,30 +6,27 @@ using TMPro;
 
 public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] private RectTransform rectTransform;
+    [SerializeField] public RectTransform rectTransform;
     [SerializeField] private TextMeshProUGUI responceText;
     [SerializeField] private Canvas canvas;
 
-    public Transform originalSpawnPoint;
+    public RectTransform originalSpawnPoint;
     public responceType responceType;
     public WordOptions wordOption;
 
     public bool placed;
-
-    private void Awake()
-    {
-        AssignResponce();
-    }
-
+    
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         if(!canvas) canvas = GetComponentInParent<Canvas>();
-        originalSpawnPoint = this.transform;
+        AssignResponce();
+        
     }
 
     private void AssignResponce()
     {
+        originalSpawnPoint = rectTransform;
         responceText.text = wordOption.responce;
         responceText.color = wordOption.responceColor;
         responceType = wordOption.responceType;
@@ -42,6 +39,7 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnDrag(PointerEventData eventData)
     {
+        if(placed) return;
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
@@ -49,11 +47,12 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         if (!placed)
         {
-           transform.localPosition = originalSpawnPoint.localPosition;
+            rectTransform.anchoredPosition = originalSpawnPoint.position;
+            rectTransform.localPosition = Vector3.zero;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.GetComponent<Slots>())
         {
@@ -61,8 +60,8 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
             if (!placed)
             {
-                transform.SetParent(originalSpawnPoint);
-                transform.localPosition = Vector3.zero;
+                rectTransform.anchoredPosition = originalSpawnPoint.position;
+                rectTransform.localPosition = Vector3.zero;
             }
         }
     }
