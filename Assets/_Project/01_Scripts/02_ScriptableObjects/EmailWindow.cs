@@ -4,7 +4,7 @@ using UnityEngine;
 public class EmailWindow : MonoBehaviour
 {
     [SerializeField] private GameObject emailPanel;
-    [SerializeField] private responceType CorrectEmailResponceType;
+    [SerializeField] private responceType correctEmailResponceType;
 
     public void OpenWindow()
     {
@@ -30,8 +30,8 @@ public class EmailWindow : MonoBehaviour
         WordObject[] words = SlotManager.Instance.GetSelectedWords();
 
         bool bothCorrect =
-            words[0].responceType == CorrectEmailResponceType &&
-            words[1].responceType == CorrectEmailResponceType;
+            words[0].responceType == correctEmailResponceType &&
+            words[1].responceType == correctEmailResponceType;
 
         if (bothCorrect)
             GameManager.Instance.OnEmailCorrect();
