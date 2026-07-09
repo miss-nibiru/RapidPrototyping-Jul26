@@ -13,13 +13,17 @@ public class ButtonManager : MonoBehaviour
     
     public void OnexpandButtonClicked()
     {
-        //logic for when the expand button is clicked
+        EmailWindow window = FindFirstObjectByType<EmailWindow>();
+        window?.OpenWindow();
     }
+
     
     public void OnSendButtonClicked()
     {
-        //logic for when the send button is clicked
+        EmailWindow window = FindFirstObjectByType<EmailWindow>();
+        window?.OnSendButtonClicked();
     }
+
     
     public void OnAnswerButtonClicked()
     {

@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 5053932172997679905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.24165, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9015642994543458581}
@@ -166,7 +166,7 @@ RectTransform:
   m_GameObject: {fileID: 5087560179264828095}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.036394, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8954434106443213147}
@@ -227,8 +227,9 @@ MonoBehaviour:
   rectTransform: {fileID: 0}
   responceText: {fileID: 6094354220744666983}
   canvas: {fileID: 0}
-  responceType: 0
-  wordOption: {fileID: 11400000, guid: cb056ceefd8c42a42a6963b0cea3bcb0, type: 2}
+  originalSpawnPoint: {fileID: 0}
+  responceType: 2
+  wordOption: {fileID: 11400000, guid: c71e05e53fd8aa74894032be35bc8ce6, type: 2}
 --- !u!61 &7158938211490429832
 BoxCollider2D:
   m_ObjectHideFlags: 0
