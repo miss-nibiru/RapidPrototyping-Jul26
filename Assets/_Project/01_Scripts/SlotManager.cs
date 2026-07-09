@@ -1,55 +1,58 @@
 using UnityEngine;
 
-public class SlotManager : MonoBehaviour
+namespace _Project._01_Scripts._00_VisualScripts
 {
-    public static SlotManager Instance;
-
-    [Header("Slots")]
-    [SerializeField] private Transform slotOne;
-    [SerializeField] private Transform slotTwo;
-
-    private WordObject _wordInSlotOne;
-    private WordObject _wordInSlotTwo;
-
-    private void Awake()
+    public class SlotManager : MonoBehaviour
     {
-        Instance = this;
-    }
+        public static SlotManager Instance;
 
-    public bool TryPlaceWord(WordObject word)
-    {
-        if (_wordInSlotOne == null)
+        [Header("Slots")]
+        [SerializeField] private Transform slotOne;
+        [SerializeField] private Transform slotTwo;
+
+        private WordObject _wordInSlotOne;
+        private WordObject _wordInSlotTwo;
+
+        private void Awake()
         {
-            _wordInSlotOne = word;
-            word.transform.SetParent(slotOne);
-            word.transform.localPosition = Vector3.zero;
-            return true;
+            Instance = this;
         }
 
-        if (_wordInSlotTwo == null)
+        public bool TryPlaceWord(WordObject word)
         {
-            _wordInSlotTwo = word;
-            word.transform.SetParent(slotTwo);
-            word.transform.localPosition = Vector3.zero;
-            return true;
+            if (_wordInSlotOne == null)
+            {
+                _wordInSlotOne = word;
+                word.transform.SetParent(slotOne);
+                word.transform.localPosition = Vector3.zero;
+                return true;
+            }
+
+            if (_wordInSlotTwo == null)
+            {
+                _wordInSlotTwo = word;
+                word.transform.SetParent(slotTwo);
+                word.transform.localPosition = Vector3.zero;
+                return true;
+            }
+
+            return false;
         }
 
-        return false;
-    }
+        public bool AreSlotsFilled()
+        {
+            return _wordInSlotOne != null && _wordInSlotTwo != null;
+        }
 
-    public bool AreSlotsFilled()
-    {
-        return _wordInSlotOne != null && _wordInSlotTwo != null;
-    }
+        public WordObject[] GetSelectedWords()
+        {
+            return new[] { _wordInSlotOne, _wordInSlotTwo };
+        }
 
-    public WordObject[] GetSelectedWords()
-    {
-        return new[] { _wordInSlotOne, _wordInSlotTwo };
-    }
-
-    public void ClearSlots()
-    {
-        _wordInSlotOne = null;
-        _wordInSlotTwo = null;
+        public void ClearSlots()
+        {
+            _wordInSlotOne = null;
+            _wordInSlotTwo = null;
+        }
     }
 }

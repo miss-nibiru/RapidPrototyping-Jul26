@@ -34,7 +34,7 @@ namespace _Project._01_Scripts._00_VisualScripts
         private void OnClicked()
         {
             // Minimal reference to NotificationManager
-            //EmailBannerManager.Instance?.OnEmailClicked(_senderName);
+            EmailBannerManager.Instance?.OnEmailClicked(_senderName);
         }
 
         // TEMP: normalized fade (0 → 1)
