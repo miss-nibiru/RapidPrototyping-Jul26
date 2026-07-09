@@ -50,7 +50,6 @@ namespace _Project._01_Scripts._00_VisualScripts
                 if (_callActive)
                 {
                     GameManager.Instance.OnCallMissed();
-                    TimeManager.Instance.SubtractTime(_currentCall.timePenalty);
                     UIManager.Instance.HideCall();
                 }
                 _callActive = false;
@@ -63,7 +62,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             _callActive = false;
             UIManager.Instance.HideCall();
             GameManager.Instance.OnCallAnswered();
-            TimeManager.Instance.AddTime(_currentCall.timeBonus);
         }
     }
 }

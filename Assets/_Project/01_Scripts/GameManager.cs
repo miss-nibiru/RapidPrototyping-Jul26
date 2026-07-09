@@ -174,10 +174,10 @@ namespace _Project._01_Scripts._00_VisualScripts
         }
 
         private void OnQuit()
-        {
-#if UNITY_EDITOR
+        { 
+            #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
-#endif
+            #endif
             Application.Quit();
         }
     }

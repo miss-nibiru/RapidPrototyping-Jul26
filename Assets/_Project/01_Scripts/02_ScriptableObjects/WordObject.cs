@@ -21,6 +21,7 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        if(!canvas) canvas = GetComponentInParent<Canvas>();
     }
 
     private void AssignResponce()

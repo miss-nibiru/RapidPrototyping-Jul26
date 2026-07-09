@@ -194,10 +194,22 @@ PrefabInstance:
     - target: {fileID: 2909010663422814249, guid: f5d51419aa74e42fe9db22c1ca9078af, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1059163306}
     - target: {fileID: 2909010663422814249, guid: f5d51419aa74e42fe9db22c1ca9078af, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909010663422814249, guid: f5d51419aa74e42fe9db22c1ca9078af, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AnswerCall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909010663422814249, guid: f5d51419aa74e42fe9db22c1ca9078af, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: _Project._01_Scripts._00_VisualScripts.PhoneManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909010663422814249, guid: f5d51419aa74e42fe9db22c1ca9078af, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3654365378466164205, guid: f5d51419aa74e42fe9db22c1ca9078af, type: 3}
       propertyPath: m_Pivot.x
