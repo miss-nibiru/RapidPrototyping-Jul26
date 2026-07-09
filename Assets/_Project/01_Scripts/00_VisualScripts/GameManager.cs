@@ -1,11 +1,12 @@
-using _Project._01_Scripts._00_VisualScripts;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+namespace _Project._01_Scripts._00_VisualScripts
 {
-    public static GameManager Instance;
+    public class GameManager : MonoBehaviour
+    {
+        public static GameManager Instance;
         
         [Header("Buttons")]
         [SerializeField] private Button resumeButton;
@@ -125,7 +126,7 @@ public class GameManager : MonoBehaviour
             {
                 timerManager.AddTime(timerManager.GetSmallTimeGainAmount());
                 uiManager?.ShowBonusText("BONUS TIME!", Color.green);
-                audioManager?.PlaySound(null); // TODO: Add bonus SFX
+                audioManager?.PlaySound(null); 
             }
         }
 
@@ -135,7 +136,7 @@ public class GameManager : MonoBehaviour
             {
                 timerManager.SubtractTime(timerManager.GetSmallTimePenaltyAmount());
                 uiManager?.ShowPenaltyText("TIME PENALTY", Color.red);
-                audioManager?.PlaySound(null); // TODO: Add penalty SFX
+                audioManager?.PlaySound(null); 
             }
         }
         
@@ -145,7 +146,7 @@ public class GameManager : MonoBehaviour
             {
                 timerManager.AddTime(timerManager.GetLargeTimeGainAmount());
                 uiManager?.ShowBonusText("BONUS TIME!", Color.green);
-                audioManager?.PlaySound(null); // TODO: Add bonus SFX
+                audioManager?.PlaySound(null); 
             }
         }
 
@@ -155,7 +156,7 @@ public class GameManager : MonoBehaviour
             {
                 timerManager.SubtractTime(timerManager.GetLargeTimePenaltyAmount());
                 uiManager?.ShowPenaltyText("TIME PENALTY", Color.red);
-                audioManager?.PlaySound(null); // TODO: Add penalty SFX
+                audioManager?.PlaySound(null); 
             }
         }
 
@@ -167,3 +168,4 @@ public class GameManager : MonoBehaviour
             Application.Quit();
         }
     }
+}
