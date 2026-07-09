@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
+  m_Name: HREmail1
+  m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
+  senderName: Wanda(HR)
+  subject: Need more Syndergy
+  previewText: I have a lunch and learn scheduled...
+  bannerDuration: 20
+  timeBonus: 8
+  timePenalty: 10

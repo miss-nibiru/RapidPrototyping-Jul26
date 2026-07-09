@@ -12,12 +12,9 @@ namespace _Project._01_Scripts._00_VisualScripts
     
         [Header("Phone Timing")]
         [SerializeField] private float phoneSpawnTime;
-        //[SerializeField] private float phoneRingTime;
     
         [Header("Email Timing")]
         [SerializeField] private float emailSpawnTime;
-        [SerializeField] private float emailWarningTime;
-        [SerializeField] private float emailExpireTime;
     
         [Header("Bonus/Penalty Amounts")]
         [SerializeField] private float smallTimeGainAmount = 3f;
@@ -94,5 +91,6 @@ namespace _Project._01_Scripts._00_VisualScripts
         public float GetLargeTimeGainAmount() => largeTimeGainAmount;
         public float GetLargeTimePenaltyAmount() => largeTimePenaltyAmount;
         public float GetPhoneSpawnTime() => phoneSpawnTime;
+        public float GetEmailSpawnTime() => emailSpawnTime;
     }
 }

@@ -23,6 +23,7 @@ namespace _Project._01_Scripts._00_VisualScripts
         [SerializeField] private AudioClip emailIncorrectSound;
         [SerializeField] private AudioClip phoneAnsweredSound;
         [SerializeField] private AudioClip phoneMissedSound;
+        [SerializeField] private AudioClip emailExpiredSound;
 
         private bool _isPaused;
   
@@ -90,6 +91,18 @@ namespace _Project._01_Scripts._00_VisualScripts
             ApplyLargeTimePenalty();
             audioManager.PlaySound(phoneMissedSound);
         }
+        
+        public void OnEmailBannerOpened()
+        {
+            // logic to open the email window panel
+        }
+
+        public void OnEmailBannerMissed()
+        {
+            ApplyLargeTimePenalty();
+            audioManager.PlaySound(emailExpiredSound);
+        }
+
     
         public void Pause()
         {
