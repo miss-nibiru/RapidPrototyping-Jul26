@@ -1,14 +1,12 @@
-using _Project._01_Scripts._00_VisualScripts;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+namespace _Project._01_Scripts._00_VisualScripts
 {
-    public static GameManager Instance;
-        [Header("Amounts")]
-        [SerializeField] private float timepenaltyAmount;
-        [SerializeField] private float timeGainAmount;
+    public class GameManager : MonoBehaviour
+    {
+        public static GameManager Instance;
         
         [Header("Buttons")]
         [SerializeField] private Button resumeButton;
@@ -19,8 +17,16 @@ public class GameManager : MonoBehaviour
         [SerializeField] private TimeManager timerManager;
         [SerializeField] private AudioManager audioManager;
         [SerializeField] private UIManager uiManager;
+        
+        [Header("Audio")]
+        [SerializeField] private AudioClip emailCorrectSound;
+        [SerializeField] private AudioClip emailIncorrectSound;
+        [SerializeField] private AudioClip phoneAnsweredSound;
+        [SerializeField] private AudioClip phoneMissedSound;
+        [SerializeField] private AudioClip emailExpiredSound;
 
         private bool _isPaused;
+  
 
         private void Awake()
         {
@@ -35,12 +41,10 @@ public class GameManager : MonoBehaviour
         private void Start()
         {
             Time.timeScale = 1f;
-
             if (audioManager == null) audioManager = FindFirstObjectByType<AudioManager>();
             if (uiManager == null) uiManager = FindFirstObjectByType<UIManager>();
             if (timerManager == null) timerManager = FindFirstObjectByType<TimeManager>();
             audioManager?.PlayBGMusic();
-
             if (useTimer && timerManager != null)
                 timerManager.StartTimer();
         }
@@ -66,38 +70,50 @@ public class GameManager : MonoBehaviour
     
         public void OnEmailIncorrect()
         {
-            //time penalty logic
+            ApplySmallTimePenalty();
+            audioManager.PlaySound(emailIncorrectSound);
         }
     
         public void OnEmailCorrect()
         {
-            //either time gain or something else
+            ApplySmallTimeBonus();
+            audioManager.PlaySound(emailCorrectSound);
         }
     
         public void OnCallAnswered()
         {
-            //either time gain or something else
+            ApplyLargeTimeBonus();
+            audioManager.PlaySound(phoneAnsweredSound);
         }
         
         public void OnCallMissed()
         {
-            //time penalty logic
+            ApplyLargeTimePenalty();
+            audioManager.PlaySound(phoneMissedSound);
         }
+        
+        public void OnEmailBannerOpened()
+        {
+            // logic to open the email window panel
+        }
+
+        public void OnEmailBannerMissed()
+        {
+            ApplyLargeTimePenalty();
+            audioManager.PlaySound(emailExpiredSound);
+        }
+
     
         public void Pause()
         {
             _isPaused = true;
-
             Time.timeScale = 0f;
-
-            // Show mouse for UI interaction
             ScreenManager.Instance.ShowPause();
         }
 
         public void OnResume()
         {
             _isPaused = false;
-
             Time.timeScale = 1f;
             ScreenManager.Instance.ShowGameplay();
         }
@@ -115,6 +131,47 @@ public class GameManager : MonoBehaviour
             Debug.Log("Timer expired");
             //logic for the rest of the game and a lose screen
         }
+    
+
+        public void ApplySmallTimeBonus()
+        {
+            if (timerManager != null)
+            {
+                timerManager.AddTime(timerManager.GetSmallTimeGainAmount());
+                uiManager?.ShowBonusText("BONUS TIME!", Color.green);
+                audioManager?.PlaySound(null); 
+            }
+        }
+
+        public void ApplySmallTimePenalty()
+        {
+            if (timerManager != null)
+            {
+                timerManager.SubtractTime(timerManager.GetSmallTimePenaltyAmount());
+                uiManager?.ShowPenaltyText("TIME PENALTY", Color.red);
+                audioManager?.PlaySound(null); 
+            }
+        }
+        
+        public void ApplyLargeTimeBonus()
+        {
+            if (timerManager != null)
+            {
+                timerManager.AddTime(timerManager.GetLargeTimeGainAmount());
+                uiManager?.ShowBonusText("BONUS TIME!", Color.green);
+                audioManager?.PlaySound(null); 
+            }
+        }
+
+        public void ApplyLargeTimePenalty()
+        {
+            if (timerManager != null)
+            {
+                timerManager.SubtractTime(timerManager.GetLargeTimePenaltyAmount());
+                uiManager?.ShowPenaltyText("TIME PENALTY", Color.red);
+                audioManager?.PlaySound(null); 
+            }
+        }
 
         private void OnQuit()
         {
@@ -124,3 +181,4 @@ public class GameManager : MonoBehaviour
             Application.Quit();
         }
     }
+}

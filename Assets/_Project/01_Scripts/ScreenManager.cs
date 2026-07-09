@@ -1,64 +1,67 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScreenManager : MonoBehaviour
+namespace _Project._01_Scripts._00_VisualScripts
 {
-    public static ScreenManager Instance { get; private set; }
-
-    [Header("Screens")]
-    [SerializeField] private GameObject gameplayScreen;
-    [SerializeField] private GameObject pauseScreen;
-    [SerializeField] private GameObject loseScreen;
-
-    [Header("Buttons")]
-    [SerializeField] private Button unpauseButton;
-
-    private void Awake()
+    public class ScreenManager : MonoBehaviour
     {
-        if (Instance != null && Instance != this)
+        public static ScreenManager Instance { get; private set; }
+
+        [Header("Screens")]
+        [SerializeField] private GameObject gameplayScreen;
+        [SerializeField] private GameObject pauseScreen;
+        [SerializeField] private GameObject loseScreen;
+
+        [Header("Buttons")]
+        [SerializeField] private Button unpauseButton;
+
+        private void Awake()
         {
-            Destroy(gameObject);
-            return;
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Instance = this;
+
+            ShowGameplay();
         }
 
-        Instance = this;
+        private void OnEnable()
+        {
+            if (unpauseButton != null)
+                unpauseButton.onClick.AddListener(OnUnpauseButton);
+        }
 
-        ShowGameplay();
-    }
+        private void OnDisable()
+        {
+            if (unpauseButton != null)
+                unpauseButton.onClick.RemoveListener(OnUnpauseButton);
+        }
 
-    private void OnEnable()
-    {
-        if (unpauseButton != null)
-            unpauseButton.onClick.AddListener(OnUnpauseButton);
-    }
-
-    private void OnDisable()
-    {
-        if (unpauseButton != null)
-            unpauseButton.onClick.RemoveListener(OnUnpauseButton);
-    }
-
-    public void ShowPause()
-    {
-        gameplayScreen.SetActive(false);
-        pauseScreen.SetActive(true);
-    }
+        public void ShowPause()
+        {
+            gameplayScreen.SetActive(false);
+            pauseScreen.SetActive(true);
+        }
     
-    public void ShowLose()
-    {
-        gameplayScreen.SetActive(false);
-        loseScreen.SetActive(true);
-    }
+        public void ShowLose()
+        {
+            gameplayScreen.SetActive(false);
+            loseScreen.SetActive(true);
+        }
 
-    public void ShowGameplay()
-    {
-        gameplayScreen.SetActive(true);
-        pauseScreen.SetActive(false);
-    }
+        public void ShowGameplay()
+        {
+            gameplayScreen.SetActive(true);
+            pauseScreen.SetActive(false);
+        }
 
-    private void OnUnpauseButton()
-    {
-        GameManager.Instance.OnResume();
+        private void OnUnpauseButton()
+        {
+            GameManager.Instance.OnResume();
+        }
     }
 }
 

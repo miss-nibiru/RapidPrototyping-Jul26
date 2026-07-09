@@ -1,61 +1,96 @@
-using _Project._01_Scripts._00_VisualScripts;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+namespace _Project._01_Scripts._00_VisualScripts
 {
-    [SerializeField] private float gameTime = 120f;
-    [SerializeField] private bool countDown = true;
-    
-    [SerializeField] private float phoneSpawnTime;
-    [SerializeField] private float phoneRingTime;
-    [SerializeField] private float phoneExpireTime;
-    
-    [SerializeField] private float emailSpawnTime;
-    [SerializeField] private float emailWarningTime;
-    [SerializeField] private float emailExpireTime;
-    
-    
-    //time bonus possibly so it can feel more satisfying
-    [SerializeField] private float perfectTime;
-   
-    public float CurrentTime { get; private set; }
-    private bool _isRunning;
-
-    private void Update()
+    public class TimeManager : MonoBehaviour
     {
-        if (!_isRunning) return;
+        public static TimeManager Instance { get; private set; }
 
-        float delta = Time.deltaTime;
+        [Header("Game Time")]
+        [SerializeField] private float gameTime = 120f;
+        [SerializeField] private bool countDown = true;
+    
+        [Header("Phone Timing")]
+        [SerializeField] private float phoneSpawnTime;
+    
+        [Header("Email Timing")]
+        [SerializeField] private float emailSpawnTime;
+    
+        [Header("Bonus/Penalty Amounts")]
+        [SerializeField] private float smallTimeGainAmount = 3f;
+        [SerializeField] private float smallTimePenaltyAmount = 5f;
+        [SerializeField] private float largeTimeGainAmount = 8f;
+        [SerializeField] private float largeTimePenaltyAmount = 10f;
+    
+        [SerializeField] private float perfectTime;
+   
+        public float CurrentTime { get; private set; }
+        private bool _isRunning;
 
-        if (countDown)
+        private void Awake()
         {
-            CurrentTime -= delta;
-            if (CurrentTime <= 0f)
+            if (Instance != null && Instance != this)
             {
-                CurrentTime = 0f;
-                _isRunning = false;
-                UIManager.Instance.UpdateTimerUI(CurrentTime);
-                GameManager.Instance.OnTimeExpired();
+                Destroy(gameObject);
                 return;
             }
+            Instance = this;
         }
-        else
+
+        private void Update()
         {
-            CurrentTime += delta;
+            if (!_isRunning) return;
+            float delta = Time.deltaTime;
+            if (countDown)
+            {
+                CurrentTime -= delta;
+                if (CurrentTime <= 0f)
+                {
+                    CurrentTime = 0f;
+                    _isRunning = false;
+                    UIManager.Instance.UpdateTimerUI(CurrentTime);
+                    GameManager.Instance.OnTimeExpired();
+                    return;
+                }
+            }
+            else
+            {
+                CurrentTime += delta;
+            }
+            UIManager.Instance.UpdateTimerUI(CurrentTime);
         }
 
-        UIManager.Instance.UpdateTimerUI(CurrentTime);
-    }
+        public void StartTimer()
+        {
+            _isRunning = true;
+            CurrentTime = countDown ? gameTime : 0f;
+            UIManager.Instance.UpdateTimerUI(CurrentTime);
+        }
 
-    public void StartTimer()
-    {
-        _isRunning = true;
-        CurrentTime = countDown ? gameTime : 0f;
-        UIManager.Instance.UpdateTimerUI(CurrentTime);
-    }
-
-    public void StopTimer()
-    {
-        _isRunning = false;
+        public void StopTimer()
+        {
+            _isRunning = false;
+        }
+    
+        public void AddTime(float amount)
+        {
+            CurrentTime += amount;
+            UIManager.Instance.UpdateTimerUI(CurrentTime);
+        }
+    
+        public void SubtractTime(float amount)
+        {
+            CurrentTime -= amount;
+            if (CurrentTime < 0f)
+                CurrentTime = 0f;
+            UIManager.Instance.UpdateTimerUI(CurrentTime);
+        }
+    
+        public float GetSmallTimeGainAmount() => smallTimeGainAmount;
+        public float GetSmallTimePenaltyAmount() => smallTimePenaltyAmount;
+        public float GetLargeTimeGainAmount() => largeTimeGainAmount;
+        public float GetLargeTimePenaltyAmount() => largeTimePenaltyAmount;
+        public float GetPhoneSpawnTime() => phoneSpawnTime;
+        public float GetEmailSpawnTime() => emailSpawnTime;
     }
 }

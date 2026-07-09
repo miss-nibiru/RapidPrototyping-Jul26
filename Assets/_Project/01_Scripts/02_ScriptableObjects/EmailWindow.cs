@@ -1,23 +1,44 @@
+using _Project._01_Scripts._00_VisualScripts;
 using UnityEngine;
 
 public class EmailWindow : MonoBehaviour
 {
     [SerializeField] private GameObject emailPanel;
-    [SerializeField] private responceType  CorrectEmailResponceType;
+    [SerializeField] private responceType CorrectEmailResponceType;
 
-
-    private void FindAnswerType(WordObject wordObject)
+    public void OpenWindow()
     {
-        if (wordObject.responceType == CorrectEmailResponceType)
-        {
-            Debug.Log("correct!");
-            //maybe add time or something or don't subtract time
-        }
-        else
-        {
-            Debug.Log("false!");
-            //penalize time or something idk.
-        }
+        emailPanel.SetActive(true);
+        WordBank.Instance.SpawnWords();
     }
-    
+
+    public void CloseWindow()
+    {
+        emailPanel.SetActive(false);
+        WordBank.Instance.ClearWords();
+        SlotManager.Instance.ClearSlots();
+    }
+
+    public void OnSendButtonClicked()
+    {
+        if (!SlotManager.Instance.AreSlotsFilled())
+        {
+            Debug.Log("EmailWindow: Need two words before sending.");
+            return;
+        }
+
+        WordObject[] words = SlotManager.Instance.GetSelectedWords();
+
+        bool bothCorrect =
+            words[0].responceType == CorrectEmailResponceType &&
+            words[1].responceType == CorrectEmailResponceType;
+
+        if (bothCorrect)
+            GameManager.Instance.OnEmailCorrect();
+        else
+            GameManager.Instance.OnEmailIncorrect();
+
+        CloseWindow();
+    }
+
 }

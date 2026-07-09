@@ -4,13 +4,23 @@ public class WordBank : MonoBehaviour
 {
     public static WordBank Instance { get; private set; }
 
-    [Header("Available Words)")]
-    [SerializeField] private WordObject wordOne;
-    [SerializeField] private WordObject wordTwo;
-    [SerializeField] private WordObject wordThree;
-    [SerializeField] private WordObject wordFour;
+    [Header("Word Prefabs (6 total)")]
+    [SerializeField] private WordObject wordPrefabOne;
+    [SerializeField] private WordObject wordPrefabTwo;
+    [SerializeField] private WordObject wordPrefabThree;
+    [SerializeField] private WordObject wordPrefabFour;
+    [SerializeField] private WordObject wordPrefabFive;
+    [SerializeField] private WordObject wordPrefabSix;
 
-    private WordObject[] _words;
+    [Header("Spawn Points (6 total)")]
+    [SerializeField] private Transform spawnPointOne;
+    [SerializeField] private Transform spawnPointTwo;
+    [SerializeField] private Transform spawnPointThree;
+    [SerializeField] private Transform spawnPointFour;
+    [SerializeField] private Transform spawnPointFive;
+    [SerializeField] private Transform spawnPointSix;
+
+    private WordObject[] _spawnedWords;
 
     private void Awake()
     {
@@ -20,13 +30,36 @@ public class WordBank : MonoBehaviour
             return;
         }
         Instance = this;
-
-        _words = new WordObject[] { wordOne, wordTwo, wordThree, wordFour };
     }
 
-    public WordObject[] GetAllWords()
+    public void SpawnWords()
     {
-        return _words;
+        ClearWords();
+
+        _spawnedWords = new WordObject[6];
+
+        _spawnedWords[0] = Instantiate(wordPrefabOne, spawnPointOne);
+        _spawnedWords[1] = Instantiate(wordPrefabTwo, spawnPointTwo);
+        _spawnedWords[2] = Instantiate(wordPrefabThree, spawnPointThree);
+        _spawnedWords[3] = Instantiate(wordPrefabFour, spawnPointFour);
+        _spawnedWords[4] = Instantiate(wordPrefabFive, spawnPointFive);
+        _spawnedWords[5] = Instantiate(wordPrefabSix, spawnPointSix);
+
+        foreach (var w in _spawnedWords)
+        {
+            w.originalSpawnPoint = w.transform.parent;
+        }
+    }
+
+    public void ClearWords()
+    {
+        if (_spawnedWords == null) return;
+
+        foreach (var w in _spawnedWords)
+        {
+            if (w != null)
+                Destroy(w.gameObject);
+        }
     }
 }
 

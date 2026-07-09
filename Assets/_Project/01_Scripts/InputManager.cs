@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+namespace _Project._01_Scripts._00_VisualScripts
 {
+    public class InputManager : MonoBehaviour
+    {
         private PlayerInputAction _actions;
         private WordBank _wordBank; 
 
@@ -52,3 +54,4 @@ public class InputManager : MonoBehaviour
             Debug.Log("selected");
         }
     }
+}
