@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
-using _Project._01_Scripts._00_VisualScripts;
+using _Project._01_Scripts._02_ScriptableObjects;
 using UnityEngine;
 
-public class EmailBannerManager : MonoBehaviour
+namespace _Project._01_Scripts._00_VisualScripts
 {
-    public static EmailBannerManager Instance { get; private set; }
+    public class EmailBannerManager : MonoBehaviour
+    {
+        public static EmailBannerManager Instance { get; private set; }
 
         [Header("banner Types")]
-        [SerializeField] private List<EmailBannerObject> emailBanners = new();
+        [SerializeField] private List<EmailBannerSO> emailBanners = new();
         
         private Coroutine _bannerRoutine;
         private bool _bannerActive;
-        private EmailBannerObject _currentBanner;
+        private EmailBannerPanel _currentBanner;
+        private EmailBannerPanel _previousBanner;
+        private bool _spawningBanner = true;
 
         private void Awake()
         {
@@ -39,32 +43,45 @@ public class EmailBannerManager : MonoBehaviour
 
         private IEnumerator bannerLoopRoutine()
         {
-            while (true)
+            while (_spawningBanner)
             {
                 yield return new WaitForSeconds(TimeManager.Instance.GetEmailBannerSpawnTime());
-                _currentBanner =  emailBanners[Random.Range(0, emailBanners.Count)];
+                SpawnRandomBanner();
                 _bannerActive = true;
                 UIManager.Instance.ShowEmailBanner(_currentBanner);
-                yield return new WaitForSeconds(_currentBanner.bannerDuration);
-                if (_bannerActive)
-                {
-                    GameManager.Instance.OnEmailBannerMissed();
-                    TimeManager.Instance.SubtractTime(_currentBanner.timePenalty);
-                    UIManager.Instance.HideEmailBanner();
-                }
-                _bannerActive = false;
+                Invoke(nameof(CheckBannerActive), _currentBanner.bannerDuration);
             }
         }
-
-        public void AnswerCall()
+        
+        public void SpawnRandomBanner()
         {
-            if (!_bannerActive) return;
-            _bannerActive = false;
-            UIManager.Instance.HideEmailBanner(); 
-            GameManager.Instance.OnEmailBannerOpened();
-            TimeManager.Instance.AddTime(_currentBanner.timeBonus);
+            var randomIndex = Random.Range(0, EmailBank.Instance.Banners.Count);
+            var newBanner = Instantiate(EmailBank.Instance.BannerPrefabRef, EmailBank.Instance.SpawnPoint);
+            EmailBank.Instance.SpawnedBanners.Enqueue(newBanner.gameObject);
+            newBanner.gameObject.transform.SetParent(EmailBank.Instance.SpawnPoint);
+            UIManager.Instance.EmailBannerUI = newBanner.gameObject;
+            _currentBanner = newBanner;
+            newBanner.Initialize(EmailBank.Instance.Banners[randomIndex]);
+            _previousBanner = _currentBanner;
+        }
+
+        public void DestroyBanner()
+        {
+            var last = EmailBank.Instance.SpawnedBanners.Dequeue();
+            Destroy(last.gameObject);
+        }
+
+        public void CheckBannerActive()
+        {
+            if (_bannerActive)
+            {
+                GameManager.Instance.OnEmailBannerMissed();
+                TimeManager.Instance.SubtractTime(_currentBanner.timePenalty);
+                DestroyBanner();
+            }
         }
     }
+}
 
 //I have a possible edge case now because if I can be able to bring back up the email again if I want to pick up the phone then I need to
 //remember that when I open the email I can open it again and same goes for the email window

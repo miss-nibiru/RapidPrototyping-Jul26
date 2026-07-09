@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using _Project._01_Scripts._02_ScriptableObjects;
 
 namespace _Project._01_Scripts._00_VisualScripts
 {
@@ -14,13 +15,6 @@ namespace _Project._01_Scripts._00_VisualScripts
         [Header("Phone Call Notification")]
         [SerializeField] private GameObject phoneNotificationUI;
         [SerializeField] private TextMeshProUGUI callerNameText;
-
-        [Header("Email Banner")]
-        [SerializeField] private GameObject emailBannerUI;
-        [SerializeField] private TextMeshProUGUI bannerSenderText;
-        [SerializeField] private TextMeshProUGUI bannerSubjectText;
-        [SerializeField] private TextMeshProUGUI bannerPreviewText;
-
         [Header("Bonus Notification")]
         [SerializeField] private TextMeshProUGUI bonusText;
         [SerializeField] private float bonusDisplayDuration = 1.5f;
@@ -30,6 +24,9 @@ namespace _Project._01_Scripts._00_VisualScripts
         [SerializeField] private float penaltyDisplayDuration = 1.5f;
 
         [SerializeField] private TimeManager timerManager;
+        
+        [Header("Email Banner")]
+        public GameObject EmailBannerUI;
 
         private string _defaultEmailText;
         private Coroutine _bonusCoroutine;
@@ -47,17 +44,14 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         private void Start()
         {
-            if (emailBannerUI != null)
-                emailBannerUI.SetActive(false);
+            if (EmailBannerUI != null)
+                EmailBannerUI.SetActive(false);
 
             if (bonusText != null)
                 bonusText.gameObject.SetActive(false);
 
             if (penaltyText != null)
                 penaltyText.gameObject.SetActive(false);
-
-            if (emailBannerUI != null)
-                emailBannerUI.SetActive(false);
 
             if (timerManager == null)
                 timerManager = FindFirstObjectByType<TimeManager>();
@@ -90,28 +84,11 @@ namespace _Project._01_Scripts._00_VisualScripts
                 callerNameText.text = "";
         }
         
-        public void ShowEmailBanner(EmailBannerObject data)
+        public void ShowEmailBanner(EmailBannerPanel banner)
         {
-            if (emailBannerUI == null) return;
-            emailBannerUI.SetActive(true);
-            if (bannerSenderText != null)
-                bannerSenderText.text = data.senderName;
-            if (bannerSubjectText != null)
-                bannerSubjectText.text = data.subject;
-            if (bannerPreviewText != null)
-                bannerPreviewText.text = data.previewText;
-        }
-
-        public void HideEmailBanner()
-        {
-            if (emailBannerUI == null) return;
-            emailBannerUI.SetActive(false);
-            if (bannerSenderText != null)
-                bannerSenderText.text = "";
-            if (bannerSubjectText != null)
-                bannerSubjectText.text = "";
-            if (bannerPreviewText != null)
-                bannerPreviewText.text = "";
+            
+            if (EmailBannerUI == null) return;
+            EmailBannerUI.SetActive(true);
         }
         
         public void ShowBonusText(string text, Color color)

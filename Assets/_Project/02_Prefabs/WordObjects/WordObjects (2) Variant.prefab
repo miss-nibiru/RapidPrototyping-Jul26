@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WordObjects (2) Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7158938211490429832, guid: 8fa072d4746d2e14a8e045ca214ae0bf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9015642994543458581, guid: 8fa072d4746d2e14a8e045ca214ae0bf, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

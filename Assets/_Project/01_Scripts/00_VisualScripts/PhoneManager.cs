@@ -10,6 +10,7 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         [Header("Phone Call Types")]
         [SerializeField] private List<PhoneObject> phoneCalls = new();
+        [SerializeField] private AudioClip ringSound;
 
         private Coroutine _phoneRoutine;
         private bool _callActive;
@@ -46,9 +47,11 @@ namespace _Project._01_Scripts._00_VisualScripts
                 _currentCall = phoneCalls[Random.Range(0, phoneCalls.Count)];
                 _callActive = true;
                 UIManager.Instance.ShowCall(_currentCall);
+                AudioManager.Instance?.PlayLoopingSound(ringSound);
                 yield return new WaitForSeconds(_currentCall.ringDuration);
                 if (_callActive)
                 {
+                    AudioManager.Instance?.StopLoopingSound();
                     GameManager.Instance.OnCallMissed();
                     UIManager.Instance.HideCall();
                 }
@@ -60,6 +63,7 @@ namespace _Project._01_Scripts._00_VisualScripts
         {
             if (!_callActive) return;
             _callActive = false;
+            AudioManager.Instance?.StopLoopingSound();
             UIManager.Instance.HideCall();
             GameManager.Instance.OnCallAnswered();
         }

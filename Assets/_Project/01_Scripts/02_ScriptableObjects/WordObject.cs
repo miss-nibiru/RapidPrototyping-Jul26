@@ -1,3 +1,4 @@
+using System;
 using _Project._01_Scripts._00_VisualScripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +14,8 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public responceType responceType;
     public WordOptions wordOption;
 
+    public bool placed;
+
     private void Awake()
     {
         AssignResponce();
@@ -22,6 +25,7 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         rectTransform = GetComponent<RectTransform>();
         if(!canvas) canvas = GetComponentInParent<Canvas>();
+        originalSpawnPoint = this.transform;
     }
 
     private void AssignResponce()
@@ -43,12 +47,23 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        bool placed = SlotManager.Instance.TryPlaceWord(this);
-
         if (!placed)
         {
-            transform.SetParent(originalSpawnPoint);
-            transform.localPosition = Vector3.zero;
+           transform.localPosition = originalSpawnPoint.localPosition;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.GetComponent<Slots>())
+        {
+            placed = SlotManager.Instance.TryPlaceWord(this);
+
+            if (!placed)
+            {
+                transform.SetParent(originalSpawnPoint);
+                transform.localPosition = Vector3.zero;
+            }
         }
     }
 }

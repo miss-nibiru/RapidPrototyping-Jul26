@@ -1,7 +1,9 @@
+using System;
+using TMPro;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EmailBanner", menuName = "Scriptable Objects/EmailBanner")]
-public class EmailBannerObject : ScriptableObject
+public class EmailBannerSO : ScriptableObject
 {
     public string senderName;
     public string subject;
@@ -10,4 +12,5 @@ public class EmailBannerObject : ScriptableObject
     public float timeBonus = 8f;        
     public float timePenalty = 10f;     
 }
+
 

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
-  m_Name: HREmail1
+  m_Name: BossEmail
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: Wanda(HR)
-  subject: Need more Synergy
-  previewText: I have a lunch and learn scheduled...
-  bannerDuration: 20
+  senderName: Boss
+  subject: you suck
+  previewText: after several mintures of consideration...
+  bannerDuration: 10
   timeBonus: 8
   timePenalty: 10
