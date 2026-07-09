@@ -56,9 +56,14 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
         maximizeButton.onClick.RemoveListener(MaximizeWindow);
         closeButton.onClick.RemoveListener(CloseWindow);
     }
+    private bool IsCursorWaiting()
+    {
+        return CursorManager.Instance != null && CursorManager.Instance.IsWaiting;
+    }
 
     private void MinimizeWindow()
     {
+        if (IsCursorWaiting()) return;
         BringToFront();
 
         if (!taskbarMini) return;
@@ -70,6 +75,7 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
 
     private void MaximizeWindow()
     {
+        if (IsCursorWaiting()) return;
         BringToFront();
         if (!_isMaximized)
         {
@@ -92,6 +98,7 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
     
     public void OpenWindow()
     {
+        if (IsCursorWaiting()) return;
         windowPanel.gameObject.SetActive(true);
         windowPanel.localScale = _normalScale;
         BringToFront();
@@ -99,6 +106,7 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
 
     private void CloseWindow()
     {
+        if (IsCursorWaiting()) return;
         StopAllCoroutines();
         StartCoroutine(ScaleWindow(_normalScale, new Vector3(hiddenScale, hiddenScale, 1f), true));
 
@@ -115,12 +123,14 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
     
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (IsCursorWaiting()) return;
         BringToFront();
         RectTransformUtility.ScreenPointToLocalPointInRectangle(windowPanel, eventData.position, eventData.pressEventCamera, out _dragOffset);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (IsCursorWaiting()) return;
         if (!dragBar) return;
 
         windowPanel.SetAsLastSibling();
@@ -134,6 +144,7 @@ public class WindowVisualController : MonoBehaviour, IBeginDragHandler, IDragHan
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (IsCursorWaiting()) return;
         BringToFront();
     }
     
