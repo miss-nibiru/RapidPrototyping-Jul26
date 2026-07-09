@@ -16,8 +16,15 @@ public class GameManager : MonoBehaviour
         [SerializeField] private TimeManager timerManager;
         [SerializeField] private AudioManager audioManager;
         [SerializeField] private UIManager uiManager;
+        
+        [Header("Audio")]
+        [SerializeField] private AudioClip emailCorrectSound;
+        [SerializeField] private AudioClip emailIncorrectSound;
+        [SerializeField] private AudioClip phoneAnsweredSound;
+        [SerializeField] private AudioClip phoneMissedSound;
 
         private bool _isPaused;
+  
 
         private void Awake()
         {
@@ -62,21 +69,25 @@ public class GameManager : MonoBehaviour
         public void OnEmailIncorrect()
         {
             ApplySmallTimePenalty();
+            audioManager.PlaySound(emailIncorrectSound);
         }
     
         public void OnEmailCorrect()
         {
             ApplySmallTimeBonus();
+            audioManager.PlaySound(emailCorrectSound);
         }
     
         public void OnCallAnswered()
         {
             ApplyLargeTimeBonus();
+            audioManager.PlaySound(phoneAnsweredSound);
         }
         
         public void OnCallMissed()
         {
             ApplyLargeTimePenalty();
+            audioManager.PlaySound(phoneMissedSound);
         }
     
         public void Pause()
