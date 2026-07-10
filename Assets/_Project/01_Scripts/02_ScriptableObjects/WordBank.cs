@@ -44,11 +44,6 @@ public class WordBank : MonoBehaviour
         _spawnedWords[3] = Instantiate(wordPrefabFour, spawnPointFour);
         _spawnedWords[4] = Instantiate(wordPrefabFive, spawnPointFive);
         _spawnedWords[5] = Instantiate(wordPrefabSix, spawnPointSix);
-
-        foreach (var w in _spawnedWords)
-        {
-            w.originalSpawnPoint = w.transform.parent;
-        }
     }
 
     public void ClearWords()

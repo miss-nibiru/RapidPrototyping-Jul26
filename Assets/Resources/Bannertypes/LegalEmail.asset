@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
-  m_Name: HREmail
+  m_Name: LegalEmail
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: Wanda(HR)
-  subject: Uncoachable
-  previewText: you need a hard reset...
-  bannerDuration: 20
+  senderName: Brian(Legal)
+  subject: Contract Due
+  previewText: 'I NEED THIS ASAP... '
+  bannerDuration: 10
   timeBonus: 8
   timePenalty: 10

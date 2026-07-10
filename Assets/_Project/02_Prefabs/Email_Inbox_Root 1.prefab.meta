@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Project/02_Prefabs/Email_Inbox_Root 1.prefab.meta
 guid: 77a15f91b9be5458f89f0655d11146d3
+========
+guid: 91b7f4054856a4f4cb3e6aa59fe2bfcd
+>>>>>>>> Marina-Backup_J10:Assets/_Project/02_Prefabs/OpenedDocument_Root.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
