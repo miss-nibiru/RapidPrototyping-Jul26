@@ -7,9 +7,7 @@ public class EmailBannerSO : ScriptableObject
     public string subject;
     public string previewText;
     public string contentsText;
-
-    public responceType correctResponseType;   // NEW FIELD
-
+    public responceType correctResponseType;   
     public float bannerDuration = 5f;
     public float timePenalty = 10f;
 }

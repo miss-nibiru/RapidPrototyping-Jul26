@@ -18,5 +18,5 @@ MonoBehaviour:
   contentsText: I NEED THIS ASAP I am reviewing a new policy change with Wanda and
     she will not stop bothing me about this.
   correctResponseType: 0
-  bannerDuration: 10
+  bannerDuration: 20
   timePenalty: 10

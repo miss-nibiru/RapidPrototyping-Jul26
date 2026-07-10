@@ -18,5 +18,5 @@ MonoBehaviour:
   contentsText: you need a hard reset with some synergy training. Maybe a good lunch
     and learn too.
   correctResponseType: 0
-  bannerDuration: 10
+  bannerDuration: 20
   timePenalty: 10

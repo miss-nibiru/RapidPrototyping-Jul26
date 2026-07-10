@@ -16,6 +16,6 @@ MonoBehaviour:
   subject: so lazy
   previewText: can you please get me the...
   contentsText: can you please get me the lost of the employees I should be micromanaging.
-  correctResponseType: 0
-  bannerDuration: 10
+  correctResponseType: 2
+  bannerDuration: 20
   timePenalty: 10

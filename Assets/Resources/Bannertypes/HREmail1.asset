@@ -18,5 +18,5 @@ MonoBehaviour:
   contentsText: I have a lunch and learn scheduled for monday can you be there for
     noon?
   correctResponseType: 0
-  bannerDuration: 10
+  bannerDuration: 20
   timePenalty: 10

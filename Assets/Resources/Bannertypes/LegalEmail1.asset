@@ -15,7 +15,8 @@ MonoBehaviour:
   senderName: Brian(Legal)
   subject: View Policy
   previewText: policy for compliance training
-  contentsText: 
-  correctResponseType: 0
-  bannerDuration: 10
+  contentsText: policy for compliance training and all that good stuff here is just
+    some filler text for now
+  correctResponseType: 1
+  bannerDuration: 20
   timePenalty: 10
