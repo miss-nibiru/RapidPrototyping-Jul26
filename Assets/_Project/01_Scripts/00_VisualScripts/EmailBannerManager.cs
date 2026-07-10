@@ -61,7 +61,7 @@ namespace _Project._01_Scripts._00_VisualScripts
             newBanner.gameObject.transform.SetParent(EmailBank.Instance.SpawnPoint);
             UIManager.Instance.EmailBannerUI = newBanner.gameObject;
             _currentBanner = newBanner;
-            newBanner.Initialize(EmailBank.Instance.Banners[randomIndex]);
+            newBanner.InitializeBanner(EmailBank.Instance.Banners[randomIndex]);
             _previousBanner = _currentBanner;
         }
 
