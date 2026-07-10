@@ -11,7 +11,7 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         [Header("banner Types")]
         [SerializeField] private List<EmailBannerSO> emailBanners = new();
-        
+
         private Coroutine _bannerRoutine;
         private bool _bannerActive;
         private EmailBannerPanel _currentBanner;
@@ -52,7 +52,7 @@ namespace _Project._01_Scripts._00_VisualScripts
                 Invoke(nameof(CheckBannerActive), _currentBanner.bannerDuration);
             }
         }
-        
+
         public void SpawnRandomBanner()
         {
             var randomIndex = Random.Range(0, EmailBank.Instance.Banners.Count);
@@ -60,15 +60,21 @@ namespace _Project._01_Scripts._00_VisualScripts
             EmailBank.Instance.SpawnedBanners.Enqueue(newBanner.gameObject);
             newBanner.gameObject.transform.SetParent(EmailBank.Instance.SpawnPoint);
             UIManager.Instance.EmailBannerUI = newBanner.gameObject;
+
             _currentBanner = newBanner;
             newBanner.InitializeBanner(EmailBank.Instance.Banners[randomIndex]);
             _previousBanner = _currentBanner;
+
+            EmailController.Instance.SetCurrentBanner(newBanner);
         }
 
         public void DestroyBanner()
         {
+            if (EmailBank.Instance.SpawnedBanners.Count == 0) return;
+
             var last = EmailBank.Instance.SpawnedBanners.Dequeue();
             Destroy(last.gameObject);
+            _bannerActive = false;
         }
 
         public void CheckBannerActive()
@@ -77,11 +83,9 @@ namespace _Project._01_Scripts._00_VisualScripts
             {
                 GameManager.Instance.OnEmailBannerMissed();
                 TimeManager.Instance.SubtractTime(_currentBanner.timePenalty);
+                EmailController.Instance.OnBannerExpired();
                 DestroyBanner();
             }
         }
     }
 }
-
-//I have a possible edge case now because if I can be able to bring back up the email again if I want to pick up the phone then I need to
-//remember that when I open the email I can open it again and same goes for the email window

@@ -5,8 +5,26 @@ using TMPro;
 public class EmailWindow : MonoBehaviour
 {
     [SerializeField] private GameObject emailPanel;
-    [SerializeField] private responceType correctEmailResponceType;
-    
+
+    [Header("Email Text Fields")]
+    [SerializeField] private TextMeshProUGUI senderText;
+    [SerializeField] private TextMeshProUGUI subjectText;
+    [SerializeField] private TextMeshProUGUI contentsText;
+
+    private EmailBannerSO _currentBanner;
+    private responceType correctEmailResponceType;
+
+    public void LoadEmail(EmailBannerSO banner)
+    {
+        _currentBanner = banner;
+
+        senderText.text = banner.senderName;
+        subjectText.text = banner.subject;
+        contentsText.text = banner.contentsText;
+
+        correctEmailResponceType = banner.correctResponseType;   // NEW
+    }
+
     public void OpenWindow()
     {
         emailPanel.SetActive(true);
@@ -22,29 +40,20 @@ public class EmailWindow : MonoBehaviour
 
     public void OnSendButtonClicked()
     {
-        // Check if both slots are filled
         if (!SlotManager.Instance.AreSlotsFilled())
-        {
             return;
-        }
 
-        // Get the two words from slots
         WordObject[] words = SlotManager.Instance.GetSelectedWords();
-        
-        // Check if both words match the correct response type
+
         bool bothCorrect =
             words[0].responceType == correctEmailResponceType &&
             words[1].responceType == correctEmailResponceType;
 
         if (bothCorrect)
-        {
             GameManager.Instance.OnEmailCorrect();
-        }
         else
-        {
             GameManager.Instance.OnEmailIncorrect();
-        }
+
         CloseWindow();
     }
-    
 }

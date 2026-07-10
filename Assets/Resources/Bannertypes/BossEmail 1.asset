@@ -15,6 +15,7 @@ MonoBehaviour:
   senderName: Boss
   subject: so lazy
   previewText: can you please get me the...
+  contentsText: can you please get me the lost of the employees I should be micromanaging.
+  correctResponseType: 0
   bannerDuration: 10
-  timeBonus: 8
   timePenalty: 10

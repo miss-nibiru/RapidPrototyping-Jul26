@@ -27,7 +27,6 @@ namespace _Project._01_Scripts._02_ScriptableObjects
             previewText = emailBannerSO.previewText;
             bannerDuration = emailBannerSO.bannerDuration;
             timePenalty = emailBannerSO.timePenalty;
-            
             bannerSenderText.text = senderName;
             bannerSubjectText.text = subject;
             bannerPreviewText.text = previewText;

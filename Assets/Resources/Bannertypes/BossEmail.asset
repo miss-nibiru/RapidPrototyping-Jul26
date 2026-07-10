@@ -15,6 +15,8 @@ MonoBehaviour:
   senderName: Boss
   subject: you suck
   previewText: after several mintures of consideration...
+  contentsText: after several mintures of consideration I have decided that you are
+    no good and I think you need to do some more training
+  correctResponseType: 0
   bannerDuration: 10
-  timeBonus: 8
   timePenalty: 10

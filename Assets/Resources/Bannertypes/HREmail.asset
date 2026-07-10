@@ -15,6 +15,8 @@ MonoBehaviour:
   senderName: Wanda(HR)
   subject: Uncoachable
   previewText: you need a hard reset...
+  contentsText: you need a hard reset with some synergy training. Maybe a good lunch
+    and learn too.
+  correctResponseType: 0
   bannerDuration: 10
-  timeBonus: 8
   timePenalty: 10
