@@ -5348,6 +5348,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2040576812}
     m_Modifications:
+    - target: {fileID: 296851997246077645, guid: d83be8000ae694fd0bd2d9235ac70666, type: 3}
+      propertyPath: taskbarMini
+      value: 
+      objectReference: {fileID: 1960934945}
     - target: {fileID: 1159093422557746999, guid: d83be8000ae694fd0bd2d9235ac70666, type: 3}
       propertyPath: m_Name
       value: MineSweep_Root
@@ -5432,10 +5436,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8336161703568352978, guid: d83be8000ae694fd0bd2d9235ac70666, type: 3}
-      propertyPath: taskbarMini
-      value: 
-      objectReference: {fileID: 1960934945}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
