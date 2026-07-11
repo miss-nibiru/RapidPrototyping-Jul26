@@ -3155,7 +3155,7 @@ MonoBehaviour:
   gameTime: 120
   countDown: 1
   phoneSpawnTime: 5
-  emailBannerSpawnTime: 8
+  emailBannerSpawnTime: 3
   smallTimeGainAmount: 10
   smallTimePenaltyAmount: 10
   largeTimeGainAmount: 20
