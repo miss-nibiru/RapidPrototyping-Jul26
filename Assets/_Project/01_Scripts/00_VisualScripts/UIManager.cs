@@ -72,7 +72,8 @@ namespace _Project._01_Scripts._00_VisualScripts
         public void ShowCall(PhoneObject data)
         {
             phoneNotificationUI.SetActive(true);
-
+            phoneNotificationUI.transform.SetAsLastSibling();
+            
             if (callerNameText != null)
                 callerNameText.text = data.callerName;
         }

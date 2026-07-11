@@ -236,9 +236,9 @@ MonoBehaviour:
   bannerDuration: 5
   timePenalty: 10
   bannerSenderText: {fileID: 1655348397889884352}
-  bannerSubjectText: {fileID: 7069268531331229139}
-  bannerPreviewText: {fileID: 1330293964364985659}
-  emailBannerSO: {fileID: 0}
+  bannerSummaryText: {fileID: 7069268531331229139}
+  bannerDepartmentText: {fileID: 1330293964364985659}
+  emailBannerSo: {fileID: 0}
 --- !u!114 &5923878933325659942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +398,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Subject
+  m_text: Summ
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad7f03d8bc1d04d9eaa9103c1595d384, type: 2}
   m_sharedMaterial: {fileID: 1932920324261739520, guid: ad7f03d8bc1d04d9eaa9103c1595d384, type: 2}
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Seconds
+  m_text: Dept
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ad7f03d8bc1d04d9eaa9103c1595d384, type: 2}
   m_sharedMaterial: {fileID: 1932920324261739520, guid: ad7f03d8bc1d04d9eaa9103c1595d384, type: 2}

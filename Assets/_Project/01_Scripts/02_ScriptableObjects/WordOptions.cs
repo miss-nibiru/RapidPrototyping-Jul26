@@ -4,6 +4,7 @@ using UnityEngine;
 public class WordOptions : ScriptableObject
 {
     public string responce;
-    public responceType responceType;
+    public ResponceType responceType;
     public Color responceColor;
+    public Sprite responceBackground;
 }

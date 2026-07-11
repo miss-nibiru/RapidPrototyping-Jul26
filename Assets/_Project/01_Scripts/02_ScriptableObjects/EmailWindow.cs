@@ -12,11 +12,15 @@ public class EmailWindow : MonoBehaviour
     [SerializeField] private TextMeshProUGUI senderText;
     [SerializeField] private TextMeshProUGUI subjectText;
     [SerializeField] private TextMeshProUGUI contentsText;
+    
+    [SerializeField] private TextMeshProUGUI departmentText;
+    [SerializeField] private TextMeshProUGUI responseHintText;
+    
     [SerializeField] private ExpirationColorIcon expirationIcon;
 
     private EmailBannerSO _currentBanner;
     private EmailBannerPanel _currentBannerPanel;
-    private responceType correctEmailResponceType;
+    private ResponceType _correctEmailResponceType;
     private Coroutine _windowExpirationCoroutine;
     private float _windowRemainingTime;
 
@@ -30,30 +34,23 @@ public class EmailWindow : MonoBehaviour
         _currentBanner = banner;
         _currentBannerPanel = bannerPanel;
 
-        if (senderText != null)
-            senderText.text = banner.senderName;
-        if (subjectText != null)
-            subjectText.text = banner.subject;
-        if (contentsText != null)
-            contentsText.text = banner.contentsText;
+        if (senderText != null) senderText.text = banner.senderName;
+        if (subjectText != null) subjectText.text = banner.subject;
+        if (contentsText != null) contentsText.text = banner.contentsText;
+        if (departmentText != null) departmentText.text = "Department: " + banner.department;
+        if (responseHintText != null) responseHintText.text = banner.responseHint;
 
-        correctEmailResponceType = banner.correctResponseType;
+        _correctEmailResponceType = banner.correctResponseType;
+        if (expirationIcon != null && bannerPanel != null) expirationIcon.SetBanner(bannerPanel);
         
-        if (expirationIcon != null && bannerPanel != null)
-        {
-            expirationIcon.SetBanner(bannerPanel);
-        }
     }
 
     public void OpenWindow()
     {
-        if (emailPanel == null)
-        {
-            return;
-        }
-
+        if (emailPanel == null) return;
         ClearWindowUIState();
         emailPanel.SetActive(true);
+        emailPanel.transform.SetAsLastSibling();
         WordBank.Instance.SpawnWords();
 
         if (_currentBannerPanel != null)
@@ -135,8 +132,8 @@ public class EmailWindow : MonoBehaviour
         }
 
         bool bothCorrect =
-            words[0].responceType == correctEmailResponceType &&
-            words[1].responceType == correctEmailResponceType;
+            words[0].responceType == _correctEmailResponceType &&
+            words[1].responceType == _correctEmailResponceType;
 
         if (bothCorrect)
         {

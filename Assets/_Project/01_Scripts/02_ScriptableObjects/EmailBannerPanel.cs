@@ -14,10 +14,10 @@ namespace _Project._01_Scripts._02_ScriptableObjects
         public float timePenalty = 10f;
         
         [SerializeField] private TextMeshProUGUI bannerSenderText;
-        [SerializeField] private TextMeshProUGUI bannerSubjectText;
-        [SerializeField] private TextMeshProUGUI bannerPreviewText;
+        [SerializeField] private TextMeshProUGUI bannerSummaryText;
+        [SerializeField] private TextMeshProUGUI bannerDepartmentText;
         
-        public EmailBannerSO emailBannerSO;
+        public EmailBannerSO emailBannerSo;
         private float _spawnTime;
 
         private void Awake()
@@ -27,16 +27,16 @@ namespace _Project._01_Scripts._02_ScriptableObjects
 
         public void InitializeBanner(EmailBannerSO banner)
         {
-            emailBannerSO = banner;
-            senderName = emailBannerSO.senderName;
-            subject = emailBannerSO.subject;
-            previewText = emailBannerSO.previewText;
-            bannerDuration = emailBannerSO.bannerDuration;
-            timePenalty = emailBannerSO.timePenalty;
+            emailBannerSo = banner;
+            senderName = emailBannerSo.senderName;
+            subject = emailBannerSo.subject;
+            previewText = emailBannerSo.previewText;
+            bannerDuration = emailBannerSo.bannerDuration;
+            timePenalty = emailBannerSo.timePenalty;
             
             bannerSenderText.text = senderName;
-            bannerSubjectText.text = subject;
-            bannerPreviewText.text = previewText;
+            bannerSummaryText.text = subject;
+            bannerDepartmentText.text = previewText;
             _spawnTime = Time.time;
         }
         

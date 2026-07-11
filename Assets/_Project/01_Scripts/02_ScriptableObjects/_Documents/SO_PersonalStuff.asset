@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bdf6e67d8d64da2ad4f22623d22371, type: 3}
+  m_Name: SO_PersonalStuff
+  m_EditorClassIdentifier: Assembly-CSharp::ComputerFilesData
+  fileName: Personal Stuff
+  fileIcon: {fileID: 21300000, guid: a8692e8b6dd2d45ec9dd3166474408dc, type: 3}
+  fileType: 2
+  windowTitle: PersonalStuff
+  windowIcon: {fileID: 21300000, guid: df977d5ffabd540c1be916c070ef4903, type: 3}
+  windowSize: {x: 800, y: 800}
+  documentBody: 
+  photoImage: {fileID: 0}
+  folderContents:
+  - {fileID: 11400000, guid: bb72b5197a5bf4610a9630b6ecb882ae, type: 2}
+  browserImage: {fileID: 0}
+  browserButtonText: Buy Now
+  browserButtonTriggersWaitingCursor: 1
+  browserWaitingDuration: 2
+  browserButtonStartsPhoneCall: 0
+  errorTitle: 
+  errorMessage: 
+  errorButtonText: OK
+  notificationTitle: 
+  notificationMessage: 
+  triggersWaitingCursor: 0
+  waitingDuration: 1.5
+  spawnsCriticalError: 0
+  criticalErrorToSpawn: {fileID: 0}
+  opensMultipleWindows: 0
+  extraWindowCount: 0
+  canBeOpenedMultipleTimes: 0
+  autoClose: 0
+  autoCloseDelay: 3

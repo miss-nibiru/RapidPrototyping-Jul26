@@ -32,7 +32,7 @@ namespace _Project._01_Scripts._00_VisualScripts
                 return;
             }
             _currentBannerPanel = bannerPanel;
-            _currentBannerSO = bannerPanel.emailBannerSO;
+            _currentBannerSO = bannerPanel.emailBannerSo;
             _bannerExpired = false;
         }
 
