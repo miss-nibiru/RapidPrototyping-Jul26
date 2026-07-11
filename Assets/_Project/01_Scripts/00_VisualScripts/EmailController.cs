@@ -1,5 +1,6 @@
-using UnityEngine;
+using _Project._01_Scripts._00_VisualScripts;
 using _Project._01_Scripts._02_ScriptableObjects;
+using UnityEngine;
 
 namespace _Project._01_Scripts._00_VisualScripts
 {
@@ -8,9 +9,9 @@ namespace _Project._01_Scripts._00_VisualScripts
         public static EmailController Instance { get; private set; }
 
         [SerializeField] private EmailWindow emailWindow;
-
-        private EmailBannerSO _currentBannerSO;
+        
         private EmailBannerPanel _currentBannerPanel;
+        private EmailBannerSO _currentBannerSO;
         private bool _bannerExpired;
 
         private void Awake()
@@ -25,11 +26,11 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         public void SetCurrentBanner(EmailBannerPanel bannerPanel)
         {
-            if (_currentBannerSO != null && !_bannerExpired)
+            if (bannerPanel == null)
             {
-                emailWindow.CloseWindow();
+                Debug.LogWarning("[EmailController] SetCurrentBanner called with null panel");
+                return;
             }
-
             _currentBannerPanel = bannerPanel;
             _currentBannerSO = bannerPanel.emailBannerSO;
             _bannerExpired = false;
@@ -38,40 +39,51 @@ namespace _Project._01_Scripts._00_VisualScripts
         public void OpenCurrentEmail()
         {
             if (_currentBannerSO == null)
+            {
+                Debug.LogWarning("[EmailController] No current banner to open");
                 return;
+            }
 
             if (_bannerExpired)
+            {
                 return;
-
-            emailWindow.LoadEmail(_currentBannerSO);
+            }
+            emailWindow.LoadEmail(_currentBannerSO, _currentBannerPanel);
             emailWindow.OpenWindow();
         }
-
         public void OnSendButtonClicked()
         {
             if (_currentBannerSO == null)
+            {
                 return;
-
+            }
+            string senderName = _currentBannerSO.senderName;
             emailWindow.OnSendButtonClicked();
-
-            // REQUIRED for correct timing
-            EmailBannerManager.Instance.OnBannerHandled();
-
-            EmailBannerManager.Instance.DestroyBanner();
+            EmailBannerManager.Instance.OnBannerHandled(_currentBannerPanel);
             ResetEmailState();
         }
-
         public void OnBannerExpired()
         {
+            if (_currentBannerSO != null)
+            {
+                Debug.Log($"[EmailController] Banner from {_currentBannerSO.senderName} expired - closing window");
+            }
             emailWindow.CloseWindow();
             ResetEmailState();
         }
-
         private void ResetEmailState()
         {
             _bannerExpired = true;
             _currentBannerSO = null;
             _currentBannerPanel = null;
+        }
+        public EmailBannerPanel GetCurrentBannerPanel()
+        {
+            return _currentBannerPanel;
+        }
+        public bool HasActiveBanner()
+        {
+            return _currentBannerSO != null && !_bannerExpired;
         }
     }
 }

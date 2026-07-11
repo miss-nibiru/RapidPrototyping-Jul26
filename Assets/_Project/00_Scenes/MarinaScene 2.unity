@@ -534,6 +534,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c744b858a5084cc4f9da9e2f9357bd9d, type: 2}
   - {fileID: 11400000, guid: 1e726e74c60ef974a84c644048f37454, type: 2}
   - {fileID: 11400000, guid: f6405e215c42f6644a81a6c65ff0cca0, type: 2}
+  bannerXOffset: 350
+  bannerYOffset: 0
 --- !u!1 &233443919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3155,7 +3157,7 @@ MonoBehaviour:
   gameTime: 120
   countDown: 1
   phoneSpawnTime: 5
-  emailBannerSpawnTime: 3
+  emailBannerSpawnTime: 8
   smallTimeGainAmount: 10
   smallTimePenaltyAmount: 10
   largeTimeGainAmount: 20
