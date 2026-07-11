@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
-  m_Name: Florence
+  m_Name: Kenneth_BAD
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: FloFlo
-  subject: OMG GURL!
-  previewText: Dude, he's going...
-  contentsText: Kenneth is insufferable! I'm gonna go on vacation soon!
-  correctResponseType: 1
+  senderName: Kenneth Bond
+  subject: It was me
+  previewText: It was in the fridge
+  contentsText: I ate your sandwich
+  correctResponseType: 2
   bannerDuration: 90
-  penalizesTimeWhenMissed: 0
-  timePenalty: 0
-  department: Chill
-  responseHint: This girl is nuts!
+  penalizesTimeWhenMissed: 1
+  timePenalty: 20
+  department: Upper Management
+  responseHint: '!!!!! He crossed it...'

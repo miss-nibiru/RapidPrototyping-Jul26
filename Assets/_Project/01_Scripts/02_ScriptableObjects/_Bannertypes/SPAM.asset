@@ -18,7 +18,8 @@ MonoBehaviour:
   contentsText: With our amazing horse pills youll be furious, with our bunny pills
     youll be fast. Made in China.
   correctResponseType: 2
-  bannerDuration: 20
-  timePenalty: 10
+  bannerDuration: 90
+  penalizesTimeWhenMissed: 0
+  timePenalty: 0
   department: Suspicious
   responseHint: What is this?

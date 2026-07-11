@@ -13,7 +13,7 @@ public enum ComputerFileType
     Notification,
 }
 
-[CreateAssetMenu(fileName = "NewComputerFilesData", menuName = "Competency Clash/Computer Files Data")]
+[CreateAssetMenu(fileName = "NewComputerFilesData", menuName = "Scriptable Objects/Computer Files Data")]
 public class ComputerFilesData : ScriptableObject
 {
     [Header("Basic File Info")]

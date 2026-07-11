@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BigBonus
   m_EditorClassIdentifier: Assembly-CSharp::PhoneObject
   callerName: Mandy(Admin)
+  correctAction: 0
   ringDuration: 3
   timeBonus: 40
   timePenalty: 5

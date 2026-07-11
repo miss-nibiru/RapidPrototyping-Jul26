@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
-  m_Name: Florence
+  m_Name: Durian_bad
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: FloFlo
-  subject: OMG GURL!
-  previewText: Dude, he's going...
-  contentsText: Kenneth is insufferable! I'm gonna go on vacation soon!
-  correctResponseType: 1
+  senderName: Durian Designer Co.
+  subject: FUCK YOUR DESIGM!
+  previewText: This suckssss!!
+  contentsText: Bro, this is the worse thing ive ever seen, do you even have a marketing
+    company that works well asjhdkan dont ever send me a logo in word!!!
+  correctResponseType: 2
   bannerDuration: 90
   penalizesTimeWhenMissed: 0
   timePenalty: 0
-  department: Chill
-  responseHint: This girl is nuts!
+  department: Contractor
+  responseHint: OMG what a tool!

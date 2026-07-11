@@ -61,11 +61,34 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         public void AnswerCall()
         {
-            if (!_callActive) return;
+            HandleCallAction(PhoneObject.PhoneActionType.Answer);
+        }
+
+        public void IgnoreCall()
+        {
+            HandleCallAction(PhoneObject.PhoneActionType.Ignore);
+        }
+
+        private void HandleCallAction(PhoneObject.PhoneActionType playerAction)
+        {
+            if (!_callActive)
+                return;
+
             _callActive = false;
+
             AudioManager.Instance?.StopLoopingSound();
             UIManager.Instance.HideCall();
-            GameManager.Instance.OnCallAnswered();
+
+            bool correctAction = _currentCall.correctAction == playerAction;
+
+            if (correctAction)
+            {
+                GameManager.Instance.OnCallAnswered();
+            }
+            else
+            {
+                GameManager.Instance.OnCallMissed();
+            }
         }
     }
 }

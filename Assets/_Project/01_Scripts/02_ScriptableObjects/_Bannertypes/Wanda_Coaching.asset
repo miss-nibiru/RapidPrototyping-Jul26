@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
-  m_Name: Florence
+  m_Name: Wanda_Coaching
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: FloFlo
-  subject: OMG GURL!
-  previewText: Dude, he's going...
-  contentsText: Kenneth is insufferable! I'm gonna go on vacation soon!
-  correctResponseType: 1
+  senderName: Wanda(HR)
+  subject: Uncoachable
+  previewText: you need a hard reset...
+  contentsText: you need a hard reset with some synergy training. Maybe a good lunch
+    and learn too.
+  correctResponseType: 0
   bannerDuration: 90
-  penalizesTimeWhenMissed: 0
-  timePenalty: 0
-  department: Chill
-  responseHint: This girl is nuts!
+  penalizesTimeWhenMissed: 1
+  timePenalty: 6
+  department: HR
+  responseHint: Wanda doesn't like drama...

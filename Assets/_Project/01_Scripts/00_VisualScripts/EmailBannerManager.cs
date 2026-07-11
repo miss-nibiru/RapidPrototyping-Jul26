@@ -86,10 +86,8 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         private void StartBannerExpirationTimer(EmailBannerPanel banner)
         {
-            if (_bannerExpirationCoroutines.ContainsKey(banner))
-            {
-                StopCoroutine(_bannerExpirationCoroutines[banner]);
-            }
+            if (_bannerExpirationCoroutines.ContainsKey(banner)) StopCoroutine(_bannerExpirationCoroutines[banner]);
+            
             Coroutine expirationRoutine = StartCoroutine(BannerExpirationRoutine(banner));
             _bannerExpirationCoroutines[banner] = expirationRoutine;
         }
@@ -101,8 +99,12 @@ namespace _Project._01_Scripts._00_VisualScripts
 
             if (_activeBanners.Contains(banner))
             {
-                GameManager.Instance.OnEmailBannerMissed();
-                TimeManager.Instance.SubtractTime(banner.timePenalty);
+                if (banner.emailBannerSo.penalizesTimeWhenMissed)
+                {
+                    TimeManager.Instance.SubtractTime(banner.timePenalty);
+                    UIManager.Instance.ShowPenaltyText("EMAIL MISSED", Color.white);
+                }
+
                 if (EmailController.Instance.GetCurrentBannerPanel() == banner)
                 {
                     EmailController.Instance.OnBannerExpired();
@@ -113,10 +115,8 @@ namespace _Project._01_Scripts._00_VisualScripts
                 }
                 DestroyBanner(banner);
             }
-            if (_bannerExpirationCoroutines.ContainsKey(banner))
-            {
-                _bannerExpirationCoroutines.Remove(banner);
-            }
+            
+            if (_bannerExpirationCoroutines.ContainsKey(banner)) _bannerExpirationCoroutines.Remove(banner);
         }
 
         public void DestroyBanner(EmailBannerPanel bannerToDestroy = null)
@@ -134,11 +134,11 @@ namespace _Project._01_Scripts._00_VisualScripts
                 Queue<EmailBannerPanel> tempQueue = new Queue<EmailBannerPanel>();
                 while (_activeBanners.Count > 0)
                 {
+                    
                     EmailBannerPanel banner = _activeBanners.Dequeue();
-                    if (banner != bannerToDestroy)
-                    {
-                        tempQueue.Enqueue(banner);
-                    }
+                    if (banner != bannerToDestroy) tempQueue.Enqueue(banner);
+                    
+                    
                 }
                 _activeBanners = tempQueue;
             }

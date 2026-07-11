@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
-  m_Name: Lana
+  m_Name: Brian2
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: Chantal
-  subject: Vacations Not Approved
-  previewText: After careful consideration...
-  contentsText: After careful consideration, you can not have any more vacation time
-    until Feb 2028
+  senderName: Brian Jones
+  subject: ASAP!
+  previewText: Pursuant to subsection 17B...
+  contentsText: Pursuant to subsection 17B of the Internal Corporate Regulatory Oversight
+    Codex, it is fully compliant with Statute 42, paragraph III, clause vii. Ergo, 
+    I must confirm correspondence from your department on this matter to indemnify
+    and hold harmless the dangerous risks of doing absolutely nothing.
   correctResponseType: 0
   bannerDuration: 90
   penalizesTimeWhenMissed: 1
   timePenalty: 6
-  department: HR
-  responseHint: Gotta be chill...
+  department: Legal
+  responseHint: Careful...

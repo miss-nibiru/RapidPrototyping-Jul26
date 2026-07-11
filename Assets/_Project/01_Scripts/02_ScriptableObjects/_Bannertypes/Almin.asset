@@ -17,7 +17,8 @@ MonoBehaviour:
   previewText: can you please get me the...
   contentsText: can you please get me the lost of the employees I should be micromanaging.
   correctResponseType: 2
-  bannerDuration: 20
-  timePenalty: 10
+  bannerDuration: 90
+  penalizesTimeWhenMissed: 1
+  timePenalty: 20
   department: Upper Management
   responseHint: This is the highest dude...

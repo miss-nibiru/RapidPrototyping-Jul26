@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5a0b9b33db15fc43b87f8cc1a6e25b0, type: 3}
-  m_Name: LargePentalty 1
+  m_Name: MomCall
   m_EditorClassIdentifier: Assembly-CSharp::PhoneObject
-  callerName: Boss
-  ringDuration: 8
-  timeBonus: 8
-  timePenalty: 20
+  callerName: Mom
+  correctAction: 1
+  ringDuration: 10
+  timeBonus: 6
+  timePenalty: 10

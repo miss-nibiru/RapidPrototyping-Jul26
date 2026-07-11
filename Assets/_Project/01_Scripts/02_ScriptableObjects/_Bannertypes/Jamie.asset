@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
-  m_Name: Florence
+  m_Name: Jamie
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: FloFlo
-  subject: OMG GURL!
-  previewText: Dude, he's going...
-  contentsText: Kenneth is insufferable! I'm gonna go on vacation soon!
+  senderName: Jamie
+  subject: Tiny favor?
+  previewText: Can you check this before I send it?
+  contentsText: Hey! Could you take a quick look at this promo blurb before I send
+    it upstairs? It does not need to be perfect, I just need a second pair of eyes
+    so I do not sound like a robot
   correctResponseType: 1
   bannerDuration: 90
   penalizesTimeWhenMissed: 0
-  timePenalty: 0
-  department: Chill
-  responseHint: This girl is nuts!
+  timePenalty: 10
+  department: Marketing
+  responseHint: Jamie is a good kid...

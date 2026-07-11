@@ -18,7 +18,8 @@ MonoBehaviour:
   contentsText: after several mintures of consideration I have decided that you are
     no good and I think you need to do some more training
   correctResponseType: 0
-  bannerDuration: 20
-  timePenalty: 10
+  bannerDuration: 90
+  penalizesTimeWhenMissed: 1
+  timePenalty: 20
   department: Upper Management
   responseHint: I can't be mean to management...

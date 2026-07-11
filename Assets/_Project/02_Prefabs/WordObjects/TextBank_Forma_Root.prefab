@@ -266,7 +266,7 @@ MonoBehaviour:
   responceText: {fileID: 537663270403701518}
   canvas: {fileID: 0}
   backgroundImage: {fileID: 7937455408699065264}
-  placementDistance: 200
+  placementDistance: 100
   responceType: 0
   wordOption: {fileID: 11400000, guid: cb056ceefd8c42a42a6963b0cea3bcb0, type: 2}
   placed: 0

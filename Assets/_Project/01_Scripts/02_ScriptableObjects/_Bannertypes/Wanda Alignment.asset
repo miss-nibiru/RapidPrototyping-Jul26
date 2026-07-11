@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
-  m_Name: Wanda
+  m_Name: Wanda Alignment
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: Wanda(HR)
-  subject: Uncoachable
-  previewText: you need a hard reset...
-  contentsText: you need a hard reset with some synergy training. Maybe a good lunch
-    and learn too.
+  senderName: Wanda
+  subject: Your not busy at noon yeah?
+  previewText: 12pmWednesday
+  contentsText: Let's have a quick corporate values alignment session at noon. We
+    need to deep dive into the superficial aspects of this issue.
   correctResponseType: 0
-  bannerDuration: 20
-  timePenalty: 10
+  bannerDuration: 90
+  penalizesTimeWhenMissed: 1
+  timePenalty: 6
   department: HR
-  responseHint: Wanda doesn't like drama...
+  responseHint: I guess...

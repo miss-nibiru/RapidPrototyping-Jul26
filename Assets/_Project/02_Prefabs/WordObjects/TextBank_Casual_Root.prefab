@@ -54,7 +54,7 @@ MonoBehaviour:
   responceText: {fileID: 7406602785386779809}
   canvas: {fileID: 0}
   backgroundImage: {fileID: 2316297010500354665}
-  placementDistance: 200
+  placementDistance: 100
   responceType: 1
   wordOption: {fileID: 11400000, guid: cf2a19f040194534d99f9a6468ca2c17, type: 2}
   placed: 0
