@@ -1,4 +1,4 @@
-using System;
+
 using _Project._01_Scripts._00_VisualScripts;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -16,6 +16,7 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private Vector3 _originalPosition;
     private Vector3 _originalScale;
     private Transform _originalParent;
+    private RectTransform _dragParent;
     
     public responceType responceType;
     public WordOptions wordOption;
@@ -25,11 +26,13 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         rectTransform = GetComponent<RectTransform>();
         if(!canvas) canvas = GetComponentInParent<Canvas>();
-        
+
+        _dragParent = canvas.transform as RectTransform;
+    
         _originalParent = rectTransform.parent;
         _originalPosition = rectTransform.anchoredPosition;
         _originalScale = rectTransform.localScale;
-        
+    
         AssignResponce();
     }
 
@@ -47,13 +50,30 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             SlotManager.Instance.RemoveWordFromSlot(this);
             placed = false;
         }
+
+        rectTransform.SetParent(_dragParent, true);
+        rectTransform.SetAsLastSibling();
         
-        rectTransform.localScale = _originalScale * 1.1f;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        if (_dragParent == null)
+            return;
+
+        Camera cameraToUse = null;
+
+        if (canvas.renderMode != RenderMode.ScreenSpaceOverlay)
+            cameraToUse = canvas.worldCamera;
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            _dragParent,
+            eventData.position,
+            cameraToUse,
+            out Vector2 localPoint
+        );
+
+        rectTransform.anchoredPosition = localPoint;
     }
 
     public void OnEndDrag(PointerEventData eventData)
