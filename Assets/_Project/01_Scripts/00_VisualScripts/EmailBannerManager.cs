@@ -2,22 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using _Project._01_Scripts._02_ScriptableObjects;
 using UnityEngine;
-
 namespace _Project._01_Scripts._00_VisualScripts
 {
     public class EmailBannerManager : MonoBehaviour
     {
         public static EmailBannerManager Instance { get; private set; }
-
         [Header("banner Types")]
         [SerializeField] private List<EmailBannerSO> emailBanners = new();
-
         private Coroutine _bannerRoutine;
         private bool _bannerActive;
         private EmailBannerPanel _currentBanner;
         private EmailBannerPanel _previousBanner;
         private bool _spawningBanner = true;
-
+        private Coroutine _expireCheckRoutine;
+        
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -27,20 +25,16 @@ namespace _Project._01_Scripts._00_VisualScripts
             }
             Instance = this;
         }
-
         private void Start()
         {
             StartBannerLoop();
         }
-
         public void StartBannerLoop()
         {
             if (_bannerRoutine != null)
                 StopCoroutine(_bannerRoutine);
-
             _bannerRoutine = StartCoroutine(bannerLoopRoutine());
         }
-
         private IEnumerator bannerLoopRoutine()
         {
             while (_spawningBanner)
@@ -49,10 +43,22 @@ namespace _Project._01_Scripts._00_VisualScripts
                 SpawnRandomBanner();
                 _bannerActive = true;
                 UIManager.Instance.ShowEmailBanner(_currentBanner);
-                Invoke(nameof(CheckBannerActive), _currentBanner.bannerDuration);
+                
+                // Stop previous expire check if it exists
+                if (_expireCheckRoutine != null)
+                    StopCoroutine(_expireCheckRoutine);
+                
+                // Start new expire check
+                _expireCheckRoutine = StartCoroutine(BannerExpireRoutine(_currentBanner.bannerDuration));
             }
         }
-
+        
+        private IEnumerator BannerExpireRoutine(float duration)
+        {
+            yield return new WaitForSeconds(duration);
+            CheckBannerActive();
+        }
+        
         public void SpawnRandomBanner()
         {
             var randomIndex = Random.Range(0, EmailBank.Instance.Banners.Count);
@@ -60,23 +66,30 @@ namespace _Project._01_Scripts._00_VisualScripts
             EmailBank.Instance.SpawnedBanners.Enqueue(newBanner.gameObject);
             newBanner.gameObject.transform.SetParent(EmailBank.Instance.SpawnPoint);
             UIManager.Instance.EmailBannerUI = newBanner.gameObject;
-
             _currentBanner = newBanner;
             newBanner.InitializeBanner(EmailBank.Instance.Banners[randomIndex]);
             _previousBanner = _currentBanner;
-
             EmailController.Instance.SetCurrentBanner(newBanner);
         }
-
+        
         public void DestroyBanner()
         {
-            if (EmailBank.Instance.SpawnedBanners.Count == 0) return;
-
+            if (EmailBank.Instance.SpawnedBanners.Count == 0) 
+            {
+                return;
+            }
             var last = EmailBank.Instance.SpawnedBanners.Dequeue();
             Destroy(last.gameObject);
             _bannerActive = false;
+            
+            
+            if (_expireCheckRoutine != null)
+            {
+                StopCoroutine(_expireCheckRoutine);
+                _expireCheckRoutine = null;
+            }
         }
-
+        
         public void CheckBannerActive()
         {
             if (_bannerActive)

@@ -93,6 +93,15 @@ namespace _Project._01_Scripts._00_VisualScripts
         
         public void ClearSlots()
         {
+            if (_wordInSlotOne != null)
+            {
+                _wordInSlotOne.ReturnToSpawn();
+            }
+            
+            if (_wordInSlotTwo != null)
+            {
+                _wordInSlotTwo.ReturnToSpawn();
+            }
             _wordInSlotOne = null;
             _wordInSlotTwo = null;
         }
