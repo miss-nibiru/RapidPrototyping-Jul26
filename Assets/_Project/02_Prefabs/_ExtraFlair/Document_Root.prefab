@@ -822,8 +822,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7697950849104257633}
   - component: {fileID: 2258210594608751273}
+  - component: {fileID: 3962003201983566493}
   - component: {fileID: 1362069748821160284}
-  - component: {fileID: 844771007850895787}
   m_Layer: 5
   m_Name: Document_Root
   m_TagString: Untagged
@@ -846,10 +846,10 @@ RectTransform:
   - {fileID: 1524851196611531427}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2258210594608751273
 CanvasRenderer:
@@ -859,6 +859,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4867248752638350445}
   m_CullTransparentMesh: 1
+--- !u!114 &3962003201983566493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4867248752638350445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08149d2377a744c33944cae56ca5bec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project._01_Scripts._00_VisualScripts.WindowVisualController
+  windowPanel: {fileID: 7697950849104257633}
+  minimizeButton: {fileID: 5350285233421332891}
+  maximizeButton: {fileID: 3576216850670774329}
+  closeButton: {fileID: 8040455432494885591}
+  taskbarMini: {fileID: 0}
+  dragBar: {fileID: 68198470372715252}
+  maximumWindowSize: 0.85
+  animationSpeed: 12
+  hiddenScale: 0.8
 --- !u!114 &1362069748821160284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,27 +894,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DocumentWindow
   titleText: {fileID: 1496722966996129904}
   bodyText: {fileID: 2347564032195571946}
---- !u!114 &844771007850895787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4867248752638350445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9821c23564aee4d3585296342ede36b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WindowVisualController
-  windowPanel: {fileID: 7697950849104257633}
-  minimizeButton: {fileID: 5350285233421332891}
-  maximizeButton: {fileID: 3576216850670774329}
-  closeButton: {fileID: 8040455432494885591}
-  taskbarMini: {fileID: 0}
-  dragBar: {fileID: 68198470372715252}
-  maximumWindowSize: 1.5
-  animationSpeed: 12
-  hiddenScale: 0.8
 --- !u!1 &4934830785092844970
 GameObject:
   m_ObjectHideFlags: 0
