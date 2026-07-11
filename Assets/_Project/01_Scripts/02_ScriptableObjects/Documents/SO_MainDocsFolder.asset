@@ -10,19 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22bdf6e67d8d64da2ad4f22623d22371, type: 3}
-  m_Name: SO_Phone
-  m_EditorClassIdentifier: Assembly-CSharp::DocumentData
-  fileName: PhoneTasks
-  fileIcon: {fileID: 21300000, guid: 4a238560b30ca435bac666a7bcb37f5e, type: 3}
-  fileType: 0
-  windowTitle: PhoneTasks
-  windowIcon: {fileID: 0}
-  windowSize: {x: 800, y: 600}
-  documentBody: 'Answer incoming calls
-
-    Family is not important'
+  m_Name: SO_MainDocsFolder
+  m_EditorClassIdentifier: Assembly-CSharp::ComputerFilesData
+  fileName: Documents
+  fileIcon: {fileID: 21300000, guid: a8692e8b6dd2d45ec9dd3166474408dc, type: 3}
+  fileType: 2
+  windowTitle: Documents
+  windowIcon: {fileID: 21300000, guid: df977d5ffabd540c1be916c070ef4903, type: 3}
+  windowSize: {x: 800, y: 800}
+  documentBody: 
   photoImage: {fileID: 0}
-  folderContents: []
+  folderContents:
+  - {fileID: 11400000, guid: 3b39aebd03fc84cac9517d87573a4d92, type: 2}
+  - {fileID: 11400000, guid: eb0fd8680f8e041708b9c17c2dafd37d, type: 2}
+  - {fileID: 11400000, guid: 510fddfaed0154ad988789562d7b0bf9, type: 2}
+  - {fileID: 11400000, guid: 6857389f5202d45788634855f18264df, type: 2}
   browserImage: {fileID: 0}
   browserButtonText: Buy Now
   browserButtonTriggersWaitingCursor: 1

@@ -62,7 +62,7 @@ MonoBehaviour:
   spawnsCriticalError: 0
   criticalErrorToSpawn: {fileID: 0}
   opensMultipleWindows: 0
-  extraWindowCount: 1
+  extraWindowCount: 0
   canBeOpenedMultipleTimes: 0
   autoClose: 0
   autoCloseDelay: 3

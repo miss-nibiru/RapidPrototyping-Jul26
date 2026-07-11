@@ -15,26 +15,27 @@ public class ComputerFileButton : MonoBehaviour
     {
         fileData = data;
 
-        if (fileData == null) return;
-
-        if (iconImage != null)
-            iconImage.sprite = fileData.fileIcon;
+        if (fileData == null)
+            return;
 
         if (fileNameText != null)
             fileNameText.text = fileData.fileName;
+
+        if (iconImage != null && fileData.fileIcon != null)
+            iconImage.sprite = fileData.fileIcon;
     }
 
     public void OpenFile()
     {
         if (fileData == null)
         {
-            Debug.LogWarning("ComputerFileButton has no file data assigned.");
+            Debug.LogWarning("No file data assigned to this file button.");
             return;
         }
 
         if (ComputerWindowSpawner.Instance == null)
         {
-            Debug.LogWarning("No ComputerWindowSpawner found in scene.");
+            Debug.LogWarning("No ComputerWindowSpawner found in the scene.");
             return;
         }
 

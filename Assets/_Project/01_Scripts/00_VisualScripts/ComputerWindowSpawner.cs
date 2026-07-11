@@ -21,8 +21,7 @@ public class ComputerWindowSpawner : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject);
-            return;
+            Destroy(gameObject); return;
         }
 
         Instance = this;
@@ -34,12 +33,8 @@ public class ComputerWindowSpawner : MonoBehaviour
         if (windowParent == null) return;
 
         GameObject prefabToOpen = GetPrefabForFileType(fileData.fileType);
-
-        if (prefabToOpen == null)
-        {
-            Debug.LogWarning("No window prefab assigned for file type: " + fileData.fileType);
-            return;
-        }
+        if (prefabToOpen == null) return;
+        
 
         GameObject newWindow = Instantiate(prefabToOpen, windowParent);
 
@@ -49,13 +44,17 @@ public class ComputerWindowSpawner : MonoBehaviour
             windowRect.anchoredPosition += new Vector2(_openWindowCount * 25f, _openWindowCount * -25f);
             windowRect.SetAsLastSibling();
 
-            if (fileData.windowSize != Vector2.zero)
-                windowRect.sizeDelta = fileData.windowSize;
+            if (fileData.windowSize != Vector2.zero) windowRect.sizeDelta = fileData.windowSize;
         }
 
         DocumentWindow documentWindow = newWindow.GetComponent<DocumentWindow>();
-        if (documentWindow != null)
-            documentWindow.Setup(fileData);
+        if (documentWindow != null) documentWindow.Setup(fileData);
+
+        FolderWindow folderWindow = newWindow.GetComponent<FolderWindow>();
+        if (folderWindow != null) folderWindow.Setup(fileData);
+
+        PhotoWindow photoWindow = newWindow.GetComponent<PhotoWindow>();
+        if (photoWindow != null) photoWindow.Setup(fileData);
 
         _openWindowCount++;
     }
@@ -84,8 +83,7 @@ public class ComputerWindowSpawner : MonoBehaviour
             case ComputerFileType.Notification:
                 return notificationWindowPrefab;
 
-            default:
-                return null;
+            default: return null;
         }
     }
 }

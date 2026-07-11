@@ -12,17 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22bdf6e67d8d64da2ad4f22623d22371, type: 3}
   m_Name: SO_ToDoList
   m_EditorClassIdentifier: Assembly-CSharp::DocumentData
-  documentTitle: ToDoList.docx
+  fileName: To Do List
+  fileIcon: {fileID: 21300000, guid: 4a238560b30ca435bac666a7bcb37f5e, type: 3}
+  fileType: 0
+  windowTitle: TodoTodayListFinalfinal
+  windowIcon: {fileID: 0}
+  windowSize: {x: 800, y: 600}
   documentBody: 'Open unread emails
 
-    Sort emails by urgency
+    Reply to important emails first
 
-    Reply to important
-    emails first
-
-    Drag the correct response into each email
-
-    Avoid sending
-    rude or wrong responses
+    Drag
+    the correct response into each email
 
     Delete obvious spam'
+  photoImage: {fileID: 0}
+  folderContents: []
+  browserImage: {fileID: 0}
+  browserButtonText: Buy Now
+  browserButtonTriggersWaitingCursor: 1
+  browserWaitingDuration: 2
+  browserButtonStartsPhoneCall: 0
+  errorTitle: 
+  errorMessage: 
+  errorButtonText: OK
+  notificationTitle: 
+  notificationMessage: 
+  triggersWaitingCursor: 0
+  waitingDuration: 1.5
+  spawnsCriticalError: 0
+  criticalErrorToSpawn: {fileID: 0}
+  opensMultipleWindows: 0
+  extraWindowCount: 0
+  canBeOpenedMultipleTimes: 0
+  autoClose: 0
+  autoCloseDelay: 3
