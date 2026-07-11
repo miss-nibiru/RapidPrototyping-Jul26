@@ -15,6 +15,8 @@ MonoBehaviour:
   senderName: Brian(Legal)
   subject: Contract Due
   previewText: 'I NEED THIS ASAP... '
-  bannerDuration: 10
-  timeBonus: 8
+  contentsText: I NEED THIS ASAP I am reviewing a new policy change with Wanda and
+    she will not stop bothing me about this.
+  correctResponseType: 0
+  bannerDuration: 20
   timePenalty: 10

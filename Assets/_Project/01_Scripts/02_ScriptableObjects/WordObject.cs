@@ -9,24 +9,32 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     [SerializeField] public RectTransform rectTransform;
     [SerializeField] private TextMeshProUGUI responceText;
     [SerializeField] private Canvas canvas;
-
-    public RectTransform originalSpawnPoint;
+    
+    [Header("Placement Settings")]
+    [SerializeField] private float placementDistance = 100f;
+    
+    private Vector3 _originalPosition;
+    private Vector3 _originalScale;
+    private Transform _originalParent;
+    
     public responceType responceType;
     public WordOptions wordOption;
-
     public bool placed;
     
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         if(!canvas) canvas = GetComponentInParent<Canvas>();
-        AssignResponce();
         
+        _originalParent = rectTransform.parent;
+        _originalPosition = rectTransform.anchoredPosition;
+        _originalScale = rectTransform.localScale;
+        
+        AssignResponce();
     }
 
     private void AssignResponce()
     {
-        originalSpawnPoint = rectTransform;
         responceText.text = wordOption.responce;
         responceText.color = wordOption.responceColor;
         responceType = wordOption.responceType;
@@ -34,35 +42,64 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // Optional: highlight or scale
+        if (placed)
+        {
+            SlotManager.Instance.RemoveWordFromSlot(this);
+            placed = false;
+        }
+        
+        rectTransform.localScale = _originalScale * 1.1f;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if(placed) return;
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (!placed)
+        bool wasPlaced = TryPlaceInNearbySlot();
+        if (!wasPlaced)
         {
-            rectTransform.anchoredPosition = originalSpawnPoint.position;
-            rectTransform.localPosition = Vector3.zero;
+            ReturnToSpawn();
         }
+        rectTransform.localScale = _originalScale;
     }
-
-    private void OnTriggerStay2D(Collider2D other)
+    
+    private bool TryPlaceInNearbySlot()
     {
-        if (other.GetComponent<Slots>())
+        Transform[] slots = SlotManager.Instance.GetAllSlots();
+        
+        foreach (Transform slot in slots)
         {
-            placed = SlotManager.Instance.TryPlaceWord(this);
-
-            if (!placed)
+            float distance = Vector3.Distance(rectTransform.position, slot.position);
+            if (distance < placementDistance)
             {
-                rectTransform.anchoredPosition = originalSpawnPoint.position;
-                rectTransform.localPosition = Vector3.zero;
+                bool success = SlotManager.Instance.TryPlaceWord(this, slot);
+                if (success)
+                {
+                    placed = true;
+                    return true;
+                }
             }
         }
+        
+        return false;
+    }
+    public void ReturnToSpawn()
+    {
+        placed = false;
+        SlotManager.Instance.RemoveWordFromSlot(this);
+        rectTransform.SetParent(_originalParent);
+        rectTransform.anchoredPosition = _originalPosition;
+        rectTransform.localScale = _originalScale;
+    }
+    public void RemoveFromSlot()
+    {
+        placed = false;
+        SlotManager.Instance.RemoveWordFromSlot(this);
+        rectTransform.SetParent(_originalParent);
+        rectTransform.anchoredPosition = _originalPosition;
+        rectTransform.localScale = _originalScale;
     }
 }

@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
   senderName: Brian(Legal)
   subject: View Policy
-  previewText: I MAKE SO MUCH MONEY....
-  bannerDuration: 10
-  timeBonus: 8
+  previewText: policy for compliance training
+  contentsText: policy for compliance training and all that good stuff here is just
+    some filler text for now
+  correctResponseType: 1
+  bannerDuration: 20
   timePenalty: 10
