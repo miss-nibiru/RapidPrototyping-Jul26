@@ -146,14 +146,14 @@ namespace _Project._01_Scripts._00_VisualScripts
             }
         }
 
-        public void OnBannerHandled(EmailBannerPanel handledBanner)
+        public void OnBannerHandled(EmailBannerPanel handledBanner, bool wasSuccessful)
         {
             if (handledBanner == null)
             {
                 return;
             }
 
-            DestroyBanner(handledBanner, true, true);
+            DestroyBanner(handledBanner, true, wasSuccessful);
         }
 
         public EmailBannerPanel GetCurrentBanner()

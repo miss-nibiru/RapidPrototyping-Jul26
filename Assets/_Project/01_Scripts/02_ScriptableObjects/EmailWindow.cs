@@ -1,18 +1,19 @@
-using _Project._01_Scripts._00_VisualScripts;
+using System.Collections;
 using TMPro;
 using UnityEngine;
-using System.Collections;
+using _Project._01_Scripts._00_VisualScripts;
 using _Project._01_Scripts._02_ScriptableObjects;
 
 public class EmailWindow : MonoBehaviour
 {
+    
     [SerializeField] private GameObject emailPanel;
+    [SerializeField] private UIFeedbackVisual feedbackVisual;
 
     [Header("Email Text Fields")]
     [SerializeField] private TextMeshProUGUI senderText;
     [SerializeField] private TextMeshProUGUI subjectText;
     [SerializeField] private TextMeshProUGUI contentsText;
-    
     [SerializeField] private TextMeshProUGUI departmentText;
     [SerializeField] private TextMeshProUGUI responseHintText;
     
@@ -20,7 +21,7 @@ public class EmailWindow : MonoBehaviour
 
     private EmailBannerSO _currentBanner;
     private EmailBannerPanel _currentBannerPanel;
-    private ResponceType _correctEmailResponceType;
+    private responceType _correctEmailResponceType;
     private Coroutine _windowExpirationCoroutine;
     private float _windowRemainingTime;
 
@@ -33,11 +34,12 @@ public class EmailWindow : MonoBehaviour
 
         _currentBanner = banner;
         _currentBannerPanel = bannerPanel;
+        _correctEmailResponceType = banner.correctResponseType;
 
         if (senderText != null) senderText.text = banner.senderName;
         if (subjectText != null) subjectText.text = banner.subject;
         if (contentsText != null) contentsText.text = banner.contentsText;
-        if (departmentText != null) departmentText.text = "Department: " + banner.department;
+        if (departmentText != null) departmentText.text = banner.department;
         if (responseHintText != null) responseHintText.text = banner.responseHint;
 
         _correctEmailResponceType = banner.correctResponseType;
@@ -113,39 +115,39 @@ public class EmailWindow : MonoBehaviour
         _windowExpirationCoroutine = null;
     }
 
-    public void OnSendButtonClicked()
+    public bool OnSendButtonClicked()
     {
-        if (!SlotManager.Instance.AreSlotsFilled())
-        {
-            return;
-        }
-
-        if (_currentBanner == null)
-        {
-            return;
-        }
-
+        if (!SlotManager.Instance.AreSlotsFilled()) return false;
+        if (_currentBanner == null) return false;
+        
         WordObject[] words = SlotManager.Instance.GetSelectedWords();
-        if (words[0] == null || words[1] == null)
-        {
-            return;
-        }
+        if (words[0] == null || words[1] == null) return false;
+        
 
-        bool bothCorrect =
-            words[0].responceType == _correctEmailResponceType &&
-            words[1].responceType == _correctEmailResponceType;
+        bool bothCorrect = words[0].responceType == _correctEmailResponceType && words[1].responceType == _correctEmailResponceType;
+
+        StopWindowExpirationTimer();
 
         if (bothCorrect)
         {
             GameManager.Instance.OnEmailCorrect();
+
+            if (feedbackVisual != null)
+                feedbackVisual.PlaySuccessFeedback(CloseWindow);
+            else
+                CloseWindow();
         }
         else
         {
             GameManager.Instance.OnEmailIncorrect();
+
+            if (feedbackVisual != null)
+                feedbackVisual.PlayFailFeedback(CloseWindow);
+            else
+                CloseWindow();
         }
 
-        StopWindowExpirationTimer();
-        CloseWindow();
+        return bothCorrect;
     }
 
     public float GetRemainingTime()
@@ -157,4 +159,10 @@ public class EmailWindow : MonoBehaviour
     {
         return emailPanel != null && emailPanel.activeSelf;
     }
+}
+
+internal abstract class responceType
+{
+    
+
 }

@@ -6,10 +6,7 @@ namespace _Project._01_Scripts._02_ScriptableObjects
 {
     public class EmailBannerPanel : MonoBehaviour
     {
-        public string senderName;
-        public string subject;
-        public string previewText;
-        public string contentsText;
+        
         public float bannerDuration = 5f;
         public float timePenalty = 10f;
         
@@ -29,15 +26,8 @@ namespace _Project._01_Scripts._02_ScriptableObjects
         public void InitializeBanner(EmailBannerSO banner)
         {
             emailBannerSo = banner;
-            senderName = emailBannerSo.senderName;
-            subject = emailBannerSo.subject;
-            previewText = emailBannerSo.previewText;
             bannerDuration = emailBannerSo.bannerDuration;
             timePenalty = emailBannerSo.timePenalty;
-            
-            bannerSenderText.text = senderName;
-            bannerSummaryText.text = subject;
-            bannerDepartmentText.text = previewText;
             _spawnTime = Time.time;
         }
         

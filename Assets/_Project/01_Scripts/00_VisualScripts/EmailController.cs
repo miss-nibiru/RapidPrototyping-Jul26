@@ -53,14 +53,12 @@ namespace _Project._01_Scripts._00_VisualScripts
         }
         public void OnSendButtonClicked()
         {
-            if (_currentBannerSO == null)
-            {
-                return;
-            }
-            string senderName = _currentBannerSO.senderName;
-            emailWindow.OnSendButtonClicked();
-            EmailBannerManager.Instance.OnBannerHandled(_currentBannerPanel);
+            
+            if (_currentBannerSO == null) return;
+            bool wasSuccessful = emailWindow.OnSendButtonClicked();
+            EmailBannerManager.Instance.OnBannerHandled(_currentBannerPanel, wasSuccessful);
             ResetEmailState();
+            
         }
         public void OnBannerExpired()
         {

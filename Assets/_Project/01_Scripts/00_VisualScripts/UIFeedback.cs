@@ -45,13 +45,13 @@ public class UIFeedbackVisual : MonoBehaviour
 
     private IEnumerator FeedbackRoutine(Sprite iconSprite, Color tintColor, Action onComplete)
     {
-        if (!feedbackTintImage)
+        if (feedbackTintImage != null)
         {
             feedbackTintImage.gameObject.SetActive(true);
             feedbackTintImage.color = tintColor;
         }
 
-        if (!feedbackIconImage)
+        if (feedbackIconImage != null)
         {
             feedbackIconImage.gameObject.SetActive(true);
             feedbackIconImage.sprite = iconSprite;
@@ -68,10 +68,10 @@ public class UIFeedbackVisual : MonoBehaviour
 
     private void HideFeedback()
     {
-        if (!feedbackTintImage)
+        if (feedbackTintImage != null)
             feedbackTintImage.gameObject.SetActive(false);
 
-        if (!feedbackIconImage)
+        if (feedbackIconImage != null)
             feedbackIconImage.gameObject.SetActive(false);
     }
 }

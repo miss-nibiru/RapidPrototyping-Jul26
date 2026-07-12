@@ -336,8 +336,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
   gameTime: 120
   countDown: 1
-  phoneSpawnTime: 8
-  emailBannerSpawnTime: 10
+  phoneSpawnTime: 6
+  emailBannerSpawnTime: 8
   smallTimeGainAmount: 10
   smallTimePenaltyAmount: 4
   largeTimeGainAmount: 20
@@ -506,6 +506,10 @@ PrefabInstance:
     - target: {fileID: 2391887128813212560, guid: 59bfce18849234ad69a01e5ecd1314ba, type: 3}
       propertyPath: m_Name
       value: TimePenalty_Root
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391887128813212560, guid: 59bfce18849234ad69a01e5ecd1314ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6241768272156582794, guid: 59bfce18849234ad69a01e5ecd1314ba, type: 3}
       propertyPath: m_Pivot.x
@@ -2238,9 +2242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4976469dd08eb42af51c04495d74ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project._01_Scripts._00_VisualScripts.EmailBannerManager
-  emailBanners: []
-  bannerXOffset: 0
-  bannerYOffset: 0
 --- !u!224 &794743061 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8853058772405875740, guid: 6fa665635244a4d28a6c452dcb54fa4c, type: 3}
@@ -4966,6 +4967,10 @@ PrefabInstance:
     - target: {fileID: 1443478370855747532, guid: 58a89b9398650434785d577961060ff7, type: 3}
       propertyPath: m_Name
       value: TimeBonus_Root
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443478370855747532, guid: 58a89b9398650434785d577961060ff7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3105409192045848661, guid: 58a89b9398650434785d577961060ff7, type: 3}
       propertyPath: m_Pivot.x
