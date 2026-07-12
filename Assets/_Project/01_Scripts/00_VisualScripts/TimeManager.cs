@@ -23,8 +23,7 @@ namespace _Project._01_Scripts._00_VisualScripts
         [SerializeField] private float largeTimePenaltyAmount = 10f;
 
         public float CurrentTime { get; private set; }
-
-        // NEW: Tracks actual survival time
+        
         private float _survivalTime;
 
         private bool _isRunning;
@@ -44,8 +43,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             if (!_isRunning) return;
 
             float delta = Time.deltaTime;
-
-            // ALWAYS track survival time
             _survivalTime += delta;
 
             if (countDown)
@@ -83,8 +80,7 @@ namespace _Project._01_Scripts._00_VisualScripts
         {
             _isRunning = false;
         }
-
-        // NEW: Correct elapsed/survival time
+        
         public float GetSurvivalTime()
         {
             return _survivalTime;

@@ -16,8 +16,6 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         private void OnEnable()
         {
-            // ⭐ CRITICAL LINE ⭐
-            // When this panel becomes active, force it to the top
             transform.SetAsLastSibling();
 
             if (quitButton != null)

@@ -2933,7 +2933,6 @@ MonoBehaviour:
   loseScoreLabel: {fileID: 1561477981}
   loseTimeLabel: {fileID: 2061818113}
   timerManager: {fileID: 75105352}
-  EmailBannerUI: {fileID: 0}
 --- !u!4 &700214527
 Transform:
   m_ObjectHideFlags: 0

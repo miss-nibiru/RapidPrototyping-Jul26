@@ -34,6 +34,7 @@ namespace _Project._01_Scripts._00_VisualScripts
             pauseScreen.SetActive(true);
             loseScreen.SetActive(false);
             pauseScreen.transform.SetAsLastSibling();
+            //I need some sort of logic that will allow for the pause menu buttons functionality!
         }
 
         public void ShowLose()

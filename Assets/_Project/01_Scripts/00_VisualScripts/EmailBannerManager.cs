@@ -33,10 +33,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             StartBannerLoop();
         }
 
-        // ---------------------------------------------------------
-        // SPAWNING LOOP
-        // ---------------------------------------------------------
-
         public void StartBannerLoop()
         {
             if (_bannerSpawnRoutine != null)
@@ -53,11 +49,6 @@ namespace _Project._01_Scripts._00_VisualScripts
                 SpawnRandomBanner();
             }
         }
-
-        // ---------------------------------------------------------
-        // SPAWN A BANNER
-        // ---------------------------------------------------------
-
         public void SpawnRandomBanner()
         {
             if (EmailBank.Instance.Banners.Count == 0)
@@ -79,11 +70,7 @@ namespace _Project._01_Scripts._00_VisualScripts
 
             StartBannerExpirationTimer(newBanner);
         }
-
-        // ---------------------------------------------------------
-        // EXPIRATION TIMER
-        // ---------------------------------------------------------
-
+        
         private void StartBannerExpirationTimer(EmailBannerPanel banner)
         {
             if (_bannerExpirationCoroutines.ContainsKey(banner))
@@ -117,11 +104,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             if (_bannerExpirationCoroutines.ContainsKey(banner))
                 _bannerExpirationCoroutines.Remove(banner);
         }
-
-        // ---------------------------------------------------------
-        // DESTROY BANNER
-        // ---------------------------------------------------------
-
         public void DestroyBanner(EmailBannerPanel bannerToDestroy = null, bool playFeedback = false, bool wasSuccessful = false)
         {
             if (bannerToDestroy == null)
@@ -168,10 +150,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             }
         }
 
-        // ---------------------------------------------------------
-        // REQUIRED BY EmailController (RESTORED)
-        // ---------------------------------------------------------
-
         public void OnBannerHandled(EmailBannerPanel handledBanner, bool wasSuccessful)
         {
             if (handledBanner == null)
@@ -179,11 +157,7 @@ namespace _Project._01_Scripts._00_VisualScripts
 
             DestroyBanner(handledBanner, true, wasSuccessful);
         }
-
-        // ---------------------------------------------------------
-        // STOP SPAWNING (used by LoseScreenPanel)
-        // ---------------------------------------------------------
-
+        
         public void StopSpawning()
         {
             _spawningBanner = false;
@@ -194,10 +168,6 @@ namespace _Project._01_Scripts._00_VisualScripts
                 _bannerSpawnRoutine = null;
             }
         }
-
-        // ---------------------------------------------------------
-        // CLEAR ALL BANNERS (used by LoseScreenPanel)
-        // ---------------------------------------------------------
 
         public void ClearAllBanners()
         {
@@ -211,10 +181,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             _bannerExpirationCoroutines.Clear();
             _currentBanner = null;
         }
-
-        // ---------------------------------------------------------
-        // STOP EVERYTHING (used by GameManager)
-        // ---------------------------------------------------------
 
         public void StopAll()
         {
