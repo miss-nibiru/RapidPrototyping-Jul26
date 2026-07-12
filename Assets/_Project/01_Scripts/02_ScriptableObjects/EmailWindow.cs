@@ -21,7 +21,7 @@ public class EmailWindow : MonoBehaviour
 
     private EmailBannerSO _currentBanner;
     private EmailBannerPanel _currentBannerPanel;
-    private responceType _correctEmailResponceType;
+    private ResponceType _correctEmailResponceType;
     private Coroutine _windowExpirationCoroutine;
     private float _windowRemainingTime;
 
@@ -159,10 +159,4 @@ public class EmailWindow : MonoBehaviour
     {
         return emailPanel != null && emailPanel.activeSelf;
     }
-}
-
-internal abstract class responceType
-{
-    
-
 }

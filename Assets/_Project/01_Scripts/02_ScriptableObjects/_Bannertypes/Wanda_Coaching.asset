@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
   m_Name: Wanda_Coaching
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: Wanda(HR)
+  senderName: Wanda
   subject: Uncoachable
   previewText: you need a hard reset...
   contentsText: you need a hard reset with some synergy training. Maybe a good lunch

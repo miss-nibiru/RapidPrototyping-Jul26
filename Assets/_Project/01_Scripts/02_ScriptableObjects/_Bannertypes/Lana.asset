@@ -17,7 +17,7 @@ MonoBehaviour:
   previewText: After careful consideration...
   contentsText: After careful consideration, you can not have any more vacation time
     until Feb 2028
-  correctResponseType: 0
+  correctResponseType: 1
   bannerDuration: 90
   penalizesTimeWhenMissed: 1
   timePenalty: 6

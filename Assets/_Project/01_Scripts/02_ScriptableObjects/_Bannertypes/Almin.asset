@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
   m_Name: Almin
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: Almin Kassamali
+  senderName: Kassamalmin
   subject: Work faster!
   previewText: can you please get me the...
   contentsText: can you please get me the lost of the employees I should be micromanaging.
@@ -20,5 +20,5 @@ MonoBehaviour:
   bannerDuration: 90
   penalizesTimeWhenMissed: 1
   timePenalty: 20
-  department: Upper Management
+  department: Management
   responseHint: This is the highest dude...

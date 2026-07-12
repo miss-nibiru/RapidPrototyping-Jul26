@@ -18,14 +18,9 @@ MonoBehaviour:
   windowTitle: TodoTodayListFinalfinal
   windowIcon: {fileID: 0}
   windowSize: {x: 800, y: 600}
-  documentBody: 'Open unread emails
-
-    Reply to important emails first
-
-    Drag
-    the correct response into each email
-
-    Delete obvious spam'
+  documentBody: "Open unread emails\nReply to important emails first\nYOU NEED 2
+    REPONSES THAT SOUND THE SAME!!!! \nDrag the correct responses into each email\nYou
+    can ignore obvious spam"
   photoImage: {fileID: 0}
   folderContents: []
   browserImage: {fileID: 0}

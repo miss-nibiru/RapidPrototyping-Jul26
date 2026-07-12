@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
   m_Name: Brian2
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: Brian Jones
+  senderName: Brian J.
   subject: ASAP!
   previewText: Pursuant to subsection 17B...
   contentsText: Pursuant to subsection 17B of the Internal Corporate Regulatory Oversight

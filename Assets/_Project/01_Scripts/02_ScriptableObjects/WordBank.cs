@@ -122,10 +122,3 @@ public class WordBank : MonoBehaviour
         _spawnedWords = null;
     }
 }
-
-public enum ResponceType
-{
-    Formal,
-    Casual,
-    Aggressive,
-}

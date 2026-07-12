@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
   m_Name: Durian
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: Durian Designer Co.
+  senderName: Designer Co.
   subject: Confirmation
   previewText: Confirm version
   contentsText: 'Hi! I found the file: final_FINAL_actuallyfinal.png . Is that good?'

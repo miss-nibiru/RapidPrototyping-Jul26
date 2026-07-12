@@ -28,6 +28,10 @@ namespace _Project._01_Scripts._02_ScriptableObjects
             emailBannerSo = banner;
             bannerDuration = emailBannerSo.bannerDuration;
             timePenalty = emailBannerSo.timePenalty;
+            bannerSenderText.text = emailBannerSo.senderName;
+            bannerSummaryText.text = emailBannerSo.subject;
+            bannerDepartmentText.text = emailBannerSo.department;
+            
             _spawnTime = Time.time;
         }
         

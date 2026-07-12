@@ -11,6 +11,7 @@ namespace _Project._01_Scripts._00_VisualScripts
         [Header("Phone Call Types")]
         [SerializeField] private List<PhoneObject> phoneCalls = new();
         [SerializeField] private AudioClip ringSound;
+        [SerializeField] private UIFeedbackVisual callFeedbackVisual;
 
         private Coroutine _phoneRoutine;
         private bool _callActive;
@@ -51,11 +52,24 @@ namespace _Project._01_Scripts._00_VisualScripts
                 yield return new WaitForSeconds(_currentCall.ringDuration);
                 if (_callActive)
                 {
+                    _callActive = false;
+
                     AudioManager.Instance?.StopLoopingSound();
                     GameManager.Instance.OnCallMissed();
-                    UIManager.Instance.HideCall();
+
+                    if (callFeedbackVisual != null)
+                    {
+                        callFeedbackVisual.PlayFailFeedback(
+                            UIManager.Instance.HideCall
+                        );
+                    }
+                    else
+                    {
+                        UIManager.Instance.HideCall();
+                    }
+                    
+                    _callActive = false;
                 }
-                _callActive = false;
             }
         }
 
@@ -71,23 +85,36 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         private void HandleCallAction(PhoneObject.PhoneActionType playerAction)
         {
-            if (!_callActive)
-                return;
-
+            if (!_callActive) return;
             _callActive = false;
-
             AudioManager.Instance?.StopLoopingSound();
-            UIManager.Instance.HideCall();
-
             bool correctAction = _currentCall.correctAction == playerAction;
-
+            
             if (correctAction)
             {
                 GameManager.Instance.OnCallAnswered();
+
+                if (callFeedbackVisual != null)
+                {
+                    callFeedbackVisual.PlaySuccessFeedback(UIManager.Instance.HideCall);
+                }
+                else
+                {
+                    UIManager.Instance.HideCall();
+                }
             }
             else
             {
                 GameManager.Instance.OnCallMissed();
+
+                if (callFeedbackVisual != null)
+                {
+                    callFeedbackVisual.PlayFailFeedback(UIManager.Instance.HideCall);
+                }
+                else
+                {
+                    UIManager.Instance.HideCall();
+                }
             }
         }
     }

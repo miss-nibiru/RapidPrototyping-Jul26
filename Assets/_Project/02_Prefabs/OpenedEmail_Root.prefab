@@ -66,7 +66,7 @@ MonoBehaviour:
   successSprite: {fileID: 21300000, guid: 5dc01c8c9bb0444f8bf3775100240b8c, type: 3}
   failSprite: {fileID: 21300000, guid: 4d184daf926454112a856ff9c654ba21, type: 3}
   successColor: {r: 0, g: 1, b: 0, a: 0.35}
-  failColor: {r: 1, g: 0, b: 0, a: 0.35}
+  failColor: {r: 1, g: 0, b: 0, a: 0.3764706}
   feedbackDuration: 0.5
 --- !u!114 &5442777093861128766
 MonoBehaviour:

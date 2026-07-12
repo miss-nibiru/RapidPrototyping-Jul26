@@ -22,6 +22,53 @@ MonoBehaviour:
   gain:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: 0}
+--- !u!114 &-8960003578161173138
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a652e1b477b035048be55703f644f7b8, type: 3}
+  m_Name: Fog
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.Fog
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  density:
+    m_OverrideState: 1
+    m_Value: 1
+  startDistance:
+    m_OverrideState: 1
+    m_Value: 0.3
+  endDistance:
+    m_OverrideState: 1
+    m_Value: 1
+  color:
+    m_OverrideState: 1
+    m_Value: {r: 0.7, g: 0.8, b: 0.9, a: 1}
+--- !u!114 &-8655860661987085879
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d684f667141da4482cad4df45c58da, type: 3}
+  m_Name: Pixelate
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.Pixelate
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  blockSize:
+    m_OverrideState: 1
+    m_Value: 4
 --- !u!114 &-8270506406425502121
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -280,6 +327,106 @@ MonoBehaviour:
   SunScatteringIntensity:
     m_OverrideState: 1
     m_Value: 2
+--- !u!114 &-4803147012214924145
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3b851f7d07dbd4bb9544bee8fd5e4c, type: 3}
+  m_Name: GlitchBlock
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.GlitchBlock
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.1
+  blockSize:
+    m_OverrideState: 1
+    m_Value: 16
+  shiftAmount:
+    m_OverrideState: 1
+    m_Value: 0.05
+--- !u!114 &-4786516411985818272
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb56f66b1f4f0404f9a853bd24ce1057, type: 3}
+  m_Name: Scanlines
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.Scanlines
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.3
+  frequency:
+    m_OverrideState: 1
+    m_Value: 480
+  thickness:
+    m_OverrideState: 1
+    m_Value: 0.5
+  speed:
+    m_OverrideState: 1
+    m_Value: 15
+--- !u!114 &-4764765612089103445
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc4e75b979f4e94e91ca38c9fc62613, type: 3}
+  m_Name: OilPaint
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.OilPaint
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  strokeSize:
+    m_OverrideState: 1
+    m_Value: 6
+  smoothness:
+    m_OverrideState: 1
+    m_Value: 1.5
+  directionWeight:
+    m_OverrideState: 1
+    m_Value: 0.8
+  sharpness:
+    m_OverrideState: 1
+    m_Value: 3
+--- !u!114 &-4754717234454478831
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf41f9f1490c05943b7ac693dd889551, type: 3}
+  m_Name: Kuwahara
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.Kuwahara
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  radius:
+    m_OverrideState: 1
+    m_Value: 4
 --- !u!114 &-4463884970436517307
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -299,6 +446,119 @@ MonoBehaviour:
   cropToFit:
     m_OverrideState: 1
     m_Value: 1
+--- !u!114 &-3865731855537208070
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857cdfec3e5e5124eb410286dc15c6e2, type: 3}
+  m_Name: WaveDistortion
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.WaveDistortion
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  amplitude:
+    m_OverrideState: 1
+    m_Value: 0.01
+  frequency:
+    m_OverrideState: 1
+    m_Value: 10
+  speed:
+    m_OverrideState: 1
+    m_Value: 2
+--- !u!114 &-2391569431654367597
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 059a9f40e24117047aaf394822ea9756, type: 3}
+  m_Name: Posterize
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.Posterize
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  levels:
+    m_OverrideState: 1
+    m_Value: 8
+--- !u!114 &-2390806193623244047
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9738125e705c142a35053f07409024, type: 3}
+  m_Name: StaticNoise
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.StaticNoise
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.02
+  blockSize:
+    m_OverrideState: 1
+    m_Value: 1
+  colored:
+    m_OverrideState: 1
+    m_Value: 0
+--- !u!114 &-2384531481486182830
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8cfe8c676830bb499d7d253d35af023, type: 3}
+  m_Name: Halftone
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.Halftone
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  dotSize:
+    m_OverrideState: 1
+    m_Value: 30
+  angle:
+    m_OverrideState: 1
+    m_Value: 45
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+--- !u!114 &-2210540585248699193
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa2b5f7ec28abb54eaf1913b13d2eed2, type: 3}
+  m_Name: Letterbox
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.Letterbox
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  aspect:
+    m_OverrideState: 1
+    m_Value: 2.35
 --- !u!114 &-1410297666881709256
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -342,6 +602,9 @@ MonoBehaviour:
   skyOcclusionIntensityMultiplier:
     m_OverrideState: 1
     m_Value: 1
+  worldOffset:
+    m_OverrideState: 1
+    m_Value: {x: 0, y: 0, z: 0}
 --- !u!114 &-1216621516061285780
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -376,6 +639,9 @@ MonoBehaviour:
   highQualityFiltering:
     m_OverrideState: 1
     m_Value: 0
+  filter:
+    m_OverrideState: 1
+    m_Value: 0
   downscale:
     m_OverrideState: 1
     m_Value: 0
@@ -408,6 +674,40 @@ MonoBehaviour:
   tint:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &-702236127267918290
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c6e9c7ae1506546983f3033c21f607, type: 3}
+  m_Name: Watercolor
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.Watercolor
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  bleedRadius:
+    m_OverrideState: 1
+    m_Value: 6
+  edgeThreshold:
+    m_OverrideState: 1
+    m_Value: 0.1
+  saturationBoost:
+    m_OverrideState: 1
+    m_Value: 1.2
+  paperTexture:
+    m_OverrideState: 1
+    m_Value: 0.3
+  wetEdge:
+    m_OverrideState: 1
+    m_Value: 0.5
+  granulation:
+    m_OverrideState: 1
+    m_Value: 0.3
 --- !u!114 &-581120513425526550
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -462,8 +762,48 @@ MonoBehaviour:
   - {fileID: -6288072647309666549}
   - {fileID: 7518938298396184218}
   - {fileID: -1410297666881709256}
-  - {fileID: -7750755424749557576}
-  - {fileID: -5139089513906902183}
+  - {fileID: -4764765612089103445}
+  - {fileID: 8742280465192689213}
+  - {fileID: -2391569431654367597}
+  - {fileID: 2063498681976296355}
+  - {fileID: -8960003578161173138}
+  - {fileID: -3865731855537208070}
+  - {fileID: 8950792458090381745}
+  - {fileID: -2390806193623244047}
+  - {fileID: -4803147012214924145}
+  - {fileID: -4754717234454478831}
+  - {fileID: 3212916953731948525}
+  - {fileID: -4786516411985818272}
+  - {fileID: 451588892258642628}
+  - {fileID: -702236127267918290}
+  - {fileID: -2384531481486182830}
+  - {fileID: -8655860661987085879}
+  - {fileID: -2210540585248699193}
+--- !u!114 &451588892258642628
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8445fdb9dee43e64f8b12715124adc55, type: 3}
+  m_Name: TrackingDistortion
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.TrackingDistortion
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.02
+  speed:
+    m_OverrideState: 1
+    m_Value: 1
+  bandHeight:
+    m_OverrideState: 1
+    m_Value: 0.05
 --- !u!114 &853819529557874667
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -774,6 +1114,53 @@ MonoBehaviour:
   contribution:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &2063498681976296355
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b241966b73e084baabe71786cf2b0d, type: 3}
+  m_Name: ColorBleed
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.ColorBleed
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  amount:
+    m_OverrideState: 1
+    m_Value: 0.005
+--- !u!114 &3212916953731948525
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aefeac64ff8851443970eeaf4ddcd45a, type: 3}
+  m_Name: EdgeDetection
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.EdgeDetection
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 3
+  threshold:
+    m_OverrideState: 1
+    m_Value: 0.01
+  thickness:
+    m_OverrideState: 1
+    m_Value: 1
+  edgeColor:
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &3959858460715838825
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -921,6 +1308,47 @@ MonoBehaviour:
   scale:
     m_OverrideState: 1
     m_Value: 1
+--- !u!114 &8742280465192689213
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88fb811d247c454bbaafdd117f9b53a, type: 3}
+  m_Name: Border
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.Border
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  width:
+    m_OverrideState: 1
+    m_Value: 0.02
+  color:
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &8950792458090381745
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c96ec651e6fe374090402ef5825f894, type: 3}
+  m_Name: Dithering
+  m_EditorClassIdentifier: Seanzo.PostProcess.Effects::Seanzo.PostProcess.Effects.Dithering
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 0
+  levels:
+    m_OverrideState: 1
+    m_Value: 8
 --- !u!114 &9001657382290151224
 MonoBehaviour:
   m_ObjectHideFlags: 3

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
   m_Name: Kenneth
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: Kenneth Bond
+  senderName: Bond K.
   subject: Pick up the pace!
   previewText: after several mintures of consideration...
   contentsText: after several mintures of consideration I have decided that you are
@@ -21,5 +21,5 @@ MonoBehaviour:
   bannerDuration: 90
   penalizesTimeWhenMissed: 1
   timePenalty: 20
-  department: Upper Management
+  department: Management
   responseHint: I can't be mean to management...

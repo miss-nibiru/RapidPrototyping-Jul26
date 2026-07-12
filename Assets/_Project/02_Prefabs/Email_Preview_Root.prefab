@@ -342,10 +342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d75b5f92fe2ce4a9284e92a17a2b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project._01_Scripts._02_ScriptableObjects.EmailBannerPanel
-  senderName: 
-  subject: 
-  previewText: 
-  contentsText: 
   bannerDuration: 5
   timePenalty: 10
   bannerSenderText: {fileID: 1655348397889884352}
@@ -381,8 +377,8 @@ MonoBehaviour:
   feedbackIconImage: {fileID: 1058901588842539948}
   successSprite: {fileID: 21300000, guid: 5dc01c8c9bb0444f8bf3775100240b8c, type: 3}
   failSprite: {fileID: 21300000, guid: 4d184daf926454112a856ff9c654ba21, type: 3}
-  successColor: {r: 0, g: 1, b: 0, a: 0.7607843}
-  failColor: {r: 1, g: 0, b: 0, a: 1}
+  successColor: {r: 0, g: 1, b: 0, a: 0.5529412}
+  failColor: {r: 1, g: 0, b: 0, a: 0.49803922}
   feedbackDuration: 0.5
 --- !u!222 &1807273804924267458
 CanvasRenderer:
@@ -523,7 +519,7 @@ GameObject:
   - component: {fileID: 2486196089532819348}
   - component: {fileID: 7069268531331229139}
   m_Layer: 5
-  m_Name: Subject
+  m_Name: Summary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -660,7 +656,7 @@ GameObject:
   - component: {fileID: 6612740328472984211}
   - component: {fileID: 1330293964364985659}
   m_Layer: 5
-  m_Name: RemainingTime
+  m_Name: Department
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
