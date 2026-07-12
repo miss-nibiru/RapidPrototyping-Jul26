@@ -66,7 +66,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             _currentBanner = newBanner;
             EmailBank.Instance.SpawnedBanners.Enqueue(newBanner.gameObject);
             StartBannerExpirationTimer(newBanner);
-            EmailController.Instance.SetCurrentBanner(newBanner);
             
         }
 
