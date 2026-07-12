@@ -11,11 +11,13 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         private Coroutine _bannerSpawnRoutine;
         private bool _spawningBanner = true;
+
         private Queue<EmailBannerPanel> _activeBanners = new Queue<EmailBannerPanel>();
         private Dictionary<EmailBannerPanel, Coroutine> _bannerExpirationCoroutines =
             new Dictionary<EmailBannerPanel, Coroutine>();
+
         private EmailBannerPanel _currentBanner;
-        
+
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -25,10 +27,15 @@ namespace _Project._01_Scripts._00_VisualScripts
             }
             Instance = this;
         }
+
         private void Start()
         {
             StartBannerLoop();
         }
+
+        // ---------------------------------------------------------
+        // SPAWNING LOOP
+        // ---------------------------------------------------------
 
         public void StartBannerLoop()
         {
@@ -47,34 +54,43 @@ namespace _Project._01_Scripts._00_VisualScripts
             }
         }
 
+        // ---------------------------------------------------------
+        // SPAWN A BANNER
+        // ---------------------------------------------------------
+
         public void SpawnRandomBanner()
         {
             if (EmailBank.Instance.Banners.Count == 0)
-            {
                 return;
-            }
 
-            var randomIndex = Random.Range(0, EmailBank.Instance.Banners.Count);
-            var newBanner = Instantiate(
+            int randomIndex = Random.Range(0, EmailBank.Instance.Banners.Count);
+
+            EmailBannerPanel newBanner = Instantiate(
                 EmailBank.Instance.BannerPrefabRef,
                 EmailBank.Instance.SpawnPoint
             );
 
-            
             newBanner.InitializeBanner(EmailBank.Instance.Banners[randomIndex]);
+
             _activeBanners.Enqueue(newBanner);
             _currentBanner = newBanner;
+
             EmailBank.Instance.SpawnedBanners.Enqueue(newBanner.gameObject);
+
             StartBannerExpirationTimer(newBanner);
-            
         }
+
+        // ---------------------------------------------------------
+        // EXPIRATION TIMER
+        // ---------------------------------------------------------
 
         private void StartBannerExpirationTimer(EmailBannerPanel banner)
         {
-            if (_bannerExpirationCoroutines.ContainsKey(banner)) StopCoroutine(_bannerExpirationCoroutines[banner]);
-            
-            Coroutine expirationRoutine = StartCoroutine(BannerExpirationRoutine(banner));
-            _bannerExpirationCoroutines[banner] = expirationRoutine;
+            if (_bannerExpirationCoroutines.ContainsKey(banner))
+                StopCoroutine(_bannerExpirationCoroutines[banner]);
+
+            Coroutine routine = StartCoroutine(BannerExpirationRoutine(banner));
+            _bannerExpirationCoroutines[banner] = routine;
         }
 
         private IEnumerator BannerExpirationRoutine(EmailBannerPanel banner)
@@ -94,36 +110,41 @@ namespace _Project._01_Scripts._00_VisualScripts
                 {
                     EmailController.Instance.OnBannerExpired();
                 }
-                
+
                 DestroyBanner(banner, true, false);
             }
-            
-            if (_bannerExpirationCoroutines.ContainsKey(banner)) _bannerExpirationCoroutines.Remove(banner);
+
+            if (_bannerExpirationCoroutines.ContainsKey(banner))
+                _bannerExpirationCoroutines.Remove(banner);
         }
+
+        // ---------------------------------------------------------
+        // DESTROY BANNER
+        // ---------------------------------------------------------
 
         public void DestroyBanner(EmailBannerPanel bannerToDestroy = null, bool playFeedback = false, bool wasSuccessful = false)
         {
             if (bannerToDestroy == null)
             {
                 if (_activeBanners.Count == 0)
-                {
                     return;
-                }
+
                 bannerToDestroy = _activeBanners.Dequeue();
             }
             else
             {
                 Queue<EmailBannerPanel> tempQueue = new Queue<EmailBannerPanel>();
+
                 while (_activeBanners.Count > 0)
                 {
-                    
-                    EmailBannerPanel banner = _activeBanners.Dequeue();
-                    if (banner != bannerToDestroy) tempQueue.Enqueue(banner);
-                    
-                    
+                    EmailBannerPanel b = _activeBanners.Dequeue();
+                    if (b != bannerToDestroy)
+                        tempQueue.Enqueue(b);
                 }
+
                 _activeBanners = tempQueue;
             }
+
             if (_bannerExpirationCoroutines.ContainsKey(bannerToDestroy))
             {
                 StopCoroutine(_bannerExpirationCoroutines[bannerToDestroy]);
@@ -134,8 +155,10 @@ namespace _Project._01_Scripts._00_VisualScripts
             {
                 if (playFeedback)
                 {
-                    if (wasSuccessful) bannerToDestroy.PlaySuccessFeedbackThenDestroy();
-                    else bannerToDestroy.PlayFailFeedbackThenDestroy();
+                    if (wasSuccessful)
+                        bannerToDestroy.PlaySuccessFeedbackThenDestroy();
+                    else
+                        bannerToDestroy.PlayFailFeedbackThenDestroy();
                 }
                 else
                 {
@@ -145,34 +168,26 @@ namespace _Project._01_Scripts._00_VisualScripts
             }
         }
 
+        // ---------------------------------------------------------
+        // REQUIRED BY EmailController (RESTORED)
+        // ---------------------------------------------------------
+
         public void OnBannerHandled(EmailBannerPanel handledBanner, bool wasSuccessful)
         {
             if (handledBanner == null)
-            {
                 return;
-            }
 
             DestroyBanner(handledBanner, true, wasSuccessful);
         }
 
-        public EmailBannerPanel GetCurrentBanner()
-        {
-            return _currentBanner;
-        }
-
-        public Queue<EmailBannerPanel> GetActiveBanners()
-        {
-            return new Queue<EmailBannerPanel>(_activeBanners);
-        }
-
-        public int GetActiveBannerCount()
-        {
-            return _activeBanners.Count;
-        }
+        // ---------------------------------------------------------
+        // STOP SPAWNING (used by LoseScreenPanel)
+        // ---------------------------------------------------------
 
         public void StopSpawning()
         {
             _spawningBanner = false;
+
             if (_bannerSpawnRoutine != null)
             {
                 StopCoroutine(_bannerSpawnRoutine);
@@ -180,24 +195,47 @@ namespace _Project._01_Scripts._00_VisualScripts
             }
         }
 
+        // ---------------------------------------------------------
+        // CLEAR ALL BANNERS (used by LoseScreenPanel)
+        // ---------------------------------------------------------
+
         public void ClearAllBanners()
         {
-            foreach (var banner in _activeBanners)
+            foreach (EmailBannerPanel banner in _activeBanners)
             {
-                if (_bannerExpirationCoroutines.ContainsKey(banner))
-                {
-                    StopCoroutine(_bannerExpirationCoroutines[banner]);
-                    _bannerExpirationCoroutines.Remove(banner);
-                }
                 if (banner != null)
-                {
                     Destroy(banner.gameObject);
-                }
             }
+
             _activeBanners.Clear();
             _bannerExpirationCoroutines.Clear();
             _currentBanner = null;
-           
+        }
+
+        // ---------------------------------------------------------
+        // STOP EVERYTHING (used by GameManager)
+        // ---------------------------------------------------------
+
+        public void StopAll()
+        {
+            StopSpawning();
+
+            foreach (var kvp in _bannerExpirationCoroutines)
+                StopCoroutine(kvp.Value);
+
+            _bannerExpirationCoroutines.Clear();
+
+            ClearAllBanners();
+        }
+        
+        public int GetActiveBannerCount()
+        {
+            return _activeBanners.Count;
+        }
+
+        public EmailBannerPanel GetCurrentBanner()
+        {
+            return _currentBanner;
         }
     }
 }

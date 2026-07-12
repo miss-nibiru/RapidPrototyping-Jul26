@@ -45,11 +45,15 @@ namespace _Project._01_Scripts._00_VisualScripts
             while (true)
             {
                 yield return new WaitForSeconds(TimeManager.Instance.GetPhoneSpawnTime());
+
                 _currentCall = phoneCalls[Random.Range(0, phoneCalls.Count)];
                 _callActive = true;
+
                 UIManager.Instance.ShowCall(_currentCall);
                 AudioManager.Instance?.PlayLoopingSound(ringSound);
+
                 yield return new WaitForSeconds(_currentCall.ringDuration);
+
                 if (_callActive)
                 {
                     _callActive = false;
@@ -58,17 +62,9 @@ namespace _Project._01_Scripts._00_VisualScripts
                     GameManager.Instance.OnCallMissed();
 
                     if (callFeedbackVisual != null)
-                    {
-                        callFeedbackVisual.PlayFailFeedback(
-                            UIManager.Instance.HideCall
-                        );
-                    }
+                        callFeedbackVisual.PlayFailFeedback(UIManager.Instance.HideCall);
                     else
-                    {
                         UIManager.Instance.HideCall();
-                    }
-                    
-                    _callActive = false;
                 }
             }
         }
@@ -86,36 +82,43 @@ namespace _Project._01_Scripts._00_VisualScripts
         private void HandleCallAction(PhoneObject.PhoneActionType playerAction)
         {
             if (!_callActive) return;
+
             _callActive = false;
             AudioManager.Instance?.StopLoopingSound();
+
             bool correctAction = _currentCall.correctAction == playerAction;
-            
+
             if (correctAction)
             {
                 GameManager.Instance.OnCallAnswered();
 
                 if (callFeedbackVisual != null)
-                {
                     callFeedbackVisual.PlaySuccessFeedback(UIManager.Instance.HideCall);
-                }
                 else
-                {
                     UIManager.Instance.HideCall();
-                }
             }
             else
             {
                 GameManager.Instance.OnCallMissed();
 
                 if (callFeedbackVisual != null)
-                {
                     callFeedbackVisual.PlayFailFeedback(UIManager.Instance.HideCall);
-                }
                 else
-                {
                     UIManager.Instance.HideCall();
-                }
             }
+        }
+
+        public void StopAll()
+        {
+            if (_phoneRoutine != null)
+            {
+                StopCoroutine(_phoneRoutine);
+                _phoneRoutine = null;
+            }
+
+            _callActive = false;
+            UIManager.Instance.HideCall();
+            AudioManager.Instance?.StopLoopingSound();
         }
     }
 }

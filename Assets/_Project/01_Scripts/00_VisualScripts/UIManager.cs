@@ -23,6 +23,10 @@ namespace _Project._01_Scripts._00_VisualScripts
         [SerializeField] private TextMeshProUGUI penaltyText;
         [SerializeField] private float penaltyDisplayDuration = 1.5f;
 
+        [Header("Lose Screen UI")]
+        [SerializeField] private TextMeshProUGUI elapsedTimeText;
+        [SerializeField] private TextMeshProUGUI scoreText;
+
         [SerializeField] private TimeManager timerManager;
         
         [Header("Email Banner")]
@@ -134,6 +138,18 @@ namespace _Project._01_Scripts._00_VisualScripts
 
             penaltyText.gameObject.SetActive(false);
             _penaltyCoroutine = null;
+        }
+
+        public void ShowLoseScreen(float elapsedTime, string scoreLabel)
+        {
+            int minutes = Mathf.FloorToInt(elapsedTime / 60f);
+            int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+
+            if (elapsedTimeText != null)
+                elapsedTimeText.text = $"Time Lasted: {minutes:00}:{seconds:00}";
+
+            if (scoreText != null)
+                scoreText.text = scoreLabel;
         }
     }
 }

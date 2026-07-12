@@ -22,9 +22,7 @@ namespace _Project._01_Scripts._00_VisualScripts
                 Destroy(gameObject);
                 return;
             }
-
             Instance = this;
-
             ShowGameplay();
         }
 
@@ -40,28 +38,39 @@ namespace _Project._01_Scripts._00_VisualScripts
                 unpauseButton.onClick.RemoveListener(OnUnpauseButton);
         }
 
-        public void ShowPause()
-        {
-            gameplayScreen.SetActive(false);
-            pauseScreen.SetActive(true);
-        }
-    
-        public void ShowLose()
-        {
-            gameplayScreen.SetActive(false);
-            loseScreen.SetActive(true);
-        }
-
         public void ShowGameplay()
         {
-            gameplayScreen.SetActive(true);
-            pauseScreen.SetActive(false);
+            if (gameplayScreen != null)
+                gameplayScreen.SetActive(true);
+            if (pauseScreen != null)
+                pauseScreen.SetActive(false);
+            if (loseScreen != null)
+                loseScreen.SetActive(false);
+        }
+
+        public void ShowPause()
+        {
+            if (gameplayScreen != null)
+                gameplayScreen.SetActive(false);
+            if (pauseScreen != null)
+                pauseScreen.SetActive(true);
+            if (loseScreen != null)
+                loseScreen.SetActive(false);
+        }
+
+        public void ShowLose()
+        {
+            if (gameplayScreen != null)
+                gameplayScreen.SetActive(false);
+            if (pauseScreen != null)
+                pauseScreen.SetActive(false);
+            if (loseScreen != null)
+                loseScreen.SetActive(true);
         }
 
         private void OnUnpauseButton()
         {
-            GameManager.Instance.OnResume();
+            GameManager.Instance?.OnResume();
         }
     }
 }
-
