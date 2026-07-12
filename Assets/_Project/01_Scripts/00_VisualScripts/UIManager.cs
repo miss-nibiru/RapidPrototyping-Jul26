@@ -26,8 +26,13 @@ namespace _Project._01_Scripts._00_VisualScripts
         [Header("Lose Screen UI")]
         [SerializeField] private TextMeshProUGUI elapsedTimeText;
         [SerializeField] private TextMeshProUGUI scoreText;
-
+        [SerializeField] private GameObject loseScreenRoot;
+        [SerializeField] private TextMeshProUGUI loseScoreLabel;
+        [SerializeField] private TextMeshProUGUI loseTimeLabel;
+        
+        
         [SerializeField] private TimeManager timerManager;
+        
         
         [Header("Email Banner")]
         public GameObject EmailBannerUI;
@@ -150,6 +155,14 @@ namespace _Project._01_Scripts._00_VisualScripts
 
             if (scoreText != null)
                 scoreText.text = scoreLabel;
+            loseScreenRoot.transform.SetAsLastSibling();
+        }
+        
+        private string FormatTime(float time)
+        {
+            int minutes = Mathf.FloorToInt(time / 60f);
+            int seconds = Mathf.FloorToInt(time % 60f);
+            return $"{minutes:00}:{seconds:00}";
         }
     }
 }

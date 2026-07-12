@@ -56,18 +56,13 @@ namespace _Project._01_Scripts._00_VisualScripts
             Time.timeScale = 0f;
 
             audioManager.PlayLoopingSound(gameoverSound);
-
-            // STOP ALL SYSTEMS
+            
             EmailBannerManager.Instance?.StopAll();
             PhoneManager.Instance?.StopAll();
-
             if (BrowserManager.Instance != null)
                 BrowserManager.Instance.enabled = false;
-
             if (ComputerWindowSpawner.Instance != null)
                 ComputerWindowSpawner.Instance.enabled = false;
-
-            // CORRECT SCORE INPUT: survival time
             float elapsedTime = timerManager.GetSurvivalTime();
             string scoreLabel = ScoreManager.Instance.GetScoreCategoryLabel(elapsedTime);
 

@@ -7,8 +7,6 @@ namespace _Project._01_Scripts._00_VisualScripts
     {
         private PlayerInputAction _actions;
         private WordBank _wordBank;
-        
-        // Pause input debouncing
         private bool _pauseInputPressed;
         
         private void Awake()
@@ -19,7 +17,6 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         private void OnEnable()
         {
-            // Validate action map by checking an actual action
             if (_actions.Player.Move == null)
             {
                 Debug.LogError("[InputManager2D] ERROR: Player action map is missing or named incorrectly.");
@@ -60,7 +57,6 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         private void OnPauseCanceled(InputAction.CallbackContext ctx)
         {
-            // Reset flag when button is released
             _pauseInputPressed = false;
         }
 
