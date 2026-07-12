@@ -9,20 +9,12 @@ namespace _Project._01_Scripts._00_VisualScripts
     {
         public static EmailBannerManager Instance { get; private set; }
 
-        [Header("Banner Types")]
-        [SerializeField] private List<EmailBannerSO> emailBanners = new();
-
-        [Header("Banner Layout")]
-        [SerializeField] private float bannerXOffset = 350f; 
-        [SerializeField] private float bannerYOffset = 0f;   
-
         private Coroutine _bannerSpawnRoutine;
         private bool _spawningBanner = true;
         private Queue<EmailBannerPanel> _activeBanners = new Queue<EmailBannerPanel>();
         private Dictionary<EmailBannerPanel, Coroutine> _bannerExpirationCoroutines =
             new Dictionary<EmailBannerPanel, Coroutine>();
         private EmailBannerPanel _currentBanner;
-        private int _bannerSpawnCount = 0; 
         
         private void Awake()
         {
@@ -68,20 +60,14 @@ namespace _Project._01_Scripts._00_VisualScripts
                 EmailBank.Instance.SpawnPoint
             );
 
-            RectTransform bannerRect = newBanner.GetComponent<RectTransform>();
-            float xPos = _bannerSpawnCount * bannerXOffset;
-            float yPos = bannerYOffset;
-            bannerRect.anchoredPosition = new Vector2(xPos, yPos);
-            newBanner.gameObject.transform.SetParent(EmailBank.Instance.SpawnPoint);
+            
             newBanner.InitializeBanner(EmailBank.Instance.Banners[randomIndex]);
             _activeBanners.Enqueue(newBanner);
             _currentBanner = newBanner;
             EmailBank.Instance.SpawnedBanners.Enqueue(newBanner.gameObject);
             StartBannerExpirationTimer(newBanner);
             EmailController.Instance.SetCurrentBanner(newBanner);
-            _bannerSpawnCount++;
-            Debug.Log($"[EmailBannerManager] Spawned banner #{_bannerSpawnCount} from {newBanner.senderName}. " +
-                      $"Active banners: {_activeBanners.Count}");
+            
         }
 
         private void StartBannerExpirationTimer(EmailBannerPanel banner)
@@ -109,17 +95,14 @@ namespace _Project._01_Scripts._00_VisualScripts
                 {
                     EmailController.Instance.OnBannerExpired();
                 }
-                else
-                {
-                    Debug.Log("[EmailBannerManager] Expired banner is NOT current - window stays open");
-                }
-                DestroyBanner(banner);
+                
+                DestroyBanner(banner, true, false);
             }
             
             if (_bannerExpirationCoroutines.ContainsKey(banner)) _bannerExpirationCoroutines.Remove(banner);
         }
 
-        public void DestroyBanner(EmailBannerPanel bannerToDestroy = null)
+        public void DestroyBanner(EmailBannerPanel bannerToDestroy = null, bool playFeedback = false, bool wasSuccessful = false)
         {
             if (bannerToDestroy == null)
             {
@@ -150,16 +133,16 @@ namespace _Project._01_Scripts._00_VisualScripts
 
             if (bannerToDestroy != null)
             {
-                bannerToDestroy.gameObject.SetActive(false);
-                Destroy(bannerToDestroy.gameObject);
-            }
-            if (_activeBanners.Count > 0)
-            {
-                _currentBanner = _activeBanners.Peek();
-            }
-            else
-            {
-                _currentBanner = null;
+                if (playFeedback)
+                {
+                    if (wasSuccessful) bannerToDestroy.PlaySuccessFeedbackThenDestroy();
+                    else bannerToDestroy.PlayFailFeedbackThenDestroy();
+                }
+                else
+                {
+                    bannerToDestroy.gameObject.SetActive(false);
+                    Destroy(bannerToDestroy.gameObject);
+                }
             }
         }
 
@@ -169,7 +152,8 @@ namespace _Project._01_Scripts._00_VisualScripts
             {
                 return;
             }
-            DestroyBanner(handledBanner);
+
+            DestroyBanner(handledBanner, true, true);
         }
 
         public EmailBannerPanel GetCurrentBanner()
@@ -214,7 +198,7 @@ namespace _Project._01_Scripts._00_VisualScripts
             _activeBanners.Clear();
             _bannerExpirationCoroutines.Clear();
             _currentBanner = null;
-            _bannerSpawnCount = 0;
+           
         }
     }
 }

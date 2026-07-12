@@ -16,6 +16,7 @@ namespace _Project._01_Scripts._02_ScriptableObjects
         [SerializeField] private TextMeshProUGUI bannerSenderText;
         [SerializeField] private TextMeshProUGUI bannerSummaryText;
         [SerializeField] private TextMeshProUGUI bannerDepartmentText;
+        [SerializeField] private UIFeedbackVisual feedbackVisual;
         
         public EmailBannerSO emailBannerSo;
         private float _spawnTime;
@@ -53,6 +54,29 @@ namespace _Project._01_Scripts._02_ScriptableObjects
         public float GetElapsedTime()
         {
             return Time.time - _spawnTime;
+        }
+        public void PlaySuccessFeedbackThenDestroy()
+        {
+            if (feedbackVisual != null)
+            {
+                feedbackVisual.PlaySuccessFeedback(ClearBanner);
+            }
+            else
+            {
+                ClearBanner();
+            }
+        }
+
+        public void PlayFailFeedbackThenDestroy()
+        {
+            if (feedbackVisual != null)
+            {
+                feedbackVisual.PlayFailFeedback(ClearBanner);
+            }
+            else
+            {
+                ClearBanner();
+            }
         }
 
         public void ClearBanner()
