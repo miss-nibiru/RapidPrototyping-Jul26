@@ -23,6 +23,10 @@ namespace _Project._01_Scripts._00_VisualScripts
         [SerializeField] private float largeTimePenaltyAmount = 10f;
 
         public float CurrentTime { get; private set; }
+
+        // NEW: Tracks actual survival time
+        private float _survivalTime;
+
         private bool _isRunning;
 
         private void Awake()
@@ -41,6 +45,9 @@ namespace _Project._01_Scripts._00_VisualScripts
 
             float delta = Time.deltaTime;
 
+            // ALWAYS track survival time
+            _survivalTime += delta;
+
             if (countDown)
             {
                 CurrentTime -= delta;
@@ -49,6 +56,7 @@ namespace _Project._01_Scripts._00_VisualScripts
                 {
                     CurrentTime = 0f;
                     _isRunning = false;
+
                     UIManager.Instance.UpdateTimerUI(CurrentTime);
                     GameManager.Instance.OnTimeExpired();
                     return;
@@ -65,6 +73,8 @@ namespace _Project._01_Scripts._00_VisualScripts
         public void StartTimer()
         {
             _isRunning = true;
+            _survivalTime = 0f; // reset survival time
+
             CurrentTime = countDown ? gameTime : 0f;
             UIManager.Instance.UpdateTimerUI(CurrentTime);
         }
@@ -74,12 +84,10 @@ namespace _Project._01_Scripts._00_VisualScripts
             _isRunning = false;
         }
 
-        public float GetElapsedTime()
+        // NEW: Correct elapsed/survival time
+        public float GetSurvivalTime()
         {
-            if (countDown)
-                return gameTime - CurrentTime;
-
-            return CurrentTime;
+            return _survivalTime;
         }
 
         public void AddTime(float amount)
@@ -105,3 +113,4 @@ namespace _Project._01_Scripts._00_VisualScripts
         public float GetEmailBannerSpawnTime() => emailBannerSpawnTime;
     }
 }
+

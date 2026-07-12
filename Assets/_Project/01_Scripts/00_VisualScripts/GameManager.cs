@@ -67,7 +67,8 @@ namespace _Project._01_Scripts._00_VisualScripts
             if (ComputerWindowSpawner.Instance != null)
                 ComputerWindowSpawner.Instance.enabled = false;
 
-            float elapsedTime = timerManager.GetElapsedTime();
+            // CORRECT SCORE INPUT: survival time
+            float elapsedTime = timerManager.GetSurvivalTime();
             string scoreLabel = ScoreManager.Instance.GetScoreCategoryLabel(elapsedTime);
 
             UIManager.Instance.ShowLoseScreen(elapsedTime, scoreLabel);
