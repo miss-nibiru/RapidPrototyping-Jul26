@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ComputerWindowSpawner : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class ComputerWindowSpawner : MonoBehaviour
         
 
         GameObject newWindow = Instantiate(prefabToOpen, windowParent);
+        newWindow.SetActive(true);
 
         RectTransform windowRect = newWindow.GetComponent<RectTransform>();
         if (windowRect != null)
@@ -55,7 +57,11 @@ public class ComputerWindowSpawner : MonoBehaviour
 
         PhotoWindow photoWindow = newWindow.GetComponent<PhotoWindow>();
         if (photoWindow != null) photoWindow.Setup(fileData);
+        
+        BrowserWindow browserWindow = newWindow.GetComponent<BrowserWindow>();
 
+        if (browserWindow != null) browserWindow.Setup(fileData);
+        
         _openWindowCount++;
     }
 
@@ -86,4 +92,25 @@ public class ComputerWindowSpawner : MonoBehaviour
             default: return null;
         }
     }
+    
+    public void StartCriticalErrorSequence(ComputerFilesData errorData, int errorCount, float spawnInterval)
+    {
+        if (errorData == null) return;
+
+        StartCoroutine(CriticalErrorSequenceRoutine(errorData, errorCount, spawnInterval));
+    }
+
+    private IEnumerator CriticalErrorSequenceRoutine(
+        ComputerFilesData errorData,
+        int errorCount,
+        float spawnInterval)
+    {
+        for (int i = 0; i < errorCount; i++)
+        {
+            OpenFile(errorData);
+
+            yield return new WaitForSeconds(spawnInterval);
+        }
+    }
+    
 }

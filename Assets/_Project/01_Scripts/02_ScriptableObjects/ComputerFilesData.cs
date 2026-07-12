@@ -13,9 +13,25 @@ public enum ComputerFileType
     Notification,
 }
 
+public enum BrowserButtonAction
+{
+    None,
+    AddTime,
+    ReduceTime,
+    SpawnCriticalErrors
+}
+
+public enum CriticalErrorButtonAction
+{
+    None,
+    AddTime,
+    ReduceTime
+}
+
 [CreateAssetMenu(fileName = "NewComputerFilesData", menuName = "Scriptable Objects/Computer Files Data")]
 public class ComputerFilesData : ScriptableObject
 {
+    
     [Header("Basic File Info")]
     public string fileName;
     public Sprite fileIcon;
@@ -39,12 +55,16 @@ public class ComputerFilesData : ScriptableObject
     [Header("Browser Content")]
     public Sprite browserImage;
     public string browserButtonText = "Buy Now";
+    public bool showBrowserButton = true;
+    public Vector2 browserButtonPosition;
 
     [Header("Browser Button Behavior")]
-    public bool browserButtonTriggersWaitingCursor = true;
-    public float browserWaitingDuration = 2f;
-    public bool browserButtonStartsPhoneCall;
-    
+    public BrowserButtonAction browserButtonAction = BrowserButtonAction.None;
+    public float browserTimeAmount = 5f;
+
+    public ComputerFilesData criticalErrorToSpawn;
+    public int criticalErrorCount = 5;
+    public float criticalErrorSpawnInterval = 1f;
     
     [Header("Error Content")]
     public string errorTitle;
@@ -52,23 +72,15 @@ public class ComputerFilesData : ScriptableObject
     [TextArea(2, 12)]
     public string errorMessage;
     public string errorButtonText = "OK";
+    public CriticalErrorButtonAction criticalErrorButtonAction = CriticalErrorButtonAction.None;
+
+    public float criticalErrorTimeAmount = 5f;
 
     [Header("Notification Content")]
     public string notificationTitle;
-
     [TextArea(2, 8)]
     public string notificationMessage;
-
-    [Header("Corrupt Behaviours")]
-    public bool triggersWaitingCursor;
-    public float waitingDuration = 1.5f;
-
-    public bool spawnsCriticalError;
-    public ComputerFilesData criticalErrorToSpawn;
-
-    public bool opensMultipleWindows;
-    public int extraWindowCount = 1;
-
+    
     [Header("Optional Settings")]
     public bool canBeOpenedMultipleTimes = true;
     public bool autoClose;

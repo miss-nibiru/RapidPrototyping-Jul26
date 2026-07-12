@@ -10,25 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22bdf6e67d8d64da2ad4f22623d22371, type: 3}
-  m_Name: SO_PersonalStuff
+  m_Name: SO_Browser_001
   m_EditorClassIdentifier: Assembly-CSharp::ComputerFilesData
-  fileName: Personal Stuff
-  fileIcon: {fileID: 21300000, guid: a8692e8b6dd2d45ec9dd3166474408dc, type: 3}
-  fileType: 2
-  windowTitle: PersonalStuff
-  windowIcon: {fileID: 21300000, guid: df977d5ffabd540c1be916c070ef4903, type: 3}
-  windowSize: {x: 800, y: 800}
+  fileName: Test Website
+  fileIcon: {fileID: 0}
+  fileType: 3
+  windowTitle: Test Website
+  windowIcon: {fileID: 0}
+  windowSize: {x: 800, y: 600}
   documentBody: 
   photoImage: {fileID: 0}
-  folderContents:
-  - {fileID: 11400000, guid: bb72b5197a5bf4610a9630b6ecb882ae, type: 2}
-  - {fileID: 11400000, guid: 7e6bcc637d65d418db9a09a02662fe6c, type: 2}
-  - {fileID: 11400000, guid: 05c1190e6f6fe48d1b63cac94741ffa8, type: 2}
-  browserImage: {fileID: 0}
-  browserButtonText: Buy Now
+  folderContents: []
+  browserImage: {fileID: 21300000, guid: 8d71edb5e7ee74a62b56c839a211868c, type: 3}
+  browserButtonText: Don't Click
   showBrowserButton: 1
   browserButtonPosition: {x: 0, y: 0}
-  browserButtonAction: 0
+  browserButtonAction: 1
   browserTimeAmount: 5
   criticalErrorToSpawn: {fileID: 0}
   criticalErrorCount: 5
@@ -40,6 +37,6 @@ MonoBehaviour:
   criticalErrorTimeAmount: 5
   notificationTitle: 
   notificationMessage: 
-  canBeOpenedMultipleTimes: 0
+  canBeOpenedMultipleTimes: 1
   autoClose: 0
   autoCloseDelay: 3
