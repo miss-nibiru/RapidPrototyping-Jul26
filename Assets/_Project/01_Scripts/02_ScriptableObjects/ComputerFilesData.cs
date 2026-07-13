@@ -28,6 +28,14 @@ public enum CriticalErrorButtonAction
     ReduceTime
 }
 
+public enum DocumentButtonAction
+{
+    None,
+    AddTime,
+    ReduceTime,
+    WinGame
+}
+
 [CreateAssetMenu(fileName = "NewComputerFilesData", menuName = "Scriptable Objects/Computer Files Data")]
 public class ComputerFilesData : ScriptableObject
 {
@@ -39,12 +47,16 @@ public class ComputerFilesData : ScriptableObject
 
     [Header("Window Info")]
     public string windowTitle;
-    public Sprite windowIcon;
-    public Vector2 windowSize = new Vector2(800, 600);
+    public Vector2 windowSize = new Vector2(800, 800);
 
     [Header("Document Content")]
     [TextArea(5, 30)]
     public string documentBody;
+    
+    public bool hasButton;
+    public string buttonText;
+    public DocumentButtonAction buttonAction;
+    public float timeAmount;
 
     [Header("Photo Content")]
     public Sprite photoImage;
@@ -61,7 +73,7 @@ public class ComputerFilesData : ScriptableObject
     [Header("Browser Button Behavior")]
     public BrowserButtonAction browserButtonAction = BrowserButtonAction.None;
     public float browserTimeAmount = 5f;
-
+    
     public ComputerFilesData criticalErrorToSpawn;
     public int criticalErrorCount = 5;
     public float criticalErrorSpawnInterval = 1f;
@@ -85,4 +97,5 @@ public class ComputerFilesData : ScriptableObject
     public bool canBeOpenedMultipleTimes = true;
     public bool autoClose;
     public float autoCloseDelay = 3f;
+    
 }

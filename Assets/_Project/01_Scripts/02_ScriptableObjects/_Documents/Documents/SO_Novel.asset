@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22bdf6e67d8d64da2ad4f22623d22371, type: 3}
-  m_Name: SO_ToDoList
+  m_Name: SO_Novel
   m_EditorClassIdentifier: Assembly-CSharp::DocumentData
-  fileName: TodoList.pdf
+  fileName: My best seller novel!.pdf
   fileIcon: {fileID: 21300000, guid: 4a238560b30ca435bac666a7bcb37f5e, type: 3}
   fileType: 0
-  windowTitle: TodoTodayListFinalfinal.pdf
-  windowIcon: {fileID: 0}
+  windowTitle: Im gonna get so rich with this!
   windowSize: {x: 800, y: 600}
-  documentBody: "Open unread emails\nReply to important emails first\nYOU NEED 2
-    REPONSES THAT SOUND THE SAME!!!! \nDrag the correct responses into each email\nYou
-    can ignore obvious spam"
+  documentBody: Once upon a time...
+  hasButton: 1
+  buttonText: Write some
+  buttonAction: 2
+  timeAmount: 10
   photoImage: {fileID: 0}
   folderContents: []
   browserImage: {fileID: 0}

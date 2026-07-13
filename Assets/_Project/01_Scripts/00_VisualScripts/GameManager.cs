@@ -66,7 +66,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             if (quitButton != null)
                 quitButton.onClick.RemoveListener(OnQuit);
         }
-        
     
         public void OnEmailIncorrect()
         {
@@ -174,6 +173,12 @@ namespace _Project._01_Scripts._00_VisualScripts
                 uiManager?.ShowPenaltyText("TIME PENALTY", Color.red);
                 audioManager?.PlaySound(null); 
             }
+        }
+
+        public void WinGame()
+        {
+            
+            
         }
 
         private void OnQuit()
