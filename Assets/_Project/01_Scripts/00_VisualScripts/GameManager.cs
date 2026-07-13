@@ -1,5 +1,5 @@
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 namespace _Project._01_Scripts._00_VisualScripts
 {
@@ -19,7 +19,6 @@ namespace _Project._01_Scripts._00_VisualScripts
         [SerializeField] private AudioClip phoneAnsweredSound;
         [SerializeField] private AudioClip phoneMissedSound;
         [SerializeField] private AudioClip emailExpiredSound;
-        [SerializeField] private AudioClip gameoverSound;
 
         private bool _isPaused;
         private bool _gameOver;
@@ -51,12 +50,8 @@ namespace _Project._01_Scripts._00_VisualScripts
         public void OnTimeExpired()
         {
             if (_gameOver) return;
-
             _gameOver = true;
             Time.timeScale = 0f;
-
-            audioManager.PlayLoopingSound(gameoverSound);
-            
             EmailBannerManager.Instance?.StopAll();
             PhoneManager.Instance?.StopAll();
             if (BrowserManager.Instance != null)
@@ -65,57 +60,82 @@ namespace _Project._01_Scripts._00_VisualScripts
                 ComputerWindowSpawner.Instance.enabled = false;
             float elapsedTime = timerManager.GetSurvivalTime();
             string scoreLabel = ScoreManager.Instance.GetScoreCategoryLabel(elapsedTime);
-
-            UIManager.Instance.ShowLoseScreen(elapsedTime, scoreLabel);
-            ScreenManager.Instance.ShowLose();
+            if (uiManager != null)
+                uiManager.ShowLoseScreen(elapsedTime, scoreLabel);
+            if (ScreenManager.Instance != null)
+                ScreenManager.Instance.ShowLose();
         }
 
         public void OnEmailIncorrect()
         {
             if (_gameOver) return;
-            timerManager.SubtractTime(timerManager.GetSmallTimePenaltyAmount());
-            uiManager.ShowPenaltyText("TIME PENALTY", Color.red);
-            audioManager.PlaySound(emailIncorrectSound);
+            if (timerManager != null)
+            {
+                timerManager.SubtractTime(timerManager.GetSmallTimePenaltyAmount());
+                if (uiManager != null)
+                    uiManager.ShowPenaltyText("TIME PENALTY", Color.red);
+                if (audioManager != null)
+                    audioManager.PlaySound(emailIncorrectSound);
+            }
         }
 
         public void OnEmailCorrect()
         {
             if (_gameOver) return;
-            timerManager.AddTime(timerManager.GetSmallTimeGainAmount());
-            uiManager.ShowBonusText("BONUS TIME!", Color.green);
-            audioManager.PlaySound(emailCorrectSound);
+            if (timerManager != null)
+            {
+                timerManager.AddTime(timerManager.GetSmallTimeGainAmount());
+                if (uiManager != null)
+                    uiManager.ShowBonusText("BONUS TIME!", Color.green);
+                if (audioManager != null)
+                    audioManager.PlaySound(emailCorrectSound);
+            }
         }
-
         public void OnCallAnswered()
         {
             if (_gameOver) return;
-            timerManager.AddTime(timerManager.GetLargeTimeGainAmount());
-            uiManager.ShowBonusText("BONUS TIME!", Color.green);
-            audioManager.PlaySound(phoneAnsweredSound);
+            if (timerManager != null)
+            {
+                timerManager.AddTime(timerManager.GetLargeTimeGainAmount());
+                if (uiManager != null)
+                    uiManager.ShowBonusText("BONUS TIME!", Color.green);
+                if (audioManager != null)
+                    audioManager.PlaySound(phoneAnsweredSound);
+            }
         }
 
         public void OnCallMissed()
         {
             if (_gameOver) return;
-            timerManager.SubtractTime(timerManager.GetLargeTimePenaltyAmount());
-            uiManager.ShowPenaltyText("TIME PENALTY", Color.red);
-            audioManager.PlaySound(phoneMissedSound);
+            if (timerManager != null)
+            {
+                timerManager.SubtractTime(timerManager.GetLargeTimePenaltyAmount());
+                if (uiManager != null)
+                    uiManager.ShowPenaltyText("TIME PENALTY", Color.red);
+                if (audioManager != null)
+                    audioManager.PlaySound(phoneMissedSound);
+            }
         }
-
         public void OnEmailBannerMissed()
         {
             if (_gameOver) return;
-            timerManager.SubtractTime(timerManager.GetLargeTimePenaltyAmount());
-            uiManager.ShowPenaltyText("TIME PENALTY", Color.red);
-            audioManager.PlaySound(emailExpiredSound);
+            if (timerManager != null)
+            {
+                timerManager.SubtractTime(timerManager.GetLargeTimePenaltyAmount());
+                if (uiManager != null)
+                    uiManager.ShowPenaltyText("TIME PENALTY", Color.red);
+                if (audioManager != null)
+                    audioManager.PlaySound(emailExpiredSound);
+            }
         }
 
-        public void Pause()
+        private void Pause()
         {
             if (_gameOver) return;
             _isPaused = true;
             Time.timeScale = 0f;
-            ScreenManager.Instance.ShowPause();
+            if (ScreenManager.Instance != null)
+                ScreenManager.Instance.ShowPause();
         }
 
         public void OnResume()
@@ -123,9 +143,9 @@ namespace _Project._01_Scripts._00_VisualScripts
             if (_gameOver) return;
             _isPaused = false;
             Time.timeScale = 1f;
-            ScreenManager.Instance.ShowGameplay();
+            if (ScreenManager.Instance != null)
+                ScreenManager.Instance.ShowGameplay();
         }
-
         public void TogglePause()
         {
             if (_gameOver) return;
@@ -134,7 +154,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             else
                 Pause();
         }
-
         public void OnQuit()
         {
 #if UNITY_EDITOR

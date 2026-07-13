@@ -11,12 +11,9 @@ public class Notification : MonoBehaviour
     {
         if (EmailBannerManager.Instance == null)
             return;
-
         int activeEmailCount =
             EmailBannerManager.Instance.GetActiveBannerCount();
-
         bool hasActiveEmails = activeEmailCount > 0;
-
         notification.SetActive(hasActiveEmails);
 
         if (hasActiveEmails)

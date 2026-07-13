@@ -33,17 +33,16 @@ namespace _Project._01_Scripts._00_VisualScripts
             {
                 return false;
             }
-            
             if (targetSlot == slotOne)
             {
                 if (_wordInSlotOne != null)
                 {
                     _wordInSlotOne.ReturnToSpawn();
                 }
-                
                 _wordInSlotOne = word;
                 word.rectTransform.SetParent(slotOne);
                 word.rectTransform.anchoredPosition = Vector3.zero;
+                word.placed = true; 
                 return true;
             }
             
@@ -53,13 +52,12 @@ namespace _Project._01_Scripts._00_VisualScripts
                 {
                     _wordInSlotTwo.ReturnToSpawn();
                 }
-                
                 _wordInSlotTwo = word;
                 word.rectTransform.SetParent(slotTwo);
                 word.rectTransform.anchoredPosition = Vector3.zero;
+                word.placed = true; 
                 return true;
             }
-            
             return false;
         }
         
@@ -72,15 +70,18 @@ namespace _Project._01_Scripts._00_VisualScripts
         {
             return new[] { _wordInSlotOne, _wordInSlotTwo };
         }
+
         public void RemoveWordFromSlot(WordObject word)
         {
             if (_wordInSlotOne == word)
             {
                 _wordInSlotOne = null;
+                word.placed = false;  // ← Also clear the flag here
             }
             else if (_wordInSlotTwo == word)
             {
                 _wordInSlotTwo = null;
+                word.placed = false;  // ← Also clear the flag here
             }
         }
         
@@ -95,11 +96,12 @@ namespace _Project._01_Scripts._00_VisualScripts
         {
             if (_wordInSlotOne != null)
             {
+                _wordInSlotOne.placed = false;  
                 _wordInSlotOne.ReturnToSpawn();
             }
-            
             if (_wordInSlotTwo != null)
             {
+                _wordInSlotTwo.placed = false;  
                 _wordInSlotTwo.ReturnToSpawn();
             }
             _wordInSlotOne = null;
