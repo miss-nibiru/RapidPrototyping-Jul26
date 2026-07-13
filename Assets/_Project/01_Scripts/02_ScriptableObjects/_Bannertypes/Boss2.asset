@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
-  m_Name: Kenneth_BAD
+  m_Name: Boss2
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: Bond K.
-  subject: It was me
-  previewText: It was in the fridge
-  contentsText: I ate your sandwich
-  correctResponseType: 2
-  bannerDuration: 90
+  senderName: BOSS
+  subject: Pick up the pace!
+  previewText: after several mintures of consideration...
+  contentsText: after several mintures of consideration I have decided that you are
+    no good and I think you need to do some more training
+  correctResponseType: 0
+  bannerDuration: 45
   penalizesTimeWhenMissed: 1
   timePenalty: 20
   department: Management
-  responseHint: '!!!!! He crossed it...'
+  responseHint: I have to be very polite

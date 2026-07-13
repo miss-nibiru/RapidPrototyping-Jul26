@@ -19,8 +19,8 @@ MonoBehaviour:
     it upstairs? It does not need to be perfect, I just need a second pair of eyes
     so I do not sound like a robot
   correctResponseType: 1
-  bannerDuration: 90
-  penalizesTimeWhenMissed: 0
+  bannerDuration: 45
+  penalizesTimeWhenMissed: 1
   timePenalty: 10
   department: Marketing
-  responseHint: Jamie is a good kid...
+  responseHint: I like this guy.

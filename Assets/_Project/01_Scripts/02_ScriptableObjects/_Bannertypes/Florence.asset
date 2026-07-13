@@ -17,8 +17,8 @@ MonoBehaviour:
   previewText: Dude, he's going...
   contentsText: Kenneth is insufferable! I'm gonna go on vacation soon!
   correctResponseType: 1
-  bannerDuration: 90
+  bannerDuration: 45
   penalizesTimeWhenMissed: 0
   timePenalty: 0
   department: Chill
-  responseHint: This girl is nuts!
+  responseHint: who cares!

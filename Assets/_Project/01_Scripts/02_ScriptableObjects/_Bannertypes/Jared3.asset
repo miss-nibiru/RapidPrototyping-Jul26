@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
-  m_Name: Brian2
+  m_Name: Jared3
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: Brian J.
-  subject: ASAP!
-  previewText: Pursuant to subsection 17B...
-  contentsText: Pursuant to subsection 17B of the Internal Corporate Regulatory Oversight
-    Codex, it is fully compliant with Statute 42, paragraph III, clause vii. Ergo, 
-    I must confirm correspondence from your department on this matter to indemnify
-    and hold harmless the dangerous risks of doing absolutely nothing.
+  senderName: Jared
+  subject: Contract Due
+  previewText: 'I NEED THIS ASAP... '
+  contentsText: I NEED THIS ASAP I am reviewing a new policy change with Wanda and
+    she will not stop bothing me about this.
   correctResponseType: 0
-  bannerDuration: 90
+  bannerDuration: 45
   penalizesTimeWhenMissed: 1
   timePenalty: 6
   department: Legal
-  responseHint: Careful...
+  responseHint: I should be polite.

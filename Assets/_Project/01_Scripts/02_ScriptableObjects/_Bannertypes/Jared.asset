@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
-  m_Name: Alex
+  m_Name: Jared
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: Alex
-  subject: Im so dummmb!
-  previewText: Client notes!
-  contentsText: I need to go home to get the client notes, im so dum i took them
-    home. Dont tell anyone!
+  senderName: Jared
+  subject: SEE MY CHANGES
+  previewText: Pursuant to subsection 17B....
+  contentsText: Pursuant to subsection 17B of the Internal Corporate Regulatory Oversight
+    Codex, it is fully compliant with Statute 42, paragraph III, clause vii. Ergo,
   correctResponseType: 1
-  bannerDuration: 90
+  bannerDuration: 45
   penalizesTimeWhenMissed: 1
   timePenalty: 10
-  department: Intern
-  responseHint: He's not even getting paid...
+  department: Legal
+  responseHint: whatever, that's fine with me...

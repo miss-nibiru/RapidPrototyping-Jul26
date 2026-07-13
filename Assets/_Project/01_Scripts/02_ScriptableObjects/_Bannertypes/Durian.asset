@@ -17,8 +17,8 @@ MonoBehaviour:
   previewText: Confirm version
   contentsText: 'Hi! I found the file: final_FINAL_actuallyfinal.png . Is that good?'
   correctResponseType: 1
-  bannerDuration: 90
+  bannerDuration: 45
   penalizesTimeWhenMissed: 0
   timePenalty: 0
   department: Contractor
-  responseHint: He's being nice today
+  responseHint: 'I think guy is fine. '

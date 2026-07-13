@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Durian_bad
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
   senderName: Designer Co.
-  subject: FUCK YOUR DESIGM!
+  subject: FUCK YOUR DESIGN!
   previewText: This suckssss!!
   contentsText: Bro, this is the worse thing ive ever seen, do you even have a marketing
     company that works well asjhdkan dont ever send me a logo in word!!!
   correctResponseType: 2
-  bannerDuration: 90
+  bannerDuration: 45
   penalizesTimeWhenMissed: 0
   timePenalty: 0
   department: Contractor
-  responseHint: OMG what a tool!
+  responseHint: Screw this guy!

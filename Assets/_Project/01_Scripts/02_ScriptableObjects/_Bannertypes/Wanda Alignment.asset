@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
   senderName: Wanda
   subject: Your not busy at noon yeah?
-  previewText: 12pmWednesday
+  previewText: 12pm Wednesday
   contentsText: Let's have a quick corporate values alignment session at noon. We
     need to deep dive into the superficial aspects of this issue.
   correctResponseType: 0
-  bannerDuration: 90
+  bannerDuration: 45
   penalizesTimeWhenMissed: 1
   timePenalty: 6
   department: HR
-  responseHint: I guess...
+  responseHint: I should be professional
