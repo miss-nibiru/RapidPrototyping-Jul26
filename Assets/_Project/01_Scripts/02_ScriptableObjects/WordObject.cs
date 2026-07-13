@@ -28,13 +28,10 @@ public class WordObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         rectTransform = GetComponent<RectTransform>();
         if(!canvas) canvas = GetComponentInParent<Canvas>();
-
         _dragParent = canvas.transform as RectTransform;
-    
         _originalParent = rectTransform.parent;
         _originalPosition = rectTransform.anchoredPosition;
         _originalScale = rectTransform.localScale;
-    
         AssignResponce(wordOption);
     }
 

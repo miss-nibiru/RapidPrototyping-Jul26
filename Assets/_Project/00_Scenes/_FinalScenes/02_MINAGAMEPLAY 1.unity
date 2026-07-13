@@ -166,6 +166,10 @@ MonoBehaviour:
   gameplayScreen: {fileID: 757057098}
   pauseScreen: {fileID: 855623449}
   loseScreen: {fileID: 138542398}
+  unpauseButton: {fileID: 1073695243}
+  pauseQuitButton: {fileID: 1057836930}
+  gameOverSound: {fileID: 8300000, guid: 2a17a746a7d20f64698ab4e5629cd953, type: 3}
+  pauseSound: {fileID: 8300000, guid: 0a17ba56cca0efb49bd0c032b05265b2, type: 3}
 --- !u!1001 &17810289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4258,6 +4262,10 @@ MonoBehaviour:
   gameplayScreen: {fileID: 757057098}
   pauseScreen: {fileID: 855623449}
   loseScreen: {fileID: 138542398}
+  unpauseButton: {fileID: 0}
+  pauseQuitButton: {fileID: 0}
+  gameOverSound: {fileID: 0}
+  pauseSound: {fileID: 0}
 --- !u!1 &1115726178
 GameObject:
   m_ObjectHideFlags: 0
@@ -4928,6 +4936,7 @@ MonoBehaviour:
   bgAudioSource: {fileID: 441184687}
   loopingAudioSource: {fileID: 1226213230}
   bgMusic: {fileID: 8300000, guid: fb4769353abab4442b91bd6850aedc67, type: 3}
+  gameOverSound: {fileID: 0}
 --- !u!4 &1324040933
 Transform:
   m_ObjectHideFlags: 0
@@ -5148,7 +5157,6 @@ MonoBehaviour:
   phoneAnsweredSound: {fileID: 8300000, guid: f0c6139d6a0512841ae829c5ef00b9ca, type: 3}
   phoneMissedSound: {fileID: 8300000, guid: d7eee41e9ddd8524ba6fce8ba75a789b, type: 3}
   emailExpiredSound: {fileID: 8300000, guid: be4348ac387f6814abb48ded16664715, type: 3}
-  gameoverSound: {fileID: 8300000, guid: 2a17a746a7d20f64698ab4e5629cd953, type: 3}
 --- !u!1 &1433734744
 GameObject:
   m_ObjectHideFlags: 0

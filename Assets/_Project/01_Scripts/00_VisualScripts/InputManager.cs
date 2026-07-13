@@ -22,7 +22,6 @@ namespace _Project._01_Scripts._00_VisualScripts
                 Debug.LogError("[InputManager2D] ERROR: Player action map is missing or named incorrectly.");
                 return;
             }
-            
             _actions.Player.Move.performed += OnMove;
             _actions.Player.Move.canceled += OnMove;
             _actions.Player.Click.performed += OnClick;
@@ -47,8 +46,6 @@ namespace _Project._01_Scripts._00_VisualScripts
         
         private void OnPausePerformed(InputAction.CallbackContext ctx)
         {
-            // Only toggle pause once per button press
-            if (!_pauseInputPressed)
             {
                 _pauseInputPressed = true;
                 GameManager.Instance?.TogglePause();
