@@ -10,27 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22bdf6e67d8d64da2ad4f22623d22371, type: 3}
-  m_Name: SO_MainDocsFolder
-  m_EditorClassIdentifier: Assembly-CSharp::ComputerFilesData
-  fileName: Documents
-  fileIcon: {fileID: 21300000, guid: a8692e8b6dd2d45ec9dd3166474408dc, type: 3}
-  fileType: 2
-  windowTitle: Documents
-  windowSize: {x: 800, y: 800}
-  documentBody: 
+  m_Name: SO_Timesheet
+  m_EditorClassIdentifier: Assembly-CSharp::DocumentData
+  fileName: Timesheet
+  fileIcon: {fileID: 21300000, guid: 4a238560b30ca435bac666a7bcb37f5e, type: 3}
+  fileType: 0
+  windowTitle: Timesheets?
+  windowSize: {x: 800, y: 600}
+  documentBody: "LIVECORP TIMESHEET\n\nEmployee: __________________ Date: ______________________\n\n\u2610
+    Arrived to work\n\u2610 Opened Hell-Mail\n\u2610 Attended at least one meeting
+    that could have been an email\n\u2610 Replied \u201CPer my last email\u2026\u201D\n\u2610
+    Looked busy while waiting for something to load\n\u2610 Refilled coffee\n\u2610
+    Survived another workday\n\u2610 Needs More Synergy\n\n\u201CTime enjoyed is
+    time not billed to the company.\u201D"
   hasButton: 0
-  buttonText: 
-  buttonAction: 0
-  timeAmount: 0
+  buttonText: Write some
+  buttonAction: 2
+  timeAmount: 10
   photoImage: {fileID: 0}
-  folderContents:
-  - {fileID: 11400000, guid: 80975b49a1ea3477a83a67230b11691d, type: 2}
-  - {fileID: 11400000, guid: e9a1f21c1eb0b4f61a16f630fe9531b1, type: 2}
-  - {fileID: 11400000, guid: 3b39aebd03fc84cac9517d87573a4d92, type: 2}
-  - {fileID: 11400000, guid: eb0fd8680f8e041708b9c17c2dafd37d, type: 2}
-  - {fileID: 11400000, guid: 510fddfaed0154ad988789562d7b0bf9, type: 2}
-  - {fileID: 11400000, guid: 6857389f5202d45788634855f18264df, type: 2}
-  - {fileID: 11400000, guid: 7a068768c4a9e4419b2a0902a9e2ecd7, type: 2}
+  folderContents: []
   browserImage: {fileID: 0}
   browserButtonText: Buy Now
   showBrowserButton: 1

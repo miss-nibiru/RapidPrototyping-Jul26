@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22bdf6e67d8d64da2ad4f22623d22371, type: 3}
-  m_Name: SO_MainDocsFolder
+  m_Name: SO_CompanyDocs
   m_EditorClassIdentifier: Assembly-CSharp::ComputerFilesData
-  fileName: Documents
+  fileName: CompanyDocs
   fileIcon: {fileID: 21300000, guid: a8692e8b6dd2d45ec9dd3166474408dc, type: 3}
   fileType: 2
-  windowTitle: Documents
+  windowTitle: CompanyDocs
   windowSize: {x: 800, y: 800}
   documentBody: 
   hasButton: 0
@@ -24,16 +24,16 @@ MonoBehaviour:
   timeAmount: 0
   photoImage: {fileID: 0}
   folderContents:
-  - {fileID: 11400000, guid: 80975b49a1ea3477a83a67230b11691d, type: 2}
-  - {fileID: 11400000, guid: e9a1f21c1eb0b4f61a16f630fe9531b1, type: 2}
-  - {fileID: 11400000, guid: 3b39aebd03fc84cac9517d87573a4d92, type: 2}
-  - {fileID: 11400000, guid: eb0fd8680f8e041708b9c17c2dafd37d, type: 2}
-  - {fileID: 11400000, guid: 510fddfaed0154ad988789562d7b0bf9, type: 2}
-  - {fileID: 11400000, guid: 6857389f5202d45788634855f18264df, type: 2}
-  - {fileID: 11400000, guid: 7a068768c4a9e4419b2a0902a9e2ecd7, type: 2}
+  - {fileID: 11400000, guid: d2548a1e42aed4b0698f26447c863bb5, type: 2}
+  - {fileID: 11400000, guid: 8eabbfbf021ff4cd09fb26bba1dffd6f, type: 2}
+  - {fileID: 11400000, guid: 5f308ccc763ef412db4720d04da3e3ae, type: 2}
+  - {fileID: 11400000, guid: e2822514bfb9742fd982ca270555275a, type: 2}
+  - {fileID: 11400000, guid: 7fe5561a2a5c24919a34ece1fa35dbad, type: 2}
+  - {fileID: 11400000, guid: c13802f1614934939802c9a254fd42b4, type: 2}
+  - {fileID: 11400000, guid: fee97750547b6440fbab96b286dcea7a, type: 2}
   browserImage: {fileID: 0}
   browserButtonText: Buy Now
-  showBrowserButton: 1
+  showBrowserButton: 0
   browserButtonPosition: {x: 0, y: 0}
   browserButtonAction: 0
   browserTimeAmount: 5
