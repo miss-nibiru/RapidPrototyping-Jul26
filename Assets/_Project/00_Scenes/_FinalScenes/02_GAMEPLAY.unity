@@ -2553,8 +2553,12 @@ MonoBehaviour:
   bonusDisplayDuration: 1
   penaltyText: {fileID: 135199073}
   penaltyDisplayDuration: 1
+  elapsedTimeText: {fileID: 0}
+  scoreText: {fileID: 0}
+  loseScreenRoot: {fileID: 0}
+  loseScoreLabel: {fileID: 0}
+  loseTimeLabel: {fileID: 0}
   timerManager: {fileID: 75105352}
-  EmailBannerUI: {fileID: 0}
 --- !u!4 &700214527
 Transform:
   m_ObjectHideFlags: 0
@@ -3592,7 +3596,6 @@ MonoBehaviour:
   gameplayScreen: {fileID: 2040576808}
   pauseScreen: {fileID: 855623449}
   loseScreen: {fileID: 138542398}
-  unpauseButton: {fileID: 1073695243}
 --- !u!1 &1115726178
 GameObject:
   m_ObjectHideFlags: 0
@@ -4335,8 +4338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f2c7bc7fa2f27468c1b71905767766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  resumeButton: {fileID: 0}
-  quitButton: {fileID: 0}
   useTimer: 1
   timerManager: {fileID: 75105352}
   audioManager: {fileID: 1324040932}
@@ -4346,6 +4347,7 @@ MonoBehaviour:
   phoneAnsweredSound: {fileID: 8300000, guid: f0c6139d6a0512841ae829c5ef00b9ca, type: 3}
   phoneMissedSound: {fileID: 8300000, guid: d7eee41e9ddd8524ba6fce8ba75a789b, type: 3}
   emailExpiredSound: {fileID: 8300000, guid: be4348ac387f6814abb48ded16664715, type: 3}
+  gameoverSound: {fileID: 0}
 --- !u!1 &1433734744
 GameObject:
   m_ObjectHideFlags: 0

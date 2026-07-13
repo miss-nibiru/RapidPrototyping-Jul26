@@ -135,10 +135,16 @@ namespace _Project._01_Scripts._00_VisualScripts
                 Pause();
         }
 
-        public void OnQuit()
+        public void WinGame()
         {
+            if (_gameOver) return;
+            _isPaused = false;
+        }
+
+        public void OnQuit()
+        { 
 #if UNITY_EDITOR
-            EditorApplication.isPlaying = false;
+            EditorApplication.isPlaying = false; 
 #endif
             Application.Quit();
         }
