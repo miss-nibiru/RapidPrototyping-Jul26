@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a21c58d186aee6b4aa65d2748bdb89e7, type: 3}
   m_Name: Formal5
   m_EditorClassIdentifier: Assembly-CSharp::WordOptions
-  responce: Absolutely, Understood
+  responce: I love you!
   responceType: 0
   responceColor: {r: 1, g: 1, b: 1, a: 1}
   responceBackground: {fileID: 21300000, guid: 7e0b2092654bf42a7ad247c7093877bf, type: 3}

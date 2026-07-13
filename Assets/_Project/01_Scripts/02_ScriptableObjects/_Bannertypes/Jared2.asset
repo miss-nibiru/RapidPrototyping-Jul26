@@ -23,4 +23,4 @@ MonoBehaviour:
   penalizesTimeWhenMissed: 1
   timePenalty: 6
   department: Legal
-  responseHint: I should try to be professional
+  responseHint: I should be professional

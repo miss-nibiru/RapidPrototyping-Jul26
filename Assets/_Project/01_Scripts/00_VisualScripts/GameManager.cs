@@ -130,19 +130,7 @@ namespace _Project._01_Scripts._00_VisualScripts
                     audioManager.PlaySound(phoneMissedSound);
             }
         }
-        /*public void OnEmailBannerMissed()
-        {
-            if (_gameOver) return;
-            if (timerManager != null)
-            {
-                timerManager.SubtractTime(timerManager.GetLargeTimePenaltyAmount());
-                if (uiManager != null)
-                    uiManager.ShowPenaltyText("TIME PENALTY", Color.red);
-                if (audioManager != null)
-                    audioManager.PlaySound(emailExpiredSound);
-            }
-        }*/
-
+        
         private void Pause()
         {
             if (_gameOver) return;

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
   m_Name: Florence
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
-  senderName: FloFlo
+  senderName: Florence
   subject: OMG GURL!
-  previewText: Dude, he's going...
+  previewText: Kenneth is insufferable!
   contentsText: Kenneth is insufferable! I'm gonna go on vacation soon!
   correctResponseType: 1
   bannerDuration: 45
   penalizesTimeWhenMissed: 0
   timePenalty: 0
-  department: Chill
-  responseHint: who cares!
+  department: Procurement
+  responseHint: who cares...

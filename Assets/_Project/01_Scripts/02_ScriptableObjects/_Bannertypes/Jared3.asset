@@ -22,4 +22,4 @@ MonoBehaviour:
   penalizesTimeWhenMissed: 1
   timePenalty: 6
   department: Legal
-  responseHint: I should be polite.
+  responseHint: I should be VERY polite.

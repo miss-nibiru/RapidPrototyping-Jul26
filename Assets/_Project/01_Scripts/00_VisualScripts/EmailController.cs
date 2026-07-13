@@ -9,6 +9,10 @@ namespace _Project._01_Scripts._00_VisualScripts
         public static EmailController Instance { get; private set; }
 
         [SerializeField] private EmailWindow emailWindow;
+        [SerializeField] private AudioClip bannerexpireSound;
+        [SerializeField] private AudioClip sendSound;
+        [SerializeField] private AudioClip errorSound;
+
 
         private EmailBannerPanel _currentBannerPanel;
         private EmailBannerSO _currentBannerSO;
@@ -48,27 +52,17 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         public void OnSendButtonClicked()
         {
-            // No active banner or already expired → do nothing
             if (_currentBannerSO == null || _currentBannerPanel == null || _bannerExpired)
                 return;
-
-            // ❗ HARD GATE: you cannot send unless both slots are filled
             if (!SlotManager.Instance.AreSlotsFilled())
             {
                 Debug.Log("[EmailController] Send blocked — both slots must be filled.");
+                AudioManager.Instance.PlaySound(errorSound);
                 return;
             }
-
-            // EmailWindow now knows slots are filled; it will:
-            // - grade the email
-            // - play success/fail feedback
-            // - close itself via feedback callback
             bool wasSuccessful = emailWindow.OnSendButtonClicked();
-
-            // Banner is handled (replied to) either way: success or fail
+            AudioManager.Instance.PlaySound(sendSound);
             EmailBannerManager.Instance.OnBannerHandled(_currentBannerPanel, wasSuccessful);
-
-            // Reset controller state so the next banner works cleanly
             ResetEmailState();
         }
 
@@ -80,6 +74,7 @@ namespace _Project._01_Scripts._00_VisualScripts
             }
 
             emailWindow.CloseWindow();
+            AudioManager.Instance.PlaySound(bannerexpireSound);
             ResetEmailState();
         }
 
@@ -93,11 +88,6 @@ namespace _Project._01_Scripts._00_VisualScripts
         public EmailBannerPanel GetCurrentBannerPanel()
         {
             return _currentBannerPanel;
-        }
-
-        public bool HasActiveBanner()
-        {
-            return _currentBannerSO != null && !_bannerExpired;
         }
     }
 }

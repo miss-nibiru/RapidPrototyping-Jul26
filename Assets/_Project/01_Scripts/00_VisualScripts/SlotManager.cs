@@ -76,21 +76,21 @@ namespace _Project._01_Scripts._00_VisualScripts
             if (_wordInSlotOne == word)
             {
                 _wordInSlotOne = null;
-                word.placed = false;  // ← Also clear the flag here
+                word.placed = false;  
             }
             else if (_wordInSlotTwo == word)
             {
                 _wordInSlotTwo = null;
-                word.placed = false;  // ← Also clear the flag here
+                word.placed = false;  
             }
         }
         
-        public WordObject GetWordInSlot(Transform slot)
+        /*public WordObject GetWordInSlot(Transform slot)
         {
             if (slot == slotOne) return _wordInSlotOne;
             if (slot == slotTwo) return _wordInSlotTwo;
             return null;
-        }
+        }*/
         
         public void ClearSlots()
         {

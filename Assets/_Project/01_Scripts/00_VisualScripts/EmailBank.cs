@@ -26,11 +26,5 @@ namespace _Project._01_Scripts._00_VisualScripts
             Banners.AddRange(Resources.LoadAll<EmailBannerSO>("Bannertypes"));
         }
         
-       
-        
-        public void ClearBanners()
-        {
-           //this would be used for when you lose the game or need to reset it at the end
-        }
     }
 }

@@ -15,5 +15,5 @@ MonoBehaviour:
   callerName: Mandy(Admin)
   correctAction: 0
   ringDuration: 3
-  timeBonus: 40
+  timeBonus: 20
   timePenalty: 5

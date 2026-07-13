@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
   senderName: Jamie
   subject: Tiny favor?
-  previewText: Can you check this before I send it?
+  previewText: Hey! Could you take a quick..
   contentsText: Hey! Could you take a quick look at this promo blurb before I send
     it upstairs? It does not need to be perfect, I just need a second pair of eyes
     so I do not sound like a robot
@@ -23,4 +23,4 @@ MonoBehaviour:
   penalizesTimeWhenMissed: 1
   timePenalty: 10
   department: Marketing
-  responseHint: I like this guy.
+  responseHint: I like this guys, I can be cool with him.

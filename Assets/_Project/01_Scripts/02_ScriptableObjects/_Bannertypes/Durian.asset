@@ -21,4 +21,4 @@ MonoBehaviour:
   penalizesTimeWhenMissed: 0
   timePenalty: 0
   department: Contractor
-  responseHint: 'I think guy is fine. '
+  responseHint: 'I think guy is fine... '

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BossCall
   m_EditorClassIdentifier: Assembly-CSharp::PhoneObject
   callerName: Boss
-  ringDuration: 8
+  correctAction: 0
+  ringDuration: 4
   timeBonus: 8
-  timePenalty: 20
+  timePenalty: 15

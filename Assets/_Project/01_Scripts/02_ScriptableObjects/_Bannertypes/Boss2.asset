@@ -17,9 +17,9 @@ MonoBehaviour:
   previewText: after several mintures of consideration...
   contentsText: after several mintures of consideration I have decided that you are
     no good and I think you need to do some more training
-  correctResponseType: 0
+  correctResponseType: 2
   bannerDuration: 45
   penalizesTimeWhenMissed: 1
   timePenalty: 20
   department: Management
-  responseHint: I have to be very polite
+  responseHint: I HATE MY BOSS

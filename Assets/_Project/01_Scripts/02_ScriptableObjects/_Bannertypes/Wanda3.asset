@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f46942fec7204543b5621287e5478dc, type: 3}
-  m_Name: Wanda Alignment
+  m_Name: Wanda3
   m_EditorClassIdentifier: Assembly-CSharp::EmailBannerObject
   senderName: Wanda
-  subject: Your not busy at noon yeah?
-  previewText: Let's have a quick...
-  contentsText: Let's have a quick corporate values alignment session at noon. We
-    need to deep dive into the superficial aspects of this issue.
+  subject: Reprogramming
+  previewText: We are leaning into..
+  contentsText: 'We are leaning into discomfort by avoiding the difficult conversation
+    altogether and instead implementing corporate brain-reprogramming training! '
   correctResponseType: 0
   bannerDuration: 45
   penalizesTimeWhenMissed: 1

@@ -400,7 +400,7 @@ MonoBehaviour:
   gameTime: 120
   countDown: 1
   phoneSpawnTime: 6
-  emailBannerSpawnTime: 3
+  emailBannerSpawnTime: 5
   smallTimeGainAmount: 10
   smallTimePenaltyAmount: 4
   largeTimeGainAmount: 20
@@ -468,7 +468,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 739.99994, y: -989}
+  m_AnchoredPosition: {x: 613, y: -989}
   m_SizeDelta: {x: 1500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &98576673
@@ -2505,6 +2505,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project._01_Scripts._00_VisualScripts.EmailController
   emailWindow: {fileID: 1480023524}
+  bannerexpireSound: {fileID: 8300000, guid: 50b7a5e9d01a2124e84db5122fc85e1d, type: 3}
+  sendSound: {fileID: 8300000, guid: ad30e1c66d5794d419c367ee90e07891, type: 3}
+  errorSound: {fileID: 8300000, guid: bd8dae77f0c7dcd408d6c146255046a9, type: 3}
 --- !u!1001 &666268455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6389,7 +6392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1270, y: -989}
+  m_AnchoredPosition: {x: 1143, y: -989}
   m_SizeDelta: {x: 1500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1826317485

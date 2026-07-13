@@ -8,7 +8,7 @@ namespace _Project._01_Scripts._00_VisualScripts
     public class EmailBannerManager : MonoBehaviour
     {
         public static EmailBannerManager Instance { get; private set; }
-
+        
         private Coroutine _bannerSpawnRoutine;
         private bool _spawningBanner = true;
 
@@ -90,6 +90,7 @@ namespace _Project._01_Scripts._00_VisualScripts
                 if (banner.emailBannerSo.penalizesTimeWhenMissed)
                 {
                     TimeManager.Instance.SubtractTime(banner.timePenalty);
+                    
                     UIManager.Instance.ShowPenaltyText("EMAIL MISSED", Color.white);
                 }
 
@@ -199,9 +200,9 @@ namespace _Project._01_Scripts._00_VisualScripts
             return _activeBanners.Count;
         }
 
-        public EmailBannerPanel GetCurrentBanner()
+        /*public EmailBannerPanel GetCurrentBanner()
         {
             return _currentBanner;
-        }
+        }*/
     }
 }

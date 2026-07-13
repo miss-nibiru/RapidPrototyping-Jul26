@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LongCall
   m_EditorClassIdentifier: Assembly-CSharp::PhoneObject
   callerName: Brian(Legal)
-  ringDuration: 10
+  correctAction: 0
+  ringDuration: 5
   timeBonus: 8
   timePenalty: 10

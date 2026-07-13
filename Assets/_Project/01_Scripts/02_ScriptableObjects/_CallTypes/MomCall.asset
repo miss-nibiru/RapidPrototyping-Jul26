@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PhoneObject
   callerName: Mom
   correctAction: 1
-  ringDuration: 10
+  ringDuration: 4
   timeBonus: 6
   timePenalty: 10
