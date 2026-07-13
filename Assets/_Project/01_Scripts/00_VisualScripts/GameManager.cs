@@ -154,6 +154,16 @@ namespace _Project._01_Scripts._00_VisualScripts
             else
                 Pause();
         }
+
+        public void WinGame()
+        {
+            
+            if (_gameOver) return;
+            _isPaused = false;
+            Time.timeScale = 0f;
+            
+        }
+        
         public void OnQuit()
         {
 #if UNITY_EDITOR

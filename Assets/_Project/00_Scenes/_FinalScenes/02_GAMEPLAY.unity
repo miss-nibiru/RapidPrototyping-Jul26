@@ -390,7 +390,7 @@ MonoBehaviour:
   largeTimeGainAmount: 20
   largeTimePenaltyAmount: 12
   clockText: {fileID: 1377826598}
-  timeFeedbackPopup: {fileID: 421775779}
+  timeFeedbackPopup: {fileID: 944852627}
   timeFeedbackImage: {fileID: 421775780}
   timeChangeText: {fileID: 560382418}
   normalClockColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1351,12 +1351,12 @@ GameObject:
   - component: {fileID: 421775781}
   - component: {fileID: 421775780}
   m_Layer: 5
-  m_Name: TimeNotif
+  m_Name: TimeImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &421775779
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1364,17 +1364,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421775778}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 560382417}
-  m_Father: {fileID: 1377826597}
+  m_Children: []
+  m_Father: {fileID: 944852627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 94.7}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
   m_SizeDelta: {x: 250, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &421775780
@@ -2050,7 +2049,7 @@ GameObject:
   - component: {fileID: 560382419}
   - component: {fileID: 560382418}
   m_Layer: 5
-  m_Name: Time
+  m_Name: TimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2063,12 +2062,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560382416}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 421775779}
+  m_Father: {fileID: 944852627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2559,6 +2558,7 @@ MonoBehaviour:
   loseScoreLabel: {fileID: 0}
   loseTimeLabel: {fileID: 0}
   timerManager: {fileID: 75105352}
+  EmailBannerUI: {fileID: 0}
 --- !u!4 &700214527
 Transform:
   m_ObjectHideFlags: 0
@@ -2973,6 +2973,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855623449}
   m_CullTransparentMesh: 1
+--- !u!1 &944852626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 944852627}
+  m_Layer: 5
+  m_Name: TimeNotification
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &944852627
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944852626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 421775779}
+  - {fileID: 560382417}
+  m_Father: {fileID: 1377826597}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 94.7}
+  m_SizeDelta: {x: 250, y: 85}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1009353043
 GameObject:
   m_ObjectHideFlags: 0
@@ -3596,6 +3633,10 @@ MonoBehaviour:
   gameplayScreen: {fileID: 2040576808}
   pauseScreen: {fileID: 855623449}
   loseScreen: {fileID: 138542398}
+  unpauseButton: {fileID: 0}
+  pauseQuitButton: {fileID: 0}
+  gameOverSound: {fileID: 0}
+  pauseSound: {fileID: 0}
 --- !u!1 &1115726178
 GameObject:
   m_ObjectHideFlags: 0
@@ -4126,6 +4167,7 @@ MonoBehaviour:
   bgAudioSource: {fileID: 441184687}
   loopingAudioSource: {fileID: 1226213230}
   bgMusic: {fileID: 8300000, guid: fb4769353abab4442b91bd6850aedc67, type: 3}
+  gameOverSound: {fileID: 0}
 --- !u!4 &1324040933
 Transform:
   m_ObjectHideFlags: 0
@@ -4186,7 +4228,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 421775779}
+  - {fileID: 944852627}
   m_Father: {fileID: 757057099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4347,7 +4389,6 @@ MonoBehaviour:
   phoneAnsweredSound: {fileID: 8300000, guid: f0c6139d6a0512841ae829c5ef00b9ca, type: 3}
   phoneMissedSound: {fileID: 8300000, guid: d7eee41e9ddd8524ba6fce8ba75a789b, type: 3}
   emailExpiredSound: {fileID: 8300000, guid: be4348ac387f6814abb48ded16664715, type: 3}
-  gameoverSound: {fileID: 0}
 --- !u!1 &1433734744
 GameObject:
   m_ObjectHideFlags: 0
