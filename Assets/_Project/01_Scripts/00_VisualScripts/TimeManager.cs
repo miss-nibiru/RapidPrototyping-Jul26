@@ -1,7 +1,4 @@
-using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace _Project._01_Scripts._00_VisualScripts
 {
@@ -10,7 +7,7 @@ namespace _Project._01_Scripts._00_VisualScripts
         public static TimeManager Instance { get; private set; }
 
         [Header("Game Time")]
-        [SerializeField] private float gameTime = 120f;
+        [SerializeField] public float gameTime = 120f;
         [SerializeField] private bool countDown = true;
 
         [Header("Phone Timing")]
@@ -25,26 +22,11 @@ namespace _Project._01_Scripts._00_VisualScripts
         [SerializeField] private float largeTimeGainAmount = 8f;
         [SerializeField] private float largeTimePenaltyAmount = 10f;
 
-        [Header("Time Feedback")]
-        [SerializeField] private TextMeshProUGUI clockText;
-        [SerializeField] private RectTransform timeFeedbackPopup;
-        [SerializeField] private Image timeFeedbackImage;
-        [SerializeField] private TextMeshProUGUI timeChangeText;
-
-        [SerializeField] private Color normalClockColor = Color.white;
-        [SerializeField] private Color gainedTimeColor = Color.green;
-        [SerializeField] private Color lostTimeColor = Color.red;
-
-        [SerializeField] private float clockFlashDuration = 0.45f;
-        [SerializeField] private float popupDuration = 0.4f;
-        [SerializeField] private float popupMoveDistance = 35f;
-
         public float CurrentTime { get; private set; }
+        
+        private float _survivalTime;
 
         private bool _isRunning;
-        private Coroutine _clockFeedbackCoroutine;
-        private Coroutine _timePopupCoroutine;
-        private Vector2 _popupStartPosition;
 
         private void Awake()
         {
@@ -53,24 +35,15 @@ namespace _Project._01_Scripts._00_VisualScripts
                 Destroy(gameObject);
                 return;
             }
-
             Instance = this;
-
-            if (timeFeedbackPopup != null)
-            {
-                _popupStartPosition = timeFeedbackPopup.anchoredPosition;
-                timeFeedbackPopup.gameObject.SetActive(false);
-            }
         }
 
         private void Update()
         {
-            if (!_isRunning)
-            {
-                return;
-            }
+            if (!_isRunning) return;
 
             float delta = Time.deltaTime;
+            _survivalTime += delta;
 
             if (countDown)
             {
@@ -81,7 +54,7 @@ namespace _Project._01_Scripts._00_VisualScripts
                     CurrentTime = 0f;
                     _isRunning = false;
 
-                    UpdateTimerUI();
+                    UIManager.Instance.UpdateTimerUI(CurrentTime);
                     GameManager.Instance.OnTimeExpired();
                     return;
                 }
@@ -91,142 +64,41 @@ namespace _Project._01_Scripts._00_VisualScripts
                 CurrentTime += delta;
             }
 
-            UpdateTimerUI();
+            UIManager.Instance.UpdateTimerUI(CurrentTime);
         }
 
         public void StartTimer()
         {
-            CurrentTime = countDown ? gameTime : 0f;
             _isRunning = true;
+            _survivalTime = 0f; // reset survival time
 
-            UpdateTimerUI();
+            CurrentTime = countDown ? gameTime : 0f;
+            UIManager.Instance.UpdateTimerUI(CurrentTime);
         }
 
         public void StopTimer()
         {
             _isRunning = false;
         }
+        
+        public float GetSurvivalTime()
+        {
+            return _survivalTime;
+        }
 
         public void AddTime(float amount)
         {
-            if (amount <= 0f)
-            {
-                return;
-            }
-
             CurrentTime += amount;
-
-            UpdateTimerUI();
-            ShowTimeFeedback(amount, true);
+            UIManager.Instance.UpdateTimerUI(CurrentTime);
         }
 
         public void SubtractTime(float amount)
         {
-            if (amount <= 0f)
-            {
-                return;
-            }
+            CurrentTime -= amount;
+            if (CurrentTime < 0f)
+                CurrentTime = 0f;
 
-            CurrentTime = Mathf.Max(0f, CurrentTime - amount);
-
-            UpdateTimerUI();
-            ShowTimeFeedback(amount, false);
-        }
-
-        private void UpdateTimerUI()
-        {
-            if (UIManager.Instance != null)
-            {
-                UIManager.Instance.UpdateTimerUI(CurrentTime);
-            }
-        }
-
-        private void ShowTimeFeedback(float amount, bool gainedTime)
-        {
-            Color feedbackColor = gainedTime
-                ? gainedTimeColor
-                : lostTimeColor;
-
-            if (clockText != null)
-            {
-                if (_clockFeedbackCoroutine != null)
-                {
-                    StopCoroutine(_clockFeedbackCoroutine);
-                }
-
-                _clockFeedbackCoroutine =
-                    StartCoroutine(FlashClockColor(feedbackColor));
-            }
-
-            if (timeFeedbackPopup == null ||
-                timeFeedbackImage == null ||
-                timeChangeText == null)
-            {
-                return;
-            }
-
-            if (_timePopupCoroutine != null)
-            {
-                StopCoroutine(_timePopupCoroutine);
-            }
-
-            string symbol = gainedTime ? "+" : "-";
-
-            timeChangeText.text = $"{symbol}{amount:0}";
-            timeChangeText.color = feedbackColor;
-
-            _timePopupCoroutine =
-                StartCoroutine(ShowTimeChangePopup(feedbackColor));
-        }
-
-        private IEnumerator FlashClockColor(Color feedbackColor)
-        {
-            clockText.color = feedbackColor;
-
-            yield return new WaitForSeconds(clockFlashDuration);
-
-            clockText.color = normalClockColor;
-            _clockFeedbackCoroutine = null;
-        }
-
-        private IEnumerator ShowTimeChangePopup(Color feedbackColor)
-        {
-            timeFeedbackPopup.gameObject.SetActive(true);
-            timeFeedbackPopup.anchoredPosition = _popupStartPosition;
-
-            Color textColor = feedbackColor;
-            textColor.a = 1f;
-            timeChangeText.color = textColor;
-
-            Color imageColor = timeFeedbackImage.color;
-            imageColor.a = 1f;
-            timeFeedbackImage.color = imageColor;
-
-            float elapsed = 0f;
-
-            while (elapsed < popupDuration)
-            {
-                elapsed += Time.deltaTime;
-
-                float progress = Mathf.Clamp01(elapsed / popupDuration);
-
-                timeFeedbackPopup.anchoredPosition =
-                    _popupStartPosition +
-                    Vector2.up * popupMoveDistance * progress;
-
-                textColor.a = 1f - progress;
-                timeChangeText.color = textColor;
-
-                imageColor.a = 1f - progress;
-                timeFeedbackImage.color = imageColor;
-
-                yield return null;
-            }
-
-            timeFeedbackPopup.anchoredPosition = _popupStartPosition;
-            timeFeedbackPopup.gameObject.SetActive(false);
-
-            _timePopupCoroutine = null;
+            UIManager.Instance.UpdateTimerUI(CurrentTime);
         }
 
         public float GetSmallTimeGainAmount() => smallTimeGainAmount;
@@ -237,3 +109,4 @@ namespace _Project._01_Scripts._00_VisualScripts
         public float GetEmailBannerSpawnTime() => emailBannerSpawnTime;
     }
 }
+

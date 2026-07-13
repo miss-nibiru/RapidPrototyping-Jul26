@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/00_Scenes/DulceScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/_Project/00_Scenes/_FinalScenes/01_MAINMENU.unity
+    guid: 585ea8500f4934c94a2762963f74a16c
+  - enabled: 1
+    path: Assets/_Project/00_Scenes/_FinalScenes/02_MINAGAMEPLAY 1.unity
+    guid: 520f8a6d34347dd40931d28374524fd7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

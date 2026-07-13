@@ -15,15 +15,29 @@ public class ExpirationColorIcon : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Image iconImage;
 
+    private bool _isActive;
+
     private void Awake()
     {
         if (iconImage == null)
             iconImage = GetComponent<Image>();
     }
 
+    private void OnEnable()
+    {
+        _isActive = true;
+    }
+
+    private void OnDisable()
+    {
+        _isActive = false;
+    }
+
     private void Update()
     {
-        // If bannerPanel is null, do nothing.
+        if (!_isActive)
+            return;
+
         if (bannerPanel == null || iconImage == null)
             return;
 
@@ -35,7 +49,6 @@ public class ExpirationColorIcon : MonoBehaviour
 
         float normalized = Mathf.Clamp01(1f - (remaining / duration));
 
-        // 0 → green, 0.5 → yellow, 1 → red
         if (normalized < 0.5f)
         {
             float t = normalized / 0.5f;
@@ -51,6 +64,13 @@ public class ExpirationColorIcon : MonoBehaviour
     public void SetBanner(EmailBannerPanel panel)
     {
         bannerPanel = panel;
+        _isActive = true;
+    }
+
+    public void ClearBanner()
+    {
+        bannerPanel = null;
+        _isActive = false;
     }
 }
 

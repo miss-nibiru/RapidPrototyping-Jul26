@@ -6,8 +6,9 @@ namespace _Project._01_Scripts._00_VisualScripts
     public class InputManager : MonoBehaviour
     {
         private PlayerInputAction _actions;
-        private WordBank _wordBank; 
-
+        private WordBank _wordBank;
+        private bool _pauseInputPressed;
+        
         private void Awake()
         {
             _actions = new PlayerInputAction();
@@ -16,8 +17,6 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         private void OnEnable()
         {
-
-            // Validate action map by checking an actual action
             if (_actions.Player.Move == null)
             {
                 Debug.LogError("[InputManager2D] ERROR: Player action map is missing or named incorrectly.");
@@ -27,7 +26,8 @@ namespace _Project._01_Scripts._00_VisualScripts
             _actions.Player.Move.performed += OnMove;
             _actions.Player.Move.canceled += OnMove;
             _actions.Player.Click.performed += OnClick;
-            _actions.Player.pause.performed += OnPause;
+            _actions.Player.pause.performed += OnPausePerformed;
+            _actions.Player.pause.canceled += OnPauseCanceled;
         }
 
         private void OnDisable()
@@ -35,7 +35,8 @@ namespace _Project._01_Scripts._00_VisualScripts
             _actions.Player.Move.performed -= OnMove;
             _actions.Player.Move.canceled -= OnMove;
             _actions.Player.Click.performed -= OnClick;
-            _actions.Player.pause.performed -= OnPause;
+            _actions.Player.pause.performed -= OnPausePerformed;
+            _actions.Player.pause.canceled -= OnPauseCanceled;
             _actions.Disable();
         }
         
@@ -44,9 +45,19 @@ namespace _Project._01_Scripts._00_VisualScripts
             Vector2 screenPos = ctx.ReadValue<Vector2>();
         }
         
-        private void OnPause(InputAction.CallbackContext ctx)
+        private void OnPausePerformed(InputAction.CallbackContext ctx)
         {
-            GameManager.Instance?.Pause();
+            // Only toggle pause once per button press
+            if (!_pauseInputPressed)
+            {
+                _pauseInputPressed = true;
+                GameManager.Instance?.TogglePause();
+            }
+        }
+
+        private void OnPauseCanceled(InputAction.CallbackContext ctx)
+        {
+            _pauseInputPressed = false;
         }
 
         private void OnClick(InputAction.CallbackContext ctx)

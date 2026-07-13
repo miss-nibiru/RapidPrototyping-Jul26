@@ -23,10 +23,19 @@ namespace _Project._01_Scripts._00_VisualScripts
         [SerializeField] private TextMeshProUGUI penaltyText;
         [SerializeField] private float penaltyDisplayDuration = 1.5f;
 
+        [Header("Lose Screen UI")]
+        [SerializeField] private TextMeshProUGUI elapsedTimeText;
+        [SerializeField] private TextMeshProUGUI scoreText;
+        [SerializeField] private GameObject loseScreenRoot;
+        [SerializeField] private TextMeshProUGUI loseScoreLabel;
+        [SerializeField] private TextMeshProUGUI loseTimeLabel;
+        
+        
         [SerializeField] private TimeManager timerManager;
         
-        [Header("Email Banner")]
-        public GameObject EmailBannerUI;
+        
+        /*[Header("Email Banner")]
+        public GameObject EmailBannerUI;*/
 
         private string _defaultEmailText;
         private Coroutine _bonusCoroutine;
@@ -44,8 +53,8 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         private void Start()
         {
-            if (EmailBannerUI != null)
-                EmailBannerUI.SetActive(false);
+            /*if (EmailBannerUI != null)
+                EmailBannerUI.SetActive(false);*/
 
             if (bonusText != null)
                 bonusText.gameObject.SetActive(false);
@@ -64,10 +73,10 @@ namespace _Project._01_Scripts._00_VisualScripts
             timerText.text = $"{minutes:00}:{seconds:00}";
         }
         
-        public void ShowPauseMenu(bool show)
+        /*public void ShowPauseMenu(bool show)
         {
             pauseMenu.SetActive(show);
-        }
+        }*/
         
         public void ShowCall(PhoneObject data)
         {
@@ -85,12 +94,12 @@ namespace _Project._01_Scripts._00_VisualScripts
                 callerNameText.text = "";
         }
         
-        public void ShowEmailBanner(EmailBannerPanel banner)
+        /*public void ShowEmailBanner(EmailBannerPanel banner)
         {
             
             if (EmailBannerUI == null) return;
             EmailBannerUI.SetActive(true);
-        }
+        }*/
         
         public void ShowBonusText(string text, Color color)
         {
@@ -135,5 +144,25 @@ namespace _Project._01_Scripts._00_VisualScripts
             penaltyText.gameObject.SetActive(false);
             _penaltyCoroutine = null;
         }
+
+        public void ShowLoseScreen(float elapsedTime, string scoreLabel)
+        {
+            int minutes = Mathf.FloorToInt(elapsedTime / 60f);
+            int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+
+            if (elapsedTimeText != null)
+                elapsedTimeText.text = $"Time Lasted: {minutes:00}:{seconds:00}";
+
+            if (scoreText != null)
+                scoreText.text = scoreLabel;
+            loseScreenRoot.transform.SetAsLastSibling();
+        }
+        
+        /*private string FormatTime(float time)
+        {
+            int minutes = Mathf.FloorToInt(time / 60f);
+            int seconds = Mathf.FloorToInt(time % 60f);
+            return $"{minutes:00}:{seconds:00}";
+        }*/
     }
 }
