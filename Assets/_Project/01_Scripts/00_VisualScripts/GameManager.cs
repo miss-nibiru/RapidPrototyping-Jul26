@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _Project._01_Scripts._00_VisualScripts
 {
@@ -50,20 +51,14 @@ namespace _Project._01_Scripts._00_VisualScripts
         public void OnTimeExpired()
         {
             if (_gameOver) return;
+
             _gameOver = true;
-            Time.timeScale = 0f;
+
+            Time.timeScale = 1f;
             EmailBannerManager.Instance?.StopAll();
             PhoneManager.Instance?.StopAll();
-            if (BrowserManager.Instance != null)
-                BrowserManager.Instance.enabled = false;
-            if (ComputerWindowSpawner.Instance != null)
-                ComputerWindowSpawner.Instance.enabled = false;
-            float elapsedTime = timerManager.GetSurvivalTime();
-            string scoreLabel = ScoreManager.Instance.GetScoreCategoryLabel(elapsedTime);
-            if (uiManager != null)
-                uiManager.ShowLoseScreen(elapsedTime, scoreLabel);
-            if (ScreenManager.Instance != null)
-                ScreenManager.Instance.ShowLose();
+            SceneManager.LoadScene("04_LOSEGAME");
+            
         }
 
         public void OnEmailIncorrect()
@@ -159,8 +154,12 @@ namespace _Project._01_Scripts._00_VisualScripts
         {
             
             if (_gameOver) return;
-            _isPaused = false;
-            Time.timeScale = 0f;
+            _gameOver = true;
+            
+            Time.timeScale = 1f;
+            EmailBannerManager.Instance?.StopAll();
+            PhoneManager.Instance?.StopAll();
+            SceneManager.LoadScene("03_WINGAME");
             
         }
         
