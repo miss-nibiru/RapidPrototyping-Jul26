@@ -98,11 +98,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             timerText.text = $"{minutes:00}:{seconds:00}";
         }
         
-        /*public void ShowPauseMenu(bool show)
-        {
-            pauseMenu.SetActive(show);
-        }*/
-        
         public void ShowCall(PhoneObject data)
         {
             phoneNotificationUI.SetActive(true);
@@ -118,13 +113,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             if (callerNameText != null)
                 callerNameText.text = "";
         }
-        
-        /*public void ShowEmailBanner(EmailBannerPanel banner)
-        {
-            
-            if (EmailBannerUI == null) return;
-            EmailBannerUI.SetActive(true);
-        }*/
         
         public void ShowBonusText(string text, Color color)
         {
@@ -182,12 +170,5 @@ namespace _Project._01_Scripts._00_VisualScripts
                 scoreText.text = scoreLabel;
             loseScreenRoot.transform.SetAsLastSibling();
         }
-        
-        /*private string FormatTime(float time)
-        {
-            int minutes = Mathf.FloorToInt(time / 60f);
-            int seconds = Mathf.FloorToInt(time % 60f);
-            return $"{minutes:00}:{seconds:00}";
-        }*/
     }
 }

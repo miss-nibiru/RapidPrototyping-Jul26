@@ -66,11 +66,5 @@ public class ExpirationColorIcon : MonoBehaviour
         bannerPanel = panel;
         _isActive = true;
     }
-
-    /*public void ClearBanner()
-    {
-        bannerPanel = null;
-        _isActive = false;
-    }*/
 }
 

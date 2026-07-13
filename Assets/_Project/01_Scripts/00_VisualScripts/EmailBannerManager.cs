@@ -199,10 +199,5 @@ namespace _Project._01_Scripts._00_VisualScripts
         {
             return _activeBanners.Count;
         }
-
-        /*public EmailBannerPanel GetCurrentBanner()
-        {
-            return _currentBanner;
-        }*/
     }
 }

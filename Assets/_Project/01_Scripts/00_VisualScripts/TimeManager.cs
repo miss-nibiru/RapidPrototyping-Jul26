@@ -111,13 +111,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             UpdateTimerUI();
         }
 
-        /*
-        public void StopTimer()
-        {
-            _isRunning = false;
-        }
-        */
-
         public void AddTime(float amount)
         {
             if (amount <= 0f) return;

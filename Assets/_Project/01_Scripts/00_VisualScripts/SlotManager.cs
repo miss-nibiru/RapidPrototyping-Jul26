@@ -85,13 +85,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             }
         }
         
-        /*public WordObject GetWordInSlot(Transform slot)
-        {
-            if (slot == slotOne) return _wordInSlotOne;
-            if (slot == slotTwo) return _wordInSlotTwo;
-            return null;
-        }*/
-        
         public void ClearSlots()
         {
             if (_wordInSlotOne != null)
