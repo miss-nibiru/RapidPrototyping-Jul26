@@ -919,7 +919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project._01_Scripts._00_VisualScripts.LoseScreenPanel
   quitButton: {fileID: 1826317486}
   playAgainButton: {fileID: 98576674}
-  gameplaySceneName: 02_minaGAMEPLAY 1
+  gameplaySceneName: 02_minaFINALGAMEPLAY 1
   titleSceneName: 01_MinaMAINMENU 1
 --- !u!114 &138542404
 MonoBehaviour:
