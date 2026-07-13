@@ -9,7 +9,7 @@ namespace _Project._01_Scripts._00_VisualScripts
     {
         public static UIManager Instance;
 
-        [SerializeField] private TextMeshProUGUI timerText;
+        [SerializeField] public TextMeshProUGUI timerText;
         [SerializeField] private GameObject pauseMenu;
 
         [Header("Phone Call Notification")]
@@ -43,6 +43,18 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         private void Awake()
         {
+            Debug.Log("UIManager.Awake() ran");
+
+            if (timerText == null)
+                Debug.LogWarning("UIManager.timerText is NULL in Awake()");
+
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this);
+                return;
+            }
+            Instance = this;
+            
             if (Instance != null && Instance != this)
             {
                 Destroy(this);
@@ -64,6 +76,19 @@ namespace _Project._01_Scripts._00_VisualScripts
 
             if (timerManager == null)
                 timerManager = FindFirstObjectByType<TimeManager>();
+            
+            if (EmailBannerUI != null)
+                EmailBannerUI.SetActive(false);
+
+            if (bonusText != null)
+                bonusText.gameObject.SetActive(false);
+
+            if (penaltyText != null)
+                penaltyText.gameObject.SetActive(false);
+
+            if (timerManager == null)
+                timerManager = FindFirstObjectByType<TimeManager>();
+            TimeManager.Instance?.StartTimer();
         }
         
         public void UpdateTimerUI(float currentTime)

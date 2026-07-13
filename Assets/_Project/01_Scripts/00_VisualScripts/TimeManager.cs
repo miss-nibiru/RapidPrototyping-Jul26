@@ -229,9 +229,9 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         private void UpdateTimerUI()
         {
-            
             if (UIManager.Instance != null) UIManager.Instance.UpdateTimerUI(CurrentTime);
             
+            UIManager.Instance.UpdateTimerUI(CurrentTime);
         }
 
         public float GetSurvivalTime() => _survivalTime;

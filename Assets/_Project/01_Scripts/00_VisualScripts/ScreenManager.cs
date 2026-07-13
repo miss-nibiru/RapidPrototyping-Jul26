@@ -67,6 +67,7 @@ namespace _Project._01_Scripts._00_VisualScripts
                 loseScreen.SetActive(false);
             if (pauseScreen != null)
                 pauseScreen.transform.SetAsLastSibling();
+            AudioManager.Instance.StopLoopingSound();
             AudioManager.Instance.PlaySound(pauseSound);
         }
 
