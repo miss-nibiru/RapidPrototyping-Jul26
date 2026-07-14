@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a0b9b33db15fc43b87f8cc1a6e25b0, type: 3}
   m_Name: MedCall
   m_EditorClassIdentifier: Assembly-CSharp::PhoneObject
-  callerName: Doctor
+  callerName: Doctor(Urgent)
   correctAction: 1
   ringDuration: 3
-  timeBonus: 8
+  timeBonus: 4
   timePenalty: 5

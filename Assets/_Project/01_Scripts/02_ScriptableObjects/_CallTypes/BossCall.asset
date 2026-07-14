@@ -15,5 +15,5 @@ MonoBehaviour:
   callerName: Boss
   correctAction: 0
   ringDuration: 4
-  timeBonus: 8
+  timeBonus: 5
   timePenalty: 15

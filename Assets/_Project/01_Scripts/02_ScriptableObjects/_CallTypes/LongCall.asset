@@ -15,5 +15,5 @@ MonoBehaviour:
   callerName: Brian(Legal)
   correctAction: 0
   ringDuration: 5
-  timeBonus: 8
+  timeBonus: 5
   timePenalty: 10

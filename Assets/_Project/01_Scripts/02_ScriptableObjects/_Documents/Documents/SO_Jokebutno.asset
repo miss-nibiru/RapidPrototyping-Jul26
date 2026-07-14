@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bdf6e67d8d64da2ad4f22623d22371, type: 3}
+  m_Name: SO_Jokebutno
+  m_EditorClassIdentifier: Assembly-CSharp::DocumentData
+  fileName: nojokedude.pdf
+  fileIcon: {fileID: 21300000, guid: 4a238560b30ca435bac666a7bcb37f5e, type: 3}
+  fileType: 0
+  windowTitle: dude listen!!
+  windowSize: {x: 800, y: 600}
+  documentBody: 'You probably think this is another joke file. I beg you, trust me
+    - it isn''t.... I wihs I could have left somethign else...
+
+
+    If you''re still
+    looking,have you noticed anything? Maybe... did they delete the evidence? Keep
+    going'
+  hasButton: 1
+  buttonText: Write some
+  buttonAction: 2
+  timeAmount: 10
+  buttonWorksOnlyOnce: 1
+  photoImage: {fileID: 0}
+  folderContents: []
+  browserImage: {fileID: 0}
+  browserButtonText: Buy Now
+  showBrowserButton: 1
+  browserButtonPosition: {x: 0, y: 0}
+  browserButtonAction: 0
+  browserTimeAmount: 5
+  criticalErrorToSpawn: {fileID: 0}
+  criticalErrorCount: 5
+  criticalErrorSpawnInterval: 1
+  errorTitle: 
+  errorMessage: 
+  errorButtonText: OK
+  criticalErrorButtonAction: 0
+  criticalErrorTimeAmount: 5
+  notificationTitle: 
+  notificationMessage: 
+  canBeOpenedMultipleTimes: 0
+  autoClose: 0
+  autoCloseDelay: 3

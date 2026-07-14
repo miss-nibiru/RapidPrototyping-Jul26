@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bdf6e67d8d64da2ad4f22623d22371, type: 3}
+  m_Name: SO_Folder_Work
+  m_EditorClassIdentifier: Assembly-CSharp::ComputerFilesData
+  fileName: WorkThings
+  fileIcon: {fileID: 21300000, guid: a8692e8b6dd2d45ec9dd3166474408dc, type: 3}
+  fileType: 2
+  windowTitle: werkeroo
+  windowSize: {x: 800, y: 800}
+  documentBody: 
+  hasButton: 0
+  buttonText: 
+  buttonAction: 0
+  timeAmount: 0
+  buttonWorksOnlyOnce: 1
+  photoImage: {fileID: 0}
+  folderContents:
+  - {fileID: 11400000, guid: 623f985093efc4f7093d480618c89171, type: 2}
+  - {fileID: 11400000, guid: 510fddfaed0154ad988789562d7b0bf9, type: 2}
+  - {fileID: 11400000, guid: 7fe5561a2a5c24919a34ece1fa35dbad, type: 2}
+  - {fileID: 11400000, guid: 8eabbfbf021ff4cd09fb26bba1dffd6f, type: 2}
+  - {fileID: 11400000, guid: c13802f1614934939802c9a254fd42b4, type: 2}
+  - {fileID: 11400000, guid: 5f308ccc763ef412db4720d04da3e3ae, type: 2}
+  - {fileID: 11400000, guid: 9eadd05b184274dc994381117ae93885, type: 2}
+  - {fileID: 11400000, guid: 9894eff5e76004bec9cbc1d15705e6ae, type: 2}
+  browserImage: {fileID: 0}
+  browserButtonText: Buy Now
+  showBrowserButton: 1
+  browserButtonPosition: {x: 0, y: 0}
+  browserButtonAction: 0
+  browserTimeAmount: 5
+  criticalErrorToSpawn: {fileID: 0}
+  criticalErrorCount: 5
+  criticalErrorSpawnInterval: 1
+  errorTitle: 
+  errorMessage: 
+  errorButtonText: OK
+  criticalErrorButtonAction: 0
+  criticalErrorTimeAmount: 5
+  notificationTitle: 
+  notificationMessage: 
+  canBeOpenedMultipleTimes: 0
+  autoClose: 0
+  autoCloseDelay: 3

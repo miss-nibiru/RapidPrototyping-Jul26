@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ShortCall
   m_EditorClassIdentifier: Assembly-CSharp::PhoneObject
   callerName: Contractor
+  correctAction: 0
   ringDuration: 3
-  timeBonus: 8
+  timeBonus: 4
   timePenalty: 10

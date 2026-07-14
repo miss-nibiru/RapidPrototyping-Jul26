@@ -16,19 +16,16 @@ MonoBehaviour:
   fileIcon: {fileID: 21300000, guid: 4a238560b30ca435bac666a7bcb37f5e, type: 3}
   fileType: 0
   windowTitle: TodoTodayListFinalfinal.pdf
-  windowIcon: {fileID: 0}
   windowSize: {x: 800, y: 600}
-  documentBody: 'Open unread emails
-
-    Reply to important emails first
-
-    YOU
-    NEED 2 REPONSES THAT  HAVE THE SAME TONE!!
-
-    Drag the correct responses into
-    each email
-
-    You can ignore obvious spam'
+  documentBody: "TIME IS TICKIN'\n\nOpen unread emails (they expire!!)\nWatch your
+    responses\n\u2192 Happy face: Casual\n\u2192 Corpo Pattern: Formal\n\u2192 Lightning:
+    THIS PERSON SHOULD DIE\n\nDrag the correct responses into each email c:\nYou
+    can ignore obvious spam\n\nBut is this all?"
+  hasButton: 0
+  buttonText: 
+  buttonAction: 0
+  timeAmount: 0
+  buttonWorksOnlyOnce: 1
   photoImage: {fileID: 0}
   folderContents: []
   browserImage: {fileID: 0}

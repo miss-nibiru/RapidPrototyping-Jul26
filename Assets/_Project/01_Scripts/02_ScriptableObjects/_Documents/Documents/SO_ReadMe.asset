@@ -17,7 +17,14 @@ MonoBehaviour:
   fileType: 0
   windowTitle: README.txt
   windowSize: {x: 800, y: 600}
-  documentBody: "If you\u2019re reading this, you\u2019re probably avoiding work."
+  documentBody: 'I don''t know who you are but, if this file still exists,
+
+    then
+    they never found it.
+
+
+    You''re closer than I ever got. Dont trust HR. Dont
+    trust Executive. DONT TRUST ANYONE.'
   hasButton: 0
   buttonText: Write some
   buttonAction: 2

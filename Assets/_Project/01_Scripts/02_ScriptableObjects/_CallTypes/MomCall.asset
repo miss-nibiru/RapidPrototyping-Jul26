@@ -15,5 +15,5 @@ MonoBehaviour:
   callerName: Mom
   correctAction: 1
   ringDuration: 4
-  timeBonus: 6
+  timeBonus: 5
   timePenalty: 10
