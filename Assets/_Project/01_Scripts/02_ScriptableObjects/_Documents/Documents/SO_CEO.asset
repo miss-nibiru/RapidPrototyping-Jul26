@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22bdf6e67d8d64da2ad4f22623d22371, type: 3}
-  m_Name: SO_Aadvanced
+  m_Name: SO_CEO
   m_EditorClassIdentifier: Assembly-CSharp::DocumentData
-  fileName: Advanced Listening Tips
+  fileName: NoteformBosss.txt
   fileIcon: {fileID: 21300000, guid: 4a238560b30ca435bac666a7bcb37f5e, type: 3}
   fileType: 0
-  windowTitle: You better werk
+  windowTitle: I see...
   windowSize: {x: 800, y: 600}
-  documentBody: "Step 1: Nod\nStep 2: Say \u201CInteresting\"\nStep 3: Don't forget
-    to not listen and prepare your answer while the other person is talking\n\nRepeat"
+  documentBody: 'Remember: Don''t call them layoffs. Call them "company restructuring"
+
+'
   hasButton: 0
   buttonText: Write some
   buttonAction: 2

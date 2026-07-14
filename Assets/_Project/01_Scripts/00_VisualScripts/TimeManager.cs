@@ -64,17 +64,6 @@ namespace _Project._01_Scripts._00_VisualScripts
             SetupTimeFeedback();
         }
 
-        private void SetupTimeFeedback()
-        {
-            if (timeFeedbackPopup != null)
-                _popupStartPosition = timeFeedbackPopup.anchoredPosition;
-            timeFeedbackPopup.gameObject.SetActive(false);
-            
-            if (timeFeedbackImage != null) _popupImageStartingColor = timeFeedbackImage.color;
-            if (clockText != null) clockText.color = normalClockColor;
-            
-        }
-
         private void Update()
         {
             if (!_isRunning) return;
@@ -127,6 +116,19 @@ namespace _Project._01_Scripts._00_VisualScripts
 
             UpdateTimerUI();
             ShowTimeFeedback(amount, false);
+        }
+        
+        private void SetupTimeFeedback()
+        {
+            if (timeFeedbackPopup != null)
+            {
+                _popupStartPosition = timeFeedbackPopup.anchoredPosition;
+                timeFeedbackPopup.gameObject.SetActive(false);
+            }
+
+            if (timeFeedbackImage != null) _popupImageStartingColor = timeFeedbackImage.color;
+            if (clockText != null) clockText.color = normalClockColor;
+
         }
 
         private void ShowTimeFeedback(float amount, bool gainedTime)
@@ -224,9 +226,8 @@ namespace _Project._01_Scripts._00_VisualScripts
 
         private void UpdateTimerUI()
         {
-            if (UIManager.Instance != null) UIManager.Instance.UpdateTimerUI(CurrentTime);
-            
-            UIManager.Instance.UpdateTimerUI(CurrentTime);
+            if (UIManager.Instance != null)
+                UIManager.Instance.UpdateTimerUI(CurrentTime);
         }
 
         public float GetSurvivalTime() => _survivalTime;

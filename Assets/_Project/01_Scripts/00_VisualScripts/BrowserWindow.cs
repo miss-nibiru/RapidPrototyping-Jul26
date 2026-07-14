@@ -21,7 +21,10 @@ public class BrowserWindow : MonoBehaviour
         if (browserImage != null && _currentPage.browserImage != null) browserImage.sprite = _currentPage.browserImage;
         if (browserButtonText != null) browserButtonText.text = _currentPage.browserButtonText;
         if (browserButton != null)
-            browserButton.onClick.RemoveListener(OnBrowserButtonClicked); browserButton.onClick.AddListener(OnBrowserButtonClicked);
+        {
+            browserButton.onClick.RemoveListener(OnBrowserButtonClicked);
+            browserButton.onClick.AddListener(OnBrowserButtonClicked);
+        }
         if (browserButton != null) browserButton.gameObject.SetActive(_currentPage.showBrowserButton);
         if (browserButtonRect != null) 
             browserButtonRect.anchoredPosition = _currentPage.browserButtonPosition;

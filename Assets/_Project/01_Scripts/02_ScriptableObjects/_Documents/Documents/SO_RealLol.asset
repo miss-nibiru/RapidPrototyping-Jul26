@@ -16,14 +16,18 @@ MonoBehaviour:
   fileIcon: {fileID: 21300000, guid: 4a238560b30ca435bac666a7bcb37f5e, type: 3}
   fileType: 0
   windowTitle: CreditNstuff.docx
-  windowIcon: {fileID: 21300000, guid: df977d5ffabd540c1be916c070ef4903, type: 3}
   windowSize: {x: 800, y: 800}
   documentBody: There are documented instances of Ashley taking full credit for work
     that was my own individual effort. In her raise request letter, she listed accomplishments
     and projects that I created and executed, framing it as though it was her sole
     accomplishment. This is not merely failing to provide acknowledgment - it is
-    overtly claiming ownership over work that 95% of the creative ideation and labor
+    overtly claiming ownership over work that 95% of the creative ideation and labour
     fell onto my shoulders.
+  hasButton: 0
+  buttonText: 
+  buttonAction: 0
+  timeAmount: 0
+  buttonWorksOnlyOnce: 1
   photoImage: {fileID: 0}
   folderContents: []
   browserImage: {fileID: 0}

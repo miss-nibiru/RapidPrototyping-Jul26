@@ -52,12 +52,12 @@ public class ComputerFilesData : ScriptableObject
     [Header("Document Content")]
     [TextArea(5, 30)]
     public string documentBody;
-    
     public bool hasButton;
     public string buttonText;
     public DocumentButtonAction buttonAction;
     public float timeAmount;
-
+    public bool buttonWorksOnlyOnce = true;
+    
     [Header("Photo Content")]
     public Sprite photoImage;
 

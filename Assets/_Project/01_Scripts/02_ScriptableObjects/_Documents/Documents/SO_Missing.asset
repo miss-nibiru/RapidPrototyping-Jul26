@@ -23,10 +23,11 @@ MonoBehaviour:
 
     HR has communicated that
     everything is normal. They will show up'
-  hasButton: 1
+  hasButton: 0
   buttonText: Report
   buttonAction: 2
   timeAmount: 10
+  buttonWorksOnlyOnce: 1
   photoImage: {fileID: 0}
   folderContents: []
   browserImage: {fileID: 0}

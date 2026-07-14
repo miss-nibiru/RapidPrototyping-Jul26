@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22bdf6e67d8d64da2ad4f22623d22371, type: 3}
-  m_Name: SO_Aadvanced
+  m_Name: SO_WinGame
   m_EditorClassIdentifier: Assembly-CSharp::DocumentData
-  fileName: Advanced Listening Tips
+  fileName: CuriosityKilledtheCat.txt
   fileIcon: {fileID: 21300000, guid: 4a238560b30ca435bac666a7bcb37f5e, type: 3}
   fileType: 0
-  windowTitle: You better werk
+  windowTitle: Why so curious?
   windowSize: {x: 800, y: 600}
-  documentBody: "Step 1: Nod\nStep 2: Say \u201CInteresting\"\nStep 3: Don't forget
-    to not listen and prepare your answer while the other person is talking\n\nRepeat"
-  hasButton: 0
-  buttonText: Write some
-  buttonAction: 2
+  documentBody: The work never ends, the meetings never solve anything, the promotions
+    are a lie.. they will always say "you are next in line". Corporations win when
+    you stay silent.
+  hasButton: 1
+  buttonText: QUIT
+  buttonAction: 3
   timeAmount: 10
   buttonWorksOnlyOnce: 1
   photoImage: {fileID: 0}

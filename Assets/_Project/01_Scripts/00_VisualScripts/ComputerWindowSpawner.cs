@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ComputerWindowSpawner : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class ComputerWindowSpawner : MonoBehaviour
     [SerializeField] private GameObject notificationWindowPrefab;
 
     private int _openWindowCount;
+    private readonly HashSet<ComputerFilesData> _usedDocumentButtons = new HashSet<ComputerFilesData>();
+    
 
     private void Awake()
     {
@@ -112,5 +115,26 @@ public class ComputerWindowSpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
         }
     }
+    
+    public bool TryUseDocumentButton(ComputerFilesData fileData)
+    {
+        if (fileData == null)
+            return false;
+
+        if (!fileData.buttonWorksOnlyOnce)
+            return true;
+
+        return _usedDocumentButtons.Add(fileData);
+    }
+
+    public bool WasDocumentButtonUsed(ComputerFilesData fileData)
+    {
+        if (fileData == null)
+            return false;
+
+        return _usedDocumentButtons.Contains(fileData);
+    }
+    
+    
     
 }

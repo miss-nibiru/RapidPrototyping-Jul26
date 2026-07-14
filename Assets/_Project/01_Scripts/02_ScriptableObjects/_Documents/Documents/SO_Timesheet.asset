@@ -18,15 +18,15 @@ MonoBehaviour:
   windowTitle: Timesheets?
   windowSize: {x: 800, y: 600}
   documentBody: "LIVECORP TIMESHEET\n\nEmployee: __________________ Date: ______________________\n\n\u2610
-    Arrived to work\n\u2610 Opened Hell-Mail\n\u2610 Attended at least one meeting
-    that could have been an email\n\u2610 Replied \u201CPer my last email\u2026\u201D\n\u2610
-    Looked busy while waiting for something to load\n\u2610 Refilled coffee\n\u2610
-    Survived another workday\n\u2610 Needs More Synergy\n\n\u201CTime enjoyed is
-    time not billed to the company.\u201D"
+    Arrived to work\n\u2610 Opened Mail\n\u2610 Attended a meeting that could have
+    been an email\n\u2610 Replied \u201CPer my last email\u2026\u201D\n\u2610 Looked
+    busy while waiting for something to load\n\u2610 Refilled coffee\n\n\u201CTime
+    enjoyed is time not billed to the company.\u201D"
   hasButton: 0
   buttonText: Write some
   buttonAction: 2
   timeAmount: 10
+  buttonWorksOnlyOnce: 1
   photoImage: {fileID: 0}
   folderContents: []
   browserImage: {fileID: 0}

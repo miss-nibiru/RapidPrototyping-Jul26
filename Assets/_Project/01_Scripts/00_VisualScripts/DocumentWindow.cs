@@ -55,18 +55,23 @@ public class DocumentWindow : MonoBehaviour
         button.gameObject.SetActive(currentData.hasButton);
 
         if (!currentData.hasButton)
-        {
             return;
-        }
 
         if (buttonText != null)
-        {
             buttonText.text = currentData.buttonText;
-        }
+
+        bool wasAlreadyUsed =
+            ComputerWindowSpawner.Instance != null &&
+            ComputerWindowSpawner.Instance.WasDocumentButtonUsed(currentData);
+
+        button.interactable = !wasAlreadyUsed;
     }
 
     public void OnButtonClick()
     {
+        if (!ComputerWindowSpawner.Instance.TryUseDocumentButton(currentData))
+            button.interactable = false;
+        
         if (currentData == null)
         {
             Debug.LogWarning("DocumentWindow has no current file data.");

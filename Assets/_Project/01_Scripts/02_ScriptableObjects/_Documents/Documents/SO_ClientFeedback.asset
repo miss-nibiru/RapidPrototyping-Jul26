@@ -18,10 +18,11 @@ MonoBehaviour:
   windowTitle: The client is always right...
   windowSize: {x: 800, y: 600}
   documentBody: "\u201CWe asked for blue. You made it\u2026 bluer.\u201D"
-  hasButton: 1
+  hasButton: 0
   buttonText: Write some
   buttonAction: 2
   timeAmount: 10
+  buttonWorksOnlyOnce: 1
   photoImage: {fileID: 0}
   folderContents: []
   browserImage: {fileID: 0}

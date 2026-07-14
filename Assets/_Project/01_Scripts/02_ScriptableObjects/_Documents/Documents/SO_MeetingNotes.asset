@@ -19,10 +19,11 @@ MonoBehaviour:
   windowSize: {x: 800, y: 600}
   documentBody: "MEETING NOTES\n\nMeeting Topic: ___________\n\nDecisions Made:\n\n\u2610
     None\n\nAction Items:\n\n\u2610 Schedule another meeting.\n\nNext Meeting: Tomorrow."
-  hasButton: 0
-  buttonText: Write some
-  buttonAction: 2
+  hasButton: 1
+  buttonText: Type Meeting Notes
+  buttonAction: 1
   timeAmount: 10
+  buttonWorksOnlyOnce: 1
   photoImage: {fileID: 0}
   folderContents: []
   browserImage: {fileID: 0}
